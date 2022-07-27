@@ -6,7 +6,7 @@ jobs:
   sanity-deploy:
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: backend
     runs-on: ubuntu-18.04
     name: Deploy Sanity
     steps:
