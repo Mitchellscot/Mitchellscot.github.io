@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-18.04
     name: Deploy Sanity
     steps:
-        working-directory: ./backend
+      - working-directory: ./backend
       - uses: actions/checkout@v2
       - uses: sanity-io/github-action-sanity@v0.2-alpha
         env:
