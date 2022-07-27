@@ -8,8 +8,22 @@ jobs:
     name: Deploy Sanity
     steps:
       - uses: actions/checkout@v2
-      - uses: sanity-io/github-action-sanity@v0.3-alpha
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
         with:
-          args: deploy
+          node-version: lts
+      - name: Install dependencies
+        run: |
+          cd backend
+          npm install
+      - name: Deploy Sanity Studio
+        run: |
+          set -e
+          cd backend
+          SANITY_AUTH_TOKEN="${{ secrets.SANITY_STUDIO_DEPLOY }}" npx sanity deploy
+      # - uses: actions/checkout@v2
+      # - uses: sanity-io/github-action-sanity@v0.3-alpha
+      #   env:
+      #     SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
+      #   with:
+      #     args: deploy
