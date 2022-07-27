@@ -4,26 +4,15 @@ on:
     branches: [master]
 jobs:
   sanity-deploy:
+    defaults:
+      run:
+        working-directory: backend
     runs-on: ubuntu-18.04
     name: Deploy Sanity
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
+      - uses: sanity-io/github-action-sanity@v0.3-alpha
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
         with:
-          node-version: 18
-      - name: Install dependencies
-        run: |
-          cd backend
-          npm install
-      - name: Deploy Sanity Studio
-        run: |
-          set -e
-          cd backend
-          SANITY_AUTH_TOKEN="${{ secrets.SANITY_STUDIO_DEPLOY }}" npx sanity deploy
-      # - uses: actions/checkout@v2
-      # - uses: sanity-io/github-action-sanity@v0.3-alpha
-      #   env:
-      #     SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
-      #   with:
-      #     args: deploy
+          args: ./backend deploy
