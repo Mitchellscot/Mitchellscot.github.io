@@ -4,9 +4,6 @@ on:
     branches: [master]
 jobs:
   sanity-deploy:
-    defaults:
-      run:
-        working-directory: backend
     runs-on: ubuntu-18.04
     name: Deploy Sanity
     steps:
