@@ -8,6 +8,7 @@ jobs:
     name: Deploy Sanity
     steps:
       - uses: actions/checkout@v2
+      - name: Deploy
         working-directory: ./backend
       - uses: sanity-io/github-action-sanity@v0.2-alpha
         env:
