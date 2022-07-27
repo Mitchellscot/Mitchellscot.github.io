@@ -6,10 +6,10 @@ jobs:
   sanity-deploy:
     runs-on: ubuntu-18.04
     name: Deploy Sanity
+    working-directory: ./backend
     steps:
       - uses: actions/checkout@v2
         name: Deploy
-        working-directory: ./backend
       - uses: sanity-io/github-action-sanity@v0.2-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
