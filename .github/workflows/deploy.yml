@@ -8,10 +8,8 @@ jobs:
     name: Deploy Sanity
     steps:
       - uses: actions/checkout@v2
-      - run: ls
-      - run: cd ./backend
-      - run: ls
       - uses: sanity-io/github-action-sanity@v0.2-alpha
+        working-directory: ./backend
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
         with:
