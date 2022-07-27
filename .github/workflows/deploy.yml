@@ -4,12 +4,14 @@ on:
     branches: [master]
 jobs:
   sanity-deploy:
+    defaults:
+      run:
+        working-directory: ./backend
     runs-on: ubuntu-18.04
     name: Deploy Sanity
     steps:
       - uses: actions/checkout@v2
       - uses: sanity-io/github-action-sanity@v0.2-alpha
-        working-directory: ./backend
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
         with:
