@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": " cd .. && husky install",
     "prepare": "cd .. && husky install"
   },
   "dependencies": {
