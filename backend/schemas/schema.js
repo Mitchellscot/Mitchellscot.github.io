@@ -8,8 +8,10 @@ import contactPage from "./Pages/contactPage";
 import projectsPage from "./Pages/projectsPage";
 import statsPage from "./Pages/statsPage";
 
+import button from "./Objects/button";
 import hobby from "./Objects/hobby";
 import imageModel from "./Objects/imageModel";
+import projects from "./Objects/project";
 import seo from "./Objects/seo";
 
 export default createSchema({
@@ -25,5 +27,7 @@ export default createSchema({
     seo,
     hobby,
     imageModel,
+    projects,
+    button,
   ]),
 });

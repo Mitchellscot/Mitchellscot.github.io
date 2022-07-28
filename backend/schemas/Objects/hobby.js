@@ -1,19 +1,21 @@
+import objectTypes from "../constants/objectTypes";
+
 export default {
-  title: 'Hobby',
-  name: 'hobby',
-  type: 'object',
+  title: "Hobby",
+  name: objectTypes.hobby,
+  type: "object",
   fields: [
     {
-      name: 'name',
-      type: 'string',
-      title: 'hobbyName',
-      validation: Rule => Rule.required()
+      name: "name",
+      type: objectTypes.string,
+      title: "Hobby Name",
+      validation: (Rule) => Rule.required(),
     },
     {
-      name: 'hobbyImage',
-      type: 'imageModel',
-      title: 'Image',
-      validation: Rule => Rule.required()
-    }
-  ]
-}
+      name: "hobbyImage",
+      type: objectTypes.imageModel,
+      title: "Image",
+      validation: (Rule) => Rule.required(),
+    },
+  ],
+};
