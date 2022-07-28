@@ -1,19 +1,19 @@
-import schemaTypes from 'all:part:@sanity/base/schema-type';
-import createSchema from 'part:@sanity/base/schema-creator';
+import schemaTypes from "all:part:@sanity/base/schema-type";
+import createSchema from "part:@sanity/base/schema-creator";
+// test
+import aboutPage from "./Pages/aboutPage";
+import blogEntry from "./Pages/blogEntry";
+import blogPage from "./Pages/blogPage";
+import contactPage from "./Pages/contactPage";
+import projectsPage from "./Pages/projectsPage";
+import statsPage from "./Pages/statsPage";
 
-import aboutPage from './Pages/aboutPage';
-import blogEntry from './Pages/blogEntry';
-import blogPage from './Pages/blogPage';
-import contactPage from './Pages/contactPage';
-import projectsPage from './Pages/projectsPage';
-import statsPage from './Pages/statsPage';
-
-import hobby from './Objects/hobby';
-import imageModel from './Objects/imageModel';
-import seo from './Objects/seo';
+import hobby from "./Objects/hobby";
+import imageModel from "./Objects/imageModel";
+import seo from "./Objects/seo";
 
 export default createSchema({
-  name: 'default',
+  name: "default",
   types: schemaTypes.concat([
     aboutPage,
     contactPage,
@@ -24,6 +24,6 @@ export default createSchema({
 
     seo,
     hobby,
-    imageModel
+    imageModel,
   ]),
-})
+});
