@@ -1,7 +1,6 @@
 export default {
     title: 'Seo Data',
     name: 'seo',
-    description: 'Page Title and Description - for SEO Purposes',
     type: 'object',
     fields: [
         {
