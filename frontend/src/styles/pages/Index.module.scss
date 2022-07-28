@@ -1,0 +1,11 @@
+@import '../helpers.scss';
+
+
+.container{
+  padding-inline: var(--gutter);
+  margin: 0 auto;
+  max-width: $MAX_WIDTH;
+}
+.row {
+  margin-bottom: 100px;
+}

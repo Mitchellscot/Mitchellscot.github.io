@@ -1,0 +1,80 @@
+@import '../helpers.scss';
+
+@mixin text {
+  color: $GREY_4;
+}
+
+.textXl {
+  @include text;
+  @include fontSize(24);
+  line-height: (64 / 48);
+  font-weight: $FONT_WEIGHT_SEMI_BOLD;
+
+  @include breakpoint(MD) {
+    @include fontSize(30);
+  }
+
+  @include breakpoint(LG) {
+    @include fontSize(38);
+  }
+}
+
+.textLg {
+  @include text;
+  @include fontSize(18);
+  line-height: (52 / 36);
+  font-weight: $FONT_WEIGHT_SEMI_BOLD;
+
+  @include breakpoint(MD) {
+    @include fontSize(22);
+  }
+
+  @include breakpoint(LG) {
+    @include fontSize(28);
+  }
+}
+
+.textMd {
+  @include text;
+  @include fontSize(16);
+  line-height: (44 / 24);
+  font-weight: $FONT_WEIGHT_SEMI_BOLD;
+
+  @include breakpoint(MD) {
+    @include fontSize(18);
+  }
+
+  @include breakpoint(LG) {
+    @include fontSize(22);
+  }
+}
+
+.textSm {
+  @include text;
+  @include fontSize(16);
+  line-height: (32 / 20);
+  font-weight: $FONT_WEIGHT_SEMI_BOLD;
+
+  @include breakpoint(MD) {
+    @include fontSize(18);
+  }
+
+  @include breakpoint(LG) {
+    @include fontSize(20);
+  }
+}
+
+.textXs {
+  @include text;
+  @include fontSize(16);
+  line-height: (22 / 18);
+  font-weight: 500;
+
+  @include breakpoint(MD) {
+    @include fontSize(16);
+  }
+
+  @include breakpoint(LG) {
+    @include fontSize(18);
+  }
+}
