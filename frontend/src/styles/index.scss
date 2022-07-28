@@ -1,0 +1,24 @@
+@import '~reset-css/sass/reset';
+@import '~system-font-css';
+@import './variables.scss';
+@import './mixins.scss';
+@import './helpers.scss';
+@import './elements.scss';
+@import './typography/Heading.module.scss';
+@import './typography/Text.module.scss';
+
+:root {
+  --gutter: 24px;
+
+  @include breakpoint(MD) {
+    --gutter: 32px;
+  }
+
+  @include breakpoint(XL) {
+    --gutter: 64px;
+  }
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}

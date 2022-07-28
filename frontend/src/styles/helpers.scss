@@ -1,0 +1,7 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+/* stylelint-disable selector-class-pattern, declaration-no-important */
+.u-isHidden {
+  display: none !important;
+}

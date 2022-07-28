@@ -1,0 +1,62 @@
+@use 'sass:color';
+@use 'sass:math';
+@import './variables.scss';
+
+@mixin breakpoint($point) {
+  @if $point==SM {
+    @media (min-width: $BP_SM) {
+      @content;
+    }
+  } @else if $point==MD {
+    @media (min-width: $BP_MD) {
+      @content;
+    }
+  } @else if $point==LG {
+    @media (min-width: $BP_LG) {
+      @content;
+    }
+  } @else if $point==XL {
+    @media (min-width: $BP_XL) {
+      @content;
+    }
+  } @else if $point==SM_INVERSE {
+    @media (max-width: ($BP_SM - 1px)) {
+      @content;
+    }
+  } @else if $point==MD_INVERSE {
+    @media (max-width: ($BP_MD - 1px)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $point) {
+      @content;
+    }
+  }
+}
+
+/* stylelint-disable declaration-no-important */
+@mixin isVisuallyHidden() {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(100%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+}
+/* stylelint-enable declaration-no-important */
+
+@mixin colorLighten($color) {
+  background-color: color.adjust($color, $alpha: -0.9);
+}
+
+@mixin colorLightenHover($color) {
+  background-color: color.adjust($color, $alpha: -0.8);
+}
+
+@mixin fontSize($fontSize) {
+  font-size: math.div($fontSize, $BASE-FONT-SIZE) + rem;
+}

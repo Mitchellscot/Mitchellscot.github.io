@@ -1,0 +1,63 @@
+@import '../helpers.scss';
+
+@mixin heading {
+  font-weight: $FONT_WEIGHT_BLACK;
+  color: $GREY_1;
+  letter-spacing: -0.01em;
+}
+
+.heading1 {
+  @include heading;
+  @include fontSize(48);
+  line-height: (120 / 116);
+
+  @include breakpoint(MD) {
+    @include fontSize(72);
+  }
+
+  @include breakpoint(LG) {
+    @include fontSize(96);
+  }
+}
+
+.heading2 {
+  @include heading;
+  @include fontSize(32);
+  line-height: (102 / 84);
+
+  @include breakpoint(MD) {
+    @include fontSize(48);
+  }
+
+  @include breakpoint(LG) {
+    @include fontSize(64);
+  }
+}
+
+.heading3 {
+  @include heading;
+  @include fontSize(24);
+  line-height: (58 / 48);
+
+  @include breakpoint(MD) {
+    @include fontSize(32);
+  }
+
+  @include breakpoint(LG) {
+    @include fontSize(48);
+  }
+}
+
+.heading4 {
+  @include heading;
+  @include fontSize(18);
+  line-height: (44 / 36);
+
+  @include breakpoint(MD) {
+    @include fontSize(22);
+  }
+
+  @include breakpoint(LG) {
+    @include fontSize(28);
+  }
+}
