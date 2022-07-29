@@ -1,1 +1,36 @@
 @import '../../styles/helpers.scss';
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  flex: 1;
+  padding: 10px var(--gutter);
+  justify-content: center;
+  max-width: $MAX_WIDTH;
+  background-color: black;
+
+  @include breakpoint(MD) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.copyright {
+  color: $CYAN;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.socialLinks {
+  margin-bottom: 10px;
+
+  > * {
+    margin-right: 10px;
+  }
+
+  @include breakpoint(MD) {
+    margin-bottom: 0;
+  }
+}
