@@ -4,5 +4,5 @@ export default interface HomePageData {
   pageTitle: string;
   metaDescription: string;
   title: string;
-  blogList: BlogPreview;
+  blogList: Array<BlogPreview>;
 }

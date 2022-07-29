@@ -1,6 +1,7 @@
 @import '../../styles/helpers.scss';
 
 .container {
+  box-shadow: 0 0 8px 0 black;
   position: relative;
   display: flex;
   flex-direction: column-reverse;
@@ -20,6 +21,7 @@
   color: $CYAN;
   text-transform: uppercase;
   text-align: center;
+  font-family: ubuntu mono;
 }
 
 .socialLinks {

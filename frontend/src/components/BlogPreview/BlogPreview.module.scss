@@ -1,0 +1,35 @@
+@import '../../styles/helpers.scss';
+
+.container {
+  margin-bottom: 40px;
+}
+
+.title {
+  font-family: ubuntu mono;
+  font-weight: $FONT_WEIGHT_BOLD;
+  margin-bottom: 15px;
+}
+
+.preview {
+  margin-bottom: 5px;
+}
+
+.bottomContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.date {
+  font-style: italic;
+  color: $CYAN_2;
+}
+
+.titleUnderline {
+  width: auto;
+  height: 2px;
+  border-radius: 6px;
+  background-color: $CYAN_3;
+}
