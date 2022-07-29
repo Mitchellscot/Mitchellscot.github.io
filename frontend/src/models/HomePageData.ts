@@ -1,6 +1,8 @@
+import BlogPreview from './BlogPreview';
+
 export default interface HomePageData {
-    pageTitle: string;
-    metaDescription: string;
-    title: string;
-  }
-  
+  pageTitle: string;
+  metaDescription: string;
+  title: string;
+  blogList: BlogPreview;
+}

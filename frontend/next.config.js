@@ -3,7 +3,16 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['cdn.sanity.io'],
-    swcMinify: true
+    swcMinify: true,
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/blog',
+        permanent: true,
+      },
+    ];
   },
 };
 
