@@ -12,6 +12,10 @@
   line-height: (102 / 84);
   color: #fff;
 
+  @include breakpoint(SM) {
+    @include fontSize(40);
+  }
+
   @include breakpoint(MD) {
     @include fontSize(48);
   }

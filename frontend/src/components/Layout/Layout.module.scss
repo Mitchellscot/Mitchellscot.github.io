@@ -8,10 +8,16 @@
 
 .siteHeader {
   z-index: $Z_INDEX_HEADER;
-  position: var(--header-position, sticky);
   top: 0;
 }
 
+.siteNav {
+  z-index: $Z_INDEX_HEADER;
+  position: sticky;
+  top: 0;
+}
+
+.siteNav,
 .siteHeader,
 .siteBody,
 .siteFooter {
@@ -23,7 +29,8 @@
 }
 
 .siteFooter,
-.siteHeader {
+.siteHeader,
+.siteNav {
   display: flex;
   justify-content: center;
 }
