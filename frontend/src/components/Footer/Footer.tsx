@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className={styles.container}>
       <p className={copyrightText}>
-        &copy;{' 2022 Mitchell Scott. All rights reserved.'}
+        &copy;{' 2022 Mitchell Scott. All rights reserved'}
       </p>
       <div className={styles.socialLinks}>
         <Link href="https://www.strava.com/athletes/mitchellscot" passHref>

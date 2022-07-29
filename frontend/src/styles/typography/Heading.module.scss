@@ -10,7 +10,7 @@
   @include heading;
   @include fontSize(32);
   line-height: (102 / 84);
-  color: #fff;
+  color: $WHITE;
 
   @include breakpoint(SM) {
     @include fontSize(40);
@@ -50,5 +50,27 @@
 
   @include breakpoint(LG) {
     @include fontSize(28);
+  }
+}
+
+.blogPreview {
+  @include heading;
+  @include fontSize(24);
+  line-height: (58 / 48);
+
+  @include breakpoint(SM) {
+    @include fontSize(28);
+  }
+
+  @include breakpoint(MD) {
+    @include fontSize(30);
+  }
+
+  @include breakpoint(LG) {
+    @include fontSize(32);
+  }
+
+  @include breakpoint(XL) {
+    @include fontSize(34);
   }
 }
