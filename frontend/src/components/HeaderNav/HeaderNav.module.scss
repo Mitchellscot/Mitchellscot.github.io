@@ -34,7 +34,7 @@
   }
 }
 
-.navItem {
+.navItem:first-child {
   text-transform: uppercase;
   color: $WHITE;
   font-weight: $FONT_WEIGHT_REGULAR;
@@ -44,7 +44,7 @@
   }
 }
 
-.navItemActive {
+.navItemActive:first-child {
   text-transform: uppercase;
   color: $CYAN_2;
   font-weight: $FONT_WEIGHT_REGULAR;
