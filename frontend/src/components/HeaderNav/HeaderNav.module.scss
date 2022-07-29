@@ -34,22 +34,26 @@
   }
 }
 
-.navItem:first-child {
-  text-transform: uppercase;
-  color: $WHITE;
-  font-weight: $FONT_WEIGHT_REGULAR;
+.navItem {
+  &:first-child {
+    text-transform: uppercase;
+    color: $WHITE;
+    font-weight: $FONT_WEIGHT_REGULAR;
 
-  @include breakpoint(MD) {
-    font-weight: $FONT_WEIGHT_BOLD;
+    @include breakpoint(MD) {
+      font-weight: $FONT_WEIGHT_BOLD;
+    }
   }
 }
 
-.navItemActive:first-child {
-  text-transform: uppercase;
-  color: $CYAN_2;
-  font-weight: $FONT_WEIGHT_REGULAR;
+.navItemActive {
+  &:first-child {
+    text-transform: uppercase;
+    color: $CYAN_2;
+    font-weight: $FONT_WEIGHT_REGULAR;
 
-  @include breakpoint(MD) {
-    font-weight: $FONT_WEIGHT_BOLD;
+    @include breakpoint(MD) {
+      font-weight: $FONT_WEIGHT_BOLD;
+    }
   }
 }
