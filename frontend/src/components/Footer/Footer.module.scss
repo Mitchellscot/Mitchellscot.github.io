@@ -8,7 +8,6 @@
   flex: 1;
   padding: 10px var(--gutter);
   justify-content: center;
-  max-width: $MAX_WIDTH;
   background-color: black;
 
   @include breakpoint(MD) {
