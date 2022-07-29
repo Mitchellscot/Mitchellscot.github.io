@@ -1,1 +1,72 @@
 @import '../../styles/helpers.scss';
+
+.header {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 5px var(--gutter);
+  background-color: black;
+}
+
+.container {
+  max-width: $MAX_WIDTH;
+}
+
+.myName {
+  text-transform: uppercase;
+  color: $WHITE;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.navLinks {
+  display: flex;
+  justify-content: center;
+
+  > * + * {
+    &::before {
+      content: '\b7';
+    }
+  }
+
+  @include breakpoint(SM) {
+    > * + * {
+      &::before {
+        margin-left: 5px;
+        content: '\a0\b7\a0';
+      }
+    }
+  }
+}
+
+.navItem {
+  text-transform: uppercase;
+  color: $WHITE;
+  font-weight: $FONT_WEIGHT_REGULAR;
+
+  @include breakpoint(MD) {
+    font-weight: $FONT_WEIGHT_BOLD;
+  }
+}
+
+.navItemActive {
+  text-transform: uppercase;
+  color: $CYAN_2;
+  font-weight: $FONT_WEIGHT_REGULAR;
+
+  @include breakpoint(MD) {
+    font-weight: $FONT_WEIGHT_BOLD;
+  }
+}
+
+.titleUnderline {
+  height: 2px;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 5px;
+  background-color: $ORANGE;
+
+  @include breakpoint(MD) {
+    margin-top: 0;
+  }
+}
