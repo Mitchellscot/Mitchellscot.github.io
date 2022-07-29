@@ -1,11 +1,14 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
+import text from '../../styles/typography/Text.module.scss';
 import styles from './Footer.module.scss';
 
 export default function Footer() {
+  const copyrightText = classNames(styles.copyright, text.textXs);
   return (
     <footer className={styles.container}>
-      <p className={styles.copyright}>
+      <p className={copyrightText}>
         &copy;{' 2022 Mitchell Scott. All rights reserved.'}
       </p>
       <div className={styles.socialLinks}>
