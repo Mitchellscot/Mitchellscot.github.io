@@ -1,12 +1,19 @@
 @import '../../styles/helpers.scss';
 
 .button {
+  @include fontSize(18);
+  padding: 8px 15px;
+
+  @include breakpoint(SM) {
+    padding: 15px 22px;
+    @include fontSize(20);
+  }
+
   border-radius: 25px 25px;
   color: $CYAN;
   display: inline-block;
   font-weight: $FONT_WEIGHT_REGULAR;
   line-height: 24 / 20;
-  padding: 15px 22px;
   text-align: center;
   transition: color 300ms cubic-bezier(0.32, 0, 0.67, 0),
     background-color 300ms cubic-bezier(0.32, 0, 0.67, 0);

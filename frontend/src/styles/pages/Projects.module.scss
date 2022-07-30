@@ -1,0 +1,29 @@
+@import '../helpers.scss';
+
+.title {
+  padding-inline: var(--gutter);
+  margin: 20px auto 10px;
+  max-width: $MAX_WIDTH;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.projectsContainer {
+  max-width: 360px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include breakpoint(SM) {
+    max-width: $BP_SM;
+  }
+
+  @include breakpoint(MD) {
+    max-width: $BP_MD;
+  }
+
+  @include breakpoint(LG) {
+    max-width: $MAX_WIDTH_NARROW;
+  }
+}

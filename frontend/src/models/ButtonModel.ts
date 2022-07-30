@@ -1,5 +1,7 @@
+import ButtonVariant from './ButtonVariant';
+
 export default interface ButtonModel {
   label: string;
-  style: string;
+  style: ButtonVariant;
   link: string;
 }

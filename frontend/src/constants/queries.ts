@@ -17,6 +17,7 @@ export const queries = {
   order(_updatedAt desc)[0]{
     "pageTitle": seo.pageTitle,
     "metaDescription": seo.metaDescription,
+    title,
     "projects": projects[]{
      "title": projectName,
      "image": mainImage{
