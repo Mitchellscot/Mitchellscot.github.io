@@ -1,24 +1,25 @@
 import objectTypes from "../constants/objectTypes";
 
 export default {
-  title: "Seo Data",
+  title: "Button",
   name: objectTypes.button,
   type: "object",
   fields: [
     {
-      name: "buttonText",
+      name: "label",
       type: objectTypes.string,
       title: "Text",
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "buttonStyle",
+      name: "style",
       type: objectTypes.string,
       title: "Style",
       options: {
         list: [
           { title: "Orange", value: "orange" },
           { title: "Blue", value: "blue" },
+          { title: "White", value: "white" },
           { title: "Transparent", value: "transparent" },
         ],
         layout: "radio",

@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import {HTMLAttributeAnchorTarget} from 'react';
+import {default as Variant} from '../../models/ButtonVariant';
 import style from './Button.module.scss';
 
-type Variant = 'orange' | 'blue' | 'white' | 'transparent';
 type ArrowOptions = 'none' | 'right' | 'left';
 
 interface IButtonProps {
