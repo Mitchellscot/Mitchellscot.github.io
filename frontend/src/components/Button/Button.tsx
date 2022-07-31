@@ -16,7 +16,6 @@ interface IButtonProps {
   type?: 'submit' | 'button';
   variant?: Variant;
   onClick?: () => void;
-  onClickPreventDefault?: (e: Event) => void;
 }
 export default function Button({
   arrowOptions = 'right',
@@ -27,7 +26,6 @@ export default function Button({
   type = 'button',
   variant = 'orange',
   onClick,
-  onClickPreventDefault,
 }: IButtonProps) {
   const hasLink = link && link.length > 0;
   const buttonClasses = classNames(style.button, {
@@ -43,10 +41,6 @@ export default function Button({
   });
 
   function handleOnClick() {
-    onClick?.();
-  }
-  function functionHandleOnClickPreventDefault(event: Event) {
-    event.preventDefault();
     onClick?.();
   }
 
@@ -78,17 +72,6 @@ export default function Button({
         </a>
       </Link>
     );
-  }
-
-  if (onClickPreventDefault !== null && onClick == null) {
-    <button
-      className={buttonClasses}
-      onClick={() => functionHandleOnClickPreventDefault}
-      type={type}
-    >
-      {renderArrow()}
-      {label}
-    </button>;
   }
 
   return (
