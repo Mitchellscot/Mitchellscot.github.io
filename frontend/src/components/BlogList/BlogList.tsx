@@ -13,12 +13,6 @@ export default function BlogList({list}: BlogListProps) {
       {list.map((blog, index) => {
         return <BlogPreview {...blog} key={index} />;
       })}
-      <Button
-        label="Load More"
-        link="/blog"
-        variant={'orange'}
-        arrowOptions={'none'}
-      />
     </div>
   );
 }

@@ -6,7 +6,7 @@
   margin: 40px auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 
   @include breakpoint(SM) {
     max-width: $BP_SM;
