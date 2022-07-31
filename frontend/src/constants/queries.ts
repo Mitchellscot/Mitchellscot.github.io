@@ -35,4 +35,8 @@ export const queries = {
     }
   }
 }`,
+  GetAllBlogSlugs: `*[_type == "blogEntry"] | order(slug.current){
+  "slug": slug.current
+}`,
 };
+export default queries;

@@ -1,0 +1,15 @@
+@import '../../styles/helpers.scss';
+
+.link {
+  color: $PURPLE;
+  font-weight: $FONT_WEIGHT_BOLD;
+}
+
+.paragraph:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.highlight {
+  color: $ORANGE;
+  font-weight: $FONT_WEIGHT_BOLD;
+}

@@ -1,4 +1,4 @@
-export default function getMoreBlogs(lastPublishDate: string, lastId: string) {
+export function getMoreBlogs(lastPublishDate: string, lastId: string) {
   return `{
   "totalCount": count(*[_type == "blogEntry"]),
   "list": *[_type == "blogEntry" && (
@@ -12,4 +12,23 @@ export default function getMoreBlogs(lastPublishDate: string, lastId: string) {
        _id
       }
 }`;
+}
+export function generateBlogEntryQuery(slug: string): string {
+  return `*[_type == "blogEntry" && slug.current == "${slug}"] |
+order(_updatedAt desc)[0]{
+  "pageTitle": seo.pageTitle,
+  "metaDescription": seo.metaDescription,
+  title,
+  "slug": slug.current,
+  publishDate,
+  "text": text[]{
+      ...,
+    markDefs[]{
+    ...,
+    _type== "internalLink" => {
+    "key": _key,
+    "internalLink": true,
+    "type": @.reference->._type,
+    "slug": @.reference->slug.current,
+  },}}}`;
 }
