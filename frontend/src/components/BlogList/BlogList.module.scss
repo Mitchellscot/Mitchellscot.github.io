@@ -6,7 +6,7 @@
   margin: 40px auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 
   @include breakpoint(SM) {
     max-width: $BP_SM;
@@ -19,4 +19,15 @@
   @include breakpoint(LG) {
     max-width: $MAX_WIDTH_NARROW;
   }
+}
+
+.buttonContainer {
+  margin: 0 auto;
+}
+
+.noMoreBlogs {
+  color: $CYAN;
+  text-align: center;
+  font-family: ubuntu mono;
+  @include fontSize(24);
 }

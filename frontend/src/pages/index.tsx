@@ -14,7 +14,10 @@ export default function Home(
         title={pageTitle(homePageData.pageTitle)}
         description={homePageData.metaDescription}
       />
-      <BlogList list={homePageData.blogList} />
+      <BlogList
+        list={homePageData.blogList}
+        totalCount={homePageData.totalCount}
+      />
     </>
   );
 }

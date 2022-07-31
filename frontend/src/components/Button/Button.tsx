@@ -19,7 +19,6 @@ interface IButtonProps {
 }
 export default function Button({
   arrowOptions = 'right',
-  arrowVariant,
   disabled = false,
   label,
   link,
@@ -67,7 +66,7 @@ export default function Button({
   if (hasLink) {
     return (
       <Link href={link!} passHref>
-        <a className={buttonClasses} onClick={handleOnClick} target={target}>
+        <a className={buttonClasses} onClick={onClick} target={target}>
           {renderArrow()}
           {label}
         </a>

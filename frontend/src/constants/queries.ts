@@ -1,4 +1,3 @@
-//see https://www.sanity.io/docs/paginating-with-groq for faster pagination.
 export const queries = {
   AboutPage: `*[_type == "aboutPage"] | order(_updatedAt desc)[0]`,
   HomePage: `*[_type == "blogPage"] |
@@ -10,8 +9,10 @@ export const queries = {
           "slug": slug.current,
           preview,
           publishDate,
-          title
-     }
+          title,
+          _id
+     },
+     "totalCount": count(*[_type == "blogEntry"])
   }`,
   ProjectsPage: `*[_type == "projectsPage"] |
   order(_updatedAt desc)[0]{
