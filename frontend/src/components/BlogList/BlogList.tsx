@@ -1,38 +1,57 @@
+import sanityClient from '@sanity/client';
 import {useState} from 'react';
+import getMoreBlogs from '../../constants/queryHelpers';
 import BlogPreviewModel from '../../models/BlogPreview';
-import {getMoreBlogPosts} from '../../utils/static-props';
 import BlogPreview from '../BlogPreview/BlogPreview';
 import Button from '../Button/Button';
 import styles from './BlogList.module.scss';
 
+//change this to production when ready
+const publicClient = sanityClient({
+  projectId: 'zdpjfpgh',
+  dataset: 'development',
+  apiVersion: '2022-04-18',
+  useCdn: true,
+});
+
 interface BlogListProps {
   list: Array<BlogPreviewModel>;
+  totalCount: number;
 }
 
-export default function BlogList({list}: BlogListProps) {
-  //TODO: Get a count of all blog posts and compare with the length of the array
-  //if they are the same, don't display the load more button
-  //also, improve the query by getting the last id of the blog preview.
-  //see https://www.sanity.io/docs/paginating-with-groq for faster pagination.
-
+export default function BlogList({list, totalCount}: BlogListProps) {
   const [blogs, setBlogs] = useState(list);
+  const [lastId, setLastId] = useState(blogs[blogs.length - 1]._id);
+  const [lastPublishDate, setLastPublishDate] = useState(
+    blogs[blogs.length - 1].publishDate
+  );
 
   async function handleClick() {
-    const newBlogs = await getMoreBlogPosts();
-    setBlogs([...blogs, ...newBlogs]);
+    const newBlogs: BlogListProps = await publicClient.fetch<BlogListProps>(
+      getMoreBlogs(lastPublishDate, lastId)
+    );
+    setLastId(newBlogs.list[newBlogs.list.length - 1]._id);
+    setLastPublishDate(newBlogs.list[newBlogs.list.length - 1].publishDate);
+    setBlogs([...blogs, ...newBlogs.list]);
   }
+
   return (
     <div className={styles.container}>
       {blogs.map((blog, index) => {
         return <BlogPreview {...blog} key={index} />;
       })}
+
       <div className={styles.buttonContainer}>
-        <Button
-          label="Load More"
-          variant={'orange'}
-          arrowOptions={'none'}
-          onClick={handleClick}
-        />
+        {blogs.length !== totalCount ? (
+          <Button
+            label="Load More"
+            variant={'orange'}
+            arrowOptions={'none'}
+            onClick={handleClick}
+          />
+        ) : (
+          <span className={styles.noMoreBlogs}>That is all of them!</span>
+        )}
       </div>
     </div>
   );

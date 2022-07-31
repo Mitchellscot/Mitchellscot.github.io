@@ -3,8 +3,7 @@ import {NextSeo} from 'next-seo';
 import BlogList from '../components/BlogList/BlogList';
 import HomePageData from '../models/HomePageData';
 import pageTitle from '../utils/pageTitle';
-import {getHomePage, getMoreBlogPosts} from '../utils/static-props';
-import React from 'react';
+import {getHomePage} from '../utils/static-props';
 
 export default function Home(
   homePageData: InferGetStaticPropsType<typeof getStaticProps>
@@ -15,7 +14,10 @@ export default function Home(
         title={pageTitle(homePageData.pageTitle)}
         description={homePageData.metaDescription}
       />
-      <BlogList list={homePageData.blogList} />
+      <BlogList
+        list={homePageData.blogList}
+        totalCount={homePageData.totalCount}
+      />
     </>
   );
 }

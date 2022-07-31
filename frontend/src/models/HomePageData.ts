@@ -5,4 +5,5 @@ export default interface HomePageData {
   metaDescription: string;
   title: string;
   blogList: Array<BlogPreview>;
+  totalCount: number;
 }

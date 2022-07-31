@@ -3,4 +3,5 @@ export default interface BlogPreview {
   preview: string;
   publishDate: string;
   title: string;
+  _id: string;
 }
