@@ -30,5 +30,7 @@ order(_updatedAt desc)[0]{
     "internalLink": true,
     "type": @.reference->._type,
     "slug": @.reference->slug.current,
-  },}}}`;
+  },}},
+  "image": mainImage.asset->url
+}`;
 }

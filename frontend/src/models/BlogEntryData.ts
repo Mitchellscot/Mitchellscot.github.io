@@ -4,4 +4,5 @@ export default interface BlogEntryData {
   title: string | null;
   publishDate: string;
   text: [];
+  image: string;
 }
