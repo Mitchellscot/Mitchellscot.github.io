@@ -51,11 +51,17 @@ export default {
           type: objectTypes.block,
           styles: [
             { title: "Normal", value: "normal" },
-            { title: "Quote", value: "quote" },
+            { title: "Quote", value: "blockquote" },
           ],
-          lists: [],
+          lists: [
+            { title: "Bullet", value: "bullet" },
+            { title: "Numbered", value: "number" },
+          ],
           marks: {
-            decorators: [],
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+            ],
             annotations: [
               {
                 name: "internalLink",
@@ -71,7 +77,7 @@ export default {
                     title: "Reference",
                     to: [
                       {
-                        type: "caseStudy",
+                        type: "blogEntry",
                       },
                     ],
                   },
@@ -98,13 +104,34 @@ export default {
                   {
                     title: "Open in new tab",
                     name: "blank",
-                    description:
-                      "Read https://css-tricks.com/use-target_blank/",
                     type: "boolean",
                   },
                 ],
               },
             ],
+          },
+        },
+        {
+          type: "image",
+          name: "image",
+          title: "Image",
+          fields: [
+            {
+              type: "string",
+              name: "alt",
+              title: "Alt Text",
+              options: {
+                isHighlighted: true,
+              },
+            },
+          ],
+        },
+        {
+          name: "code",
+          title: "Code Block",
+          type: "code",
+          options: {
+            theme: "monokai",
           },
         },
       ],
@@ -118,7 +145,7 @@ export default {
   ],
   preview: {
     select: {
-      title: "seo.pageTitle",
+      title: "title",
     },
   },
 };
