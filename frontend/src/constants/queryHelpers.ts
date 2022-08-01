@@ -19,6 +19,12 @@ order(_updatedAt desc)[0]{
   "pageTitle": seo.pageTitle,
   "metaDescription": seo.metaDescription,
   title,
+  "image": {
+  "url": mainImage.asset->url,
+  "height": mainImage.asset->metadata.dimensions.height,
+  "width": mainImage.asset->metadata.dimensions.width,
+  "alt": ""
+},
   "slug": slug.current,
   publishDate,
   "text": text[]{
@@ -30,7 +36,6 @@ order(_updatedAt desc)[0]{
     "internalLink": true,
     "type": @.reference->._type,
     "slug": @.reference->slug.current,
-  },}},
-  "image": mainImage.asset->url
+  },}}
 }`;
 }

@@ -35,10 +35,10 @@ const BlogEntry = (
           <div className={styles.imageContainer}>
             {/* add image builder here or something */}
             <Image
-              src={blogEntryData.image}
-              height={420}
-              width={1000}
-              alt={'TODO'}
+              src={blogEntryData.image.url}
+              height={blogEntryData.image.height}
+              width={blogEntryData.image.width}
+              alt={blogEntryData.image.alt}
             />
           </div>
         )}
