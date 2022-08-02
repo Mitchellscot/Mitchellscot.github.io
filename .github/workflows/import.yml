@@ -5,18 +5,17 @@ jobs:
   import-dataset:
     runs-on: ubuntu-18.04
     name: Import Production Data To Development
-    defaults:
-      run:
-        working-directory: ./backend
     steps:
       - uses: actions/checkout@v2
       - name: Export production dataset
+        working-directory: ./backend
         uses: sanity-io/github-action-sanity@v0.2-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_EXPORT_TOKEN }}
         with:
           args: dataset export production backups/backup.tar.gz
       - name: Upload backup.tar.gz
+        working-directory: ./backend
         uses: actions/upload-artifact@v2
         with:
           name: backup-tarball
