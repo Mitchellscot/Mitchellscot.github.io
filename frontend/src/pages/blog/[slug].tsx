@@ -31,7 +31,7 @@ const BlogEntry = (
         <div className={dateText}>
           {date.toLocaleDateString(`en-us`, {dateStyle: 'medium'})}
         </div>
-        {blogEntryData.image && (
+        {blogEntryData.image.url && (
           <div className={styles.imageContainer}>
             <Image
               src={blogEntryData.image.url}

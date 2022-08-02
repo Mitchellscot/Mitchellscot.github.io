@@ -3,11 +3,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {a11yDark} from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import headings from '../../styles/typography/Heading.module.scss';
 import styles from './PortableText.module.scss';
 
 const PortableText: Partial<PortableTextReactComponents> = {
-  block: ({children}) => <p className={styles.paragraph}>{children}</p>,
-
+  block: {
+    normal: ({children}) => <p className={styles.paragraph}>{children}</p>,
+    h3: ({children}) => (
+      <h3 className={`${styles.paragraph} ${headings.heading3}`}>{children}</h3>
+    ),
+    blockquote: ({children}) => (
+      <blockquote className={styles.paragraph}>{children}</blockquote>
+    ),
+  },
   types: {
     code: ({value}) => {
       const {code, language} = value;

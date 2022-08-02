@@ -23,8 +23,8 @@ export const queries = {
      "title": projectName,
      "image": mainImage{
       "url": image.asset->url,
-      "width": width,
-      "height": height,
+      "height": image.asset->metadata.dimensions.height,
+      "width": image.asset->metadata.dimensions.width,
       "alt": altText
       },
     "summary": summary,
