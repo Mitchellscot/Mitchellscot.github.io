@@ -3,6 +3,7 @@ import queries from '../constants/queries';
 import {generateBlogEntryQuery} from '../constants/queryHelpers';
 import AboutPageData from '../models/AboutPageData';
 import BlogEntryData from '../models/BlogEntryData';
+import ContactPageData from '../models/ContactPageData';
 import HomePageData from '../models/HomePageData';
 import ProjectsPageData from '../models/ProjectsPageData';
 import sanityClient from './sanityClient';
@@ -13,7 +14,14 @@ const revalidateIntervalInSeconds = Number(
 
 export const getAboutPage: GetStaticProps<AboutPageData> = async () => {
   const data: AboutPageData = await sanityClient.fetch(queries.AboutPage);
-  console.log(data);
+  return {
+    props: data,
+    revalidate: revalidateIntervalInSeconds,
+  };
+};
+
+export const getContactPage: GetStaticProps<ContactPageData> = async () => {
+  const data: ContactPageData = await sanityClient.fetch(queries.ContactPage);
   return {
     props: data,
     revalidate: revalidateIntervalInSeconds,

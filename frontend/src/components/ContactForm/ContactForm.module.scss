@@ -1,0 +1,72 @@
+@import '../../styles/helpers.scss';
+
+.container {
+  padding: 10px var(--gutter);
+  max-width: 360px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint(SM) {
+    max-width: $BP_SM;
+  }
+
+  @include breakpoint(MD) {
+    max-width: $BP_MD;
+  }
+
+  @include breakpoint(LG) {
+    max-width: $MAX_WIDTH_NARROW;
+    padding-inline: 0;
+  }
+}
+
+.fieldset {
+  display: grid;
+  gap: 20px;
+}
+
+.required::after {
+  content: '\00a0\002A';
+  color: $ORANGE;
+}
+.inputLabel {
+  @include fontSize(20);
+  font-weight: $FONT_WEIGHT_REGULAR;
+  line-height: (29 / 24);
+  margin: 10px 0;
+  display: block;
+  color: $CYAN;
+
+  @include breakpoint(LG) {
+    @include fontSize(24);
+  }
+}
+
+.input,
+.textArea {
+  @include fontSize(18);
+  background-color: $WHITE;
+  border-radius: 15px;
+  border: none;
+  display: block;
+  font-weight: $FONT_WEIGHT_REGULAR;
+  line-height: (44 / 24);
+  padding: 18px 20px;
+
+  @include breakpoint(LG) {
+    @include fontSize(22);
+    padding: 20px 25px;
+  }
+
+  &:focus {
+    background-color: $WHITE;
+  }
+}
+
+.buttonContainer {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-top: 29px;
+}
