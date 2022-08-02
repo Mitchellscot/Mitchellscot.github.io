@@ -1,0 +1,46 @@
+@import '../helpers.scss';
+
+.container {
+  max-width: 360px;
+  padding-inline: var(--gutter);
+  margin: 40px auto;
+
+  @include breakpoint(SM) {
+    max-width: $BP_SM;
+  }
+
+  @include breakpoint(MD) {
+    max-width: $BP_MD;
+  }
+
+  @include breakpoint(LG) {
+    max-width: $MAX_WIDTH_NARROW;
+  }
+}
+
+.titleUnderline {
+  width: auto;
+  height: 2px;
+  border-radius: 6px;
+  background-color: $CYAN_3;
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.date {
+  color: $CYAN_2;
+  margin-bottom: 20px;
+}
+
+.imageContainer {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.imageContainer > * {
+  border-radius: 10px;
+}

@@ -1,0 +1,50 @@
+@import '../../styles/helpers.scss';
+
+.internalLink {
+  color: $CYAN_2;
+  text-decoration: underline;
+}
+
+.externalLink {
+  color: $PURPLE;
+  text-decoration: underline;
+}
+
+.paragraph:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.highlight {
+  color: $YELLOW;
+  font-weight: $FONT_WEIGHT_BOLD;
+}
+
+.bold {
+  font-weight: $FONT_WEIGHT_BOLD;
+}
+
+.emphasize {
+  font-style: italic;
+}
+
+.codeSize {
+  font-size: 64px;
+}
+
+.orderedItem {
+  list-style-type: disc;
+}
+
+.numberedItem {
+  list-style-type: decimal;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.imageContainer > * {
+  border-radius: 10px;
+}

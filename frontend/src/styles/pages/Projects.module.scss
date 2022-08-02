@@ -27,3 +27,7 @@
     max-width: $MAX_WIDTH_NARROW;
   }
 }
+
+.imageContainer > * {
+  border-radius: 10px;
+}

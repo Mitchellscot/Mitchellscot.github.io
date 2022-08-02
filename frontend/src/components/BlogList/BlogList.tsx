@@ -1,6 +1,6 @@
 import sanityClient from '@sanity/client';
 import {useState} from 'react';
-import getMoreBlogs from '../../constants/queryHelpers';
+import {getMoreBlogs} from '../../constants/queryHelpers';
 import BlogPreviewModel from '../../models/BlogPreview';
 import BlogPreview from '../BlogPreview/BlogPreview';
 import Button from '../Button/Button';
