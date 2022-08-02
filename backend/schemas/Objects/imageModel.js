@@ -16,17 +16,5 @@ export default {
       type: objectTypes.string,
       title: "Alt Text",
     },
-    {
-      name: "width",
-      type: objectTypes.string,
-      title: "Image Width",
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: "height",
-      type: objectTypes.string,
-      title: "Image Height",
-      validation: (Rule) => Rule.required(),
-    },
   ],
 };

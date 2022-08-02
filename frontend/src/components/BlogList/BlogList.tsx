@@ -21,7 +21,7 @@ interface BlogListProps {
 
 export default function BlogList({list, totalCount}: BlogListProps) {
   const [blogs, setBlogs] = useState(list);
-  const [lastId, setLastId] = useState(blogs[blogs.length - 1]._id);
+  const [lastId, setLastId] = useState(blogs[blogs.length - 1]?._id);
   const [lastPublishDate, setLastPublishDate] = useState(
     blogs[blogs.length - 1].publishDate
   );
@@ -30,8 +30,8 @@ export default function BlogList({list, totalCount}: BlogListProps) {
     const newBlogs: BlogListProps = await publicClient.fetch<BlogListProps>(
       getMoreBlogs(lastPublishDate, lastId)
     );
-    setLastId(newBlogs.list[newBlogs.list.length - 1]._id);
-    setLastPublishDate(newBlogs.list[newBlogs.list.length - 1].publishDate);
+    setLastId(newBlogs.list[newBlogs.list.length - 1]?._id);
+    setLastPublishDate(newBlogs.list[newBlogs.list.length - 1]?.publishDate);
     setBlogs([...blogs, ...newBlogs.list]);
   }
 

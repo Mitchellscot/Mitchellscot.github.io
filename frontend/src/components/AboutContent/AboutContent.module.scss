@@ -1,9 +1,12 @@
-@import '../helpers.scss';
+@import '../../styles/helpers.scss';
 
 .container {
   max-width: 360px;
   padding-inline: var(--gutter);
-  margin: 40px auto;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
   @include breakpoint(SM) {
     max-width: $BP_SM;
@@ -18,30 +21,16 @@
     padding-inline: 0;
   }
 }
-
-.titleUnderline {
-  width: auto;
-  height: 2px;
-  border-radius: 6px;
-  background-color: $CYAN_3;
+.summary {
   margin-bottom: 20px;
 }
-
-.title {
-  margin-bottom: 20px;
-}
-
-.date {
-  color: $CYAN_2;
-  margin-bottom: 20px;
-}
-
 .imageContainer {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
 }
-
-.imageContainer > * {
+.imageContainer > span > img {
   border-radius: 10px;
+  border: 5px solid $CONTRAST_TO_GREY !important;
+}
+.caption {
+  align-self: flex-start;
+  font-style: italic;
 }

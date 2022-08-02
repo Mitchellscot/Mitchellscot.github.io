@@ -27,7 +27,7 @@
     "sjs-base-model": "^1.9.1",
     "system-font-css": "^2.0.2",
     "uuid": "8.3.2",
-    "vercel": "27.3.0"
+    "vercel": "27.3.4"
   },
   "devDependencies": {
     "@types/gtag.js": "0.0.10",
