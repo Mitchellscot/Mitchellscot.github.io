@@ -8,21 +8,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Export production dataset
-      - uses: sanity-io/github-action-sanity@v0.2-alpha
-        working-directory: backend
+        uses: sanity-io/github-action-sanity@v0.3-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_EXPORT_TOKEN }}
         with:
-          args: dataset export production backups/backup.tar.gz
+          args: backend dataset export production backups/backup.tar.gz
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v2
-        working-directory: backend
         with:
           name: backup-tarball
           path: backups/backup.tar.gz
           if-no-files-found: error
-      - uses: sanity-io/github-action-sanity@v0.2-alpha
+      - uses: sanity-io/github-action-sanity@v0.3-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_IMPORT_TOKEN }}
         with:
-          args: dataset import backups/backup.tar.gz development --replace
+          args: . dataset import backups/backup.tar.gz development --replace
