@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Export production dataset
-        uses: sanity-io/github-action-sanity@v0.2-alpha
+      - uses: sanity-io/github-action-sanity@v0.2-alpha
         working-directory: backend
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_EXPORT_TOKEN }}
