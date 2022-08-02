@@ -3,6 +3,9 @@
 .container {
   margin: 0 auto;
   padding-inline: var(--gutter);
+  @include breakpoint(LG) {
+    padding-inline: 0;
+  }
 }
 
 .title {

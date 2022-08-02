@@ -1,7 +1,6 @@
 @import '../helpers.scss';
 
 .title {
-  padding-inline: var(--gutter);
   margin: 20px auto 10px;
   max-width: $MAX_WIDTH;
   text-align: center;
@@ -25,6 +24,7 @@
 
   @include breakpoint(LG) {
     max-width: $MAX_WIDTH_NARROW;
+    padding-inline: 0;
   }
 }
 
