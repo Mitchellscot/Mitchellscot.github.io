@@ -4,7 +4,7 @@ import ImageModel from './ImageModel';
 export default interface AboutPageData {
   pageTitle: string;
   metaDescription: string;
-  title: string | null;
+  title: string;
   profilePicture: ImageModel;
   introText: string;
   introImage: ImageModel;
