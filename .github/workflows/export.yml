@@ -8,6 +8,9 @@ jobs:
   backup-dataset:
     runs-on: ubuntu-18.04
     name: Backup Data
+    defaults:
+      run:
+        working-directory: backend
     steps:
       - uses: actions/checkout@v2
       - name: Export production dataset
@@ -15,10 +18,10 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_EXPORT_TOKEN }}
         with:
-          args: backend dataset export production backups/backup.tar.gz
+          args: dataset export production backups/backup.tar.gz
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v2
         with:
           name: backup-tarball
-          path: backend/backups/backup.tar.gz
+          path: backups/backup.tar.gz
           if-no-files-found: error
