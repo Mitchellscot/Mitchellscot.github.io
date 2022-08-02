@@ -1,0 +1,44 @@
+@import '../../styles/helpers.scss';
+
+.wrapper {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  @include breakpoint(SM) {
+    margin: 40px 0;
+  }
+}
+
+.container {
+  display: inline-grid;
+  gap: 20px;
+  @include breakpoint(SM) {
+    grid-template-columns: auto auto;
+  }
+}
+
+.title {
+  color: $CYAN;
+  font-weight: $FONT_WEIGHT_REGULAR;
+  text-transform: uppercase;
+  text-align: center;
+  grid-row: 2;
+  @include breakpoint(SM) {
+    grid-row: 1;
+    grid-column: 2;
+    align-self: center;
+  }
+}
+
+.imageContainer {
+  max-width: 125px;
+  align-content: flex-end;
+  @include breakpoint(SM) {
+    max-width: 150px;
+  }
+}
+
+.imageContainer > span > img {
+  border-radius: 50%;
+  border: 5px solid $CONTRAST_TO_GREY !important;
+}

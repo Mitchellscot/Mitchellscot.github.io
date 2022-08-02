@@ -13,6 +13,7 @@ const revalidateIntervalInSeconds = Number(
 
 export const getAboutPage: GetStaticProps<AboutPageData> = async () => {
   const data: AboutPageData = await sanityClient.fetch(queries.AboutPage);
+  console.log(data);
   return {
     props: data,
     revalidate: revalidateIntervalInSeconds,
@@ -28,7 +29,6 @@ export const getHomePage: GetStaticProps<HomePageData> = async () => {
 };
 export const getProjectsPage: GetStaticProps<ProjectsPageData> = async () => {
   const data: ProjectsPageData = await sanityClient.fetch(queries.ProjectsPage);
-  console.log(data);
   return {
     props: data,
     revalidate: revalidateIntervalInSeconds,
@@ -39,7 +39,6 @@ export const getBlogEntry: GetStaticProps<BlogEntryData> = async (context) => {
   const data = await sanityClient.fetch(
     generateBlogEntryQuery(context.params!.slug as string)
   );
-  console.log(data);
   return {
     props: data,
     revalidate: revalidateIntervalInSeconds,

@@ -18,11 +18,13 @@ export default function Projects(
         title={pageTitle(projectsPageData.pageTitle)}
         description={projectsPageData.metaDescription}
       />
-      <div className={titleText}>{projectsPageData.title}</div>
-      <div className={styles.projectsContainer}>
-        {projectsPageData.projects.map((project, index) => {
-          return <Project key={index} project={project} />;
-        })}
+      <div className={styles.container}>
+        <div className={titleText}>{projectsPageData.title}</div>
+        <div className={styles.projectsContainer}>
+          {projectsPageData.projects.map((project, index) => {
+            return <Project key={index} project={project} />;
+          })}
+        </div>
       </div>
     </>
   );
