@@ -8,15 +8,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Export production dataset
-        working-directory: ./backend
         uses: sanity-io/github-action-sanity@v0.2-alpha
+        working-directory: backend
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_EXPORT_TOKEN }}
         with:
           args: dataset export production backups/backup.tar.gz
       - name: Upload backup.tar.gz
-        working-directory: ./backend
         uses: actions/upload-artifact@v2
+        working-directory: backend
         with:
           name: backup-tarball
           path: backups/backup.tar.gz
