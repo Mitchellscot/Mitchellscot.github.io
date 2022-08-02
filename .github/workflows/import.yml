@@ -5,6 +5,9 @@ jobs:
   import-dataset:
     runs-on: ubuntu-18.04
     name: Import Production Data To Development
+    defaults:
+      run:
+        working-directory: backend
     steps:
       - uses: actions/checkout@v2
       - name: Export production dataset
@@ -12,7 +15,7 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_EXPORT_TOKEN }}
         with:
-          args: backend dataset export production backups/backup.tar.gz
+          args: dataset export production backups/backup.tar.gz
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v2
         with:
@@ -23,4 +26,4 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_IMPORT_TOKEN }}
         with:
-          args: backend dataset import backups/backup.tar.gz development --replace
+          args: dataset import backups/backup.tar.gz development --replace
