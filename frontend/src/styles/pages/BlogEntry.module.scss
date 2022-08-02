@@ -15,6 +15,7 @@
 
   @include breakpoint(LG) {
     max-width: $MAX_WIDTH_NARROW;
+    padding-inline: 0;
   }
 }
 
