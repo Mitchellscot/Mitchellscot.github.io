@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Export production dataset
-        uses: sanity-io/github-action-sanity@v0.3-alpha
+        uses: sanity-io/github-action-sanity@v0.2-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_EXPORT_TOKEN }}
         with:
@@ -22,7 +22,7 @@ jobs:
           name: backup-tarball
           path: backups/backup.tar.gz
           if-no-files-found: error
-      - uses: sanity-io/github-action-sanity@v0.3-alpha
+      - uses: sanity-io/github-action-sanity@v0.2-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_IMPORT_TOKEN }}
         with:
