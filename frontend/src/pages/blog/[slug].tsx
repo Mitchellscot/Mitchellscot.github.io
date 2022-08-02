@@ -33,7 +33,6 @@ const BlogEntry = (
         </div>
         {blogEntryData.image && (
           <div className={styles.imageContainer}>
-            {/* add image builder here or something */}
             <Image
               src={blogEntryData.image.url}
               height={blogEntryData.image.height}

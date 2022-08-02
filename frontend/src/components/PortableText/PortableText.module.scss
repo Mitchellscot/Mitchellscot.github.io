@@ -1,8 +1,13 @@
 @import '../../styles/helpers.scss';
 
-.link {
+.internalLink {
+  color: $CYAN_2;
+  text-decoration: underline;
+}
+
+.externalLink {
   color: $PURPLE;
-  font-weight: $FONT_WEIGHT_BOLD;
+  text-decoration: underline;
 }
 
 .paragraph:not(:last-child) {
@@ -10,7 +15,7 @@
 }
 
 .highlight {
-  color: $ORANGE;
+  color: $YELLOW;
   font-weight: $FONT_WEIGHT_BOLD;
 }
 
@@ -20,4 +25,22 @@
 
 .emphasize {
   font-style: italic;
+}
+
+.codeSize {
+  font-size: 64px;
+}
+
+.orderedItem {
+  list-style-type: disc;
+}
+
+.numberedItem {
+  list-style-type: decimal;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }

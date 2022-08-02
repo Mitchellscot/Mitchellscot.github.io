@@ -14,7 +14,8 @@ export function getMoreBlogs(lastPublishDate: string, lastId: string) {
 }`;
 }
 export function generateBlogEntryQuery(slug: string): string {
-  return `*[_type == "blogEntry" && slug.current == "${slug}"] |
+  return `*[_type == "blogEntry" && slug.current ==
+  "${slug}"] |
 order(_updatedAt desc)[0]{
   "pageTitle": seo.pageTitle,
   "metaDescription": seo.metaDescription,
@@ -29,6 +30,14 @@ order(_updatedAt desc)[0]{
   publishDate,
   "text": text[]{
       ...,
+    _type=="image" =>{
+   "key": _key,
+   "alt": alt,
+   "url": asset->url,
+   "width": asset->metadata.dimensions.width,
+   "height": asset->metadata.dimensions.height,
+  ...
+},
     markDefs[]{
     ...,
     _type== "internalLink" => {
