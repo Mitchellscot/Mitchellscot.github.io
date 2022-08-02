@@ -2,6 +2,7 @@ import {GetStaticProps, InferGetStaticPropsType} from 'next';
 import {NextSeo} from 'next-seo';
 import AboutContent from '../components/AboutContent/AboutContent';
 import AboutHeadline from '../components/AboutHeadline/AboutHeadline';
+import Hobbies from '../components/Hobbies/Hobbies';
 import AboutPageData from '../models/AboutPageData';
 import pageTitle from '../utils/pageTitle';
 import {getAboutPage} from '../utils/static-props';
@@ -24,6 +25,7 @@ export default function About(
         image={aboutPageData.introImage}
         caption={aboutPageData.introCaption}
       />
+      <Hobbies hobbies={aboutPageData.hobbies} />
     </>
   );
 }

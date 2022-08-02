@@ -13,7 +13,7 @@ export default function AboutHeadline({
   title,
   profilePicture,
 }: AboutHeadlineProps) {
-  const titleText = classNames(styles.title, headings.heading2);
+  const titleText = classNames(styles.title, headings.heading1);
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
