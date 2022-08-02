@@ -1,10 +1,13 @@
-name: Development Dataset Import
+name: Production Dataset Export
 on:
+  schedule:
+    # every day at midnight
+    - cron: "0 0 * * *"
   workflow_dispatch:
 jobs:
-  import-dataset:
+  backup-dataset:
     runs-on: ubuntu-18.04
-    name: Import Production Data To Development
+    name: Backup Data
     steps:
       - uses: actions/checkout@v2
       - name: Export production dataset
@@ -19,8 +22,3 @@ jobs:
           name: backup-tarball
           path: backups/backup.tar.gz
           if-no-files-found: error
-      - uses: sanity-io/github-action-sanity@v0.3-alpha
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_IMPORT_TOKEN }}
-        with:
-          args: backend dataset import backups/backup.tar.gz development --replace
