@@ -1,5 +1,6 @@
 import {GetStaticProps, InferGetStaticPropsType} from 'next';
 import {NextSeo} from 'next-seo';
+import AboutContent from '../components/AboutContent/AboutContent';
 import AboutHeadline from '../components/AboutHeadline/AboutHeadline';
 import AboutPageData from '../models/AboutPageData';
 import pageTitle from '../utils/pageTitle';
@@ -17,6 +18,11 @@ export default function About(
       <AboutHeadline
         title={aboutPageData.title}
         profilePicture={aboutPageData.profilePicture}
+      />
+      <AboutContent
+        summary={aboutPageData.introText}
+        image={aboutPageData.introImage}
+        caption={aboutPageData.introCaption}
       />
     </>
   );

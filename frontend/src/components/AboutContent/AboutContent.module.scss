@@ -1,0 +1,36 @@
+@import '../../styles/helpers.scss';
+
+.container {
+  max-width: 360px;
+  padding-inline: var(--gutter);
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  @include breakpoint(SM) {
+    max-width: $BP_SM;
+  }
+
+  @include breakpoint(MD) {
+    max-width: $BP_MD;
+  }
+
+  @include breakpoint(LG) {
+    max-width: $MAX_WIDTH_NARROW;
+    padding-inline: 0;
+  }
+}
+.summary {
+  margin-bottom: 20px;
+}
+.imageContainer {
+}
+.imageContainer > span > img {
+  border-radius: 10px;
+  border: 5px solid $CONTRAST_TO_GREY !important;
+}
+.caption {
+  align-self: flex-start;
+  font-style: italic;
+}
