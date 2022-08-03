@@ -61,6 +61,11 @@ export const queries = {
     }
   }
 }`,
+  StatsPage: `*[_type == "statsPage"] | order(_updatedAt desc)[0]{
+    "pageTitle": seo.pageTitle,
+    "metaDescription": seo.metaDescription,
+    title
+  }`,
   ContactPage: `*[_type == "contactPage"] | order(_updatedAt desc)[0]{
     "pageTitle": seo.pageTitle,
     "metaDescription": seo.metaDescription,

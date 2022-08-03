@@ -6,6 +6,7 @@ import BlogEntryData from '../models/BlogEntryData';
 import ContactPageData from '../models/ContactPageData';
 import HomePageData from '../models/HomePageData';
 import ProjectsPageData from '../models/ProjectsPageData';
+import StatsPageData from '../models/StatsPageData';
 import sanityClient from './sanityClient';
 
 const revalidateIntervalInSeconds = Number(
@@ -35,6 +36,15 @@ export const getHomePage: GetStaticProps<HomePageData> = async () => {
     revalidate: revalidateIntervalInSeconds,
   };
 };
+
+export const getStatsPage: GetStaticProps<StatsPageData> = async () => {
+  const data: StatsPageData = await sanityClient.fetch(queries.StatsPage);
+  return {
+    props: data,
+    revalidate: revalidateIntervalInSeconds,
+  };
+};
+
 export const getProjectsPage: GetStaticProps<ProjectsPageData> = async () => {
   const data: ProjectsPageData = await sanityClient.fetch(queries.ProjectsPage);
   return {
