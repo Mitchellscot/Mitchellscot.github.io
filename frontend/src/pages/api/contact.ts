@@ -42,7 +42,7 @@ export default async function contact(
   }
 
   async function _sendMail(score: number) {
-    const {name, email, phoneNumber, company, message: body} = message;
+    const {name, email, message: body} = message;
     const isPotentiallySpam =
       score < new Number(process.env.RECAPTCHA_MINIMUM_SCORE);
     const subject = isPotentiallySpam
