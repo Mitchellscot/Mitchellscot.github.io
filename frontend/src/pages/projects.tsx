@@ -19,7 +19,7 @@ export default function Projects(
         description={projectsPageData.metaDescription}
       />
       <div className={styles.container}>
-        <div className={titleText}>{projectsPageData.title}</div>
+        {/* <div className={titleText}>{projectsPageData.title}</div> */}
         <div className={styles.projectsContainer}>
           {projectsPageData.projects.map((project, index) => {
             return <Project key={index} project={project} />;

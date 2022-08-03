@@ -9,6 +9,7 @@ import styles from './Project.module.scss';
 interface ProjectProps {
   project: ProjectModel;
 }
+
 export default function Project({project}: ProjectProps) {
   const titleText = classNames(styles.title, headers.blogPreview);
   const summaryText = classNames(styles.summary, text.textMd);
@@ -18,7 +19,6 @@ export default function Project({project}: ProjectProps) {
   });
   return (
     <div className={styles.container}>
-      <div className={styles.titleUpperline}></div>
       <div className={titleText}>{project.title}</div>
       <div className={styles.imageContainer}>
         <Image
@@ -41,6 +41,7 @@ export default function Project({project}: ProjectProps) {
           );
         })}
       </div>
+      <div className={styles.lowerLine}></div>
     </div>
   );
 }
