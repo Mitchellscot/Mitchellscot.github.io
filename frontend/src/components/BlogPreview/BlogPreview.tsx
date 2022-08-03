@@ -19,9 +19,7 @@ export default function BlogPreview({
   return (
     <div className={styles.container}>
       <p className={titleText}>
-        <Link href={`blog/${slug}`} passHref>
-          {title}
-        </Link>
+        <Link href={`blog/${slug}`}>{title}</Link>
       </p>
       <p className={previewText}>{preview}</p>
       <div className={styles.bottomContainer}>

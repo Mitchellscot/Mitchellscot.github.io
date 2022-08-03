@@ -4,6 +4,7 @@ import headings from '../styles/typography/Heading.module.scss';
 import typography from '../styles/typography/Text.module.scss';
 import styles from '../styles/pages/404.module.scss';
 import classNames from 'classnames';
+import Link from 'next/link';
 
 export default function FourOhFour() {
   const titleText = classNames(styles.title, headings.heading2);
@@ -15,9 +16,9 @@ export default function FourOhFour() {
         <h1 className={titleText}>That page does not exist.</h1>
         <p className={text}>
           {`Why don\'t you just `}
-          <a href={'/'} className={styles.link}>
-            Go Home.
-          </a>
+          <Link href={'/'}>
+            <a className={styles.link}>Go Home.</a>
+          </Link>
         </p>
       </div>
     </>

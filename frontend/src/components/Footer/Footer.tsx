@@ -12,22 +12,22 @@ export default function Footer() {
         &copy;{' 2022 Mitchell Scott. All rights reserved'}
       </p>
       <div className={styles.socialLinks}>
-        <Link href="https://www.strava.com/athletes/mitchellscot" passHref>
+        <Link href="https://www.strava.com/athletes/mitchellscot">
           <a target="_blank">
             <Image src="/strava.svg" height="40" width="40" alt="" />
           </a>
         </Link>
-        <Link href="https://twitter.com/_mitchellscot" passHref>
+        <Link href="https://twitter.com/_mitchellscot">
           <a target="_blank">
             <Image src="/twitter.svg" height="40" width="40" alt="" />
           </a>
         </Link>
-        <Link href="https://www.linkedin.com/in/mitchellscot" passHref>
+        <Link href="https://www.linkedin.com/in/mitchellscot">
           <a target="_blank">
             <Image src="/linkedIn.svg" height="40" width="40" alt="" />
           </a>
         </Link>
-        <Link href="https://github.com/Mitchellscot" passHref>
+        <Link href="https://github.com/Mitchellscot">
           <a target="_blank">
             <Image src="/github.svg" height="40" width="40" alt="" />
           </a>
