@@ -13,7 +13,6 @@ export default async function captcha(
   res: NextApiResponse
 ) {
   const {token} = req.body;
-  console.log(token);
   if (!token) {
     return res.status(500).end();
   }

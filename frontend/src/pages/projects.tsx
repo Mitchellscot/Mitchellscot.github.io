@@ -22,7 +22,8 @@ export default function Projects(
         {/* <div className={titleText}>{projectsPageData.title}</div> */}
         <div className={styles.projectsContainer}>
           {projectsPageData.projects.map((project, index) => {
-            return <Project key={index} project={project} />;
+            const isLast = projectsPageData.projects.length === index + 1;
+            return <Project key={index} project={project} drawLine={!isLast} />;
           })}
         </div>
       </div>

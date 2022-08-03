@@ -58,7 +58,9 @@ export default function ContactForm() {
       });
       if (!response.ok) {
         //TODO: Handle a bad response
-        alert('there was a problem sending a message. Just email me.');
+        alert(
+          'there was a problem sending a message. Just email me at mitchellscott at me dot com.'
+        );
         window.location.reload();
 
         return;

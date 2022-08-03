@@ -8,9 +8,10 @@ import styles from './Project.module.scss';
 
 interface ProjectProps {
   project: ProjectModel;
+  drawLine: boolean;
 }
 
-export default function Project({project}: ProjectProps) {
+export default function Project({project, drawLine}: ProjectProps) {
   const titleText = classNames(styles.title, headers.blogPreview);
   const summaryText = classNames(styles.summary, text.textMd);
   const buttonContainerStyle = classNames(styles.buttonContainer, {
@@ -37,11 +38,12 @@ export default function Project({project}: ProjectProps) {
               variant={button.style}
               link={button.link}
               key={index}
+              target="_blank"
             />
           );
         })}
       </div>
-      <div className={styles.lowerLine}></div>
+      {drawLine && <div className={styles.lowerLine}></div>}
     </div>
   );
 }

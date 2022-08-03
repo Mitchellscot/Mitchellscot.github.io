@@ -9,7 +9,7 @@ export default function Header() {
     <>
       <header className={styles.header}>
         <div className={headingText}>
-          Mitchell Scott
+          <a href="/">Mitchell Scott</a>
           <div className={styles.titleUnderline}></div>
         </div>
       </header>
