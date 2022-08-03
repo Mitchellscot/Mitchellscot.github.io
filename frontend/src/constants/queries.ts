@@ -61,6 +61,11 @@ export const queries = {
     }
   }
 }`,
+  ContactPage: `*[_type == "contactPage"] | order(_updatedAt desc)[0]{
+    "pageTitle": seo.pageTitle,
+    "metaDescription": seo.metaDescription,
+    title
+  }`,
   GetAllBlogSlugs: `*[_type == "blogEntry"] | order(slug.current){
   "slug": slug.current
 }`,
