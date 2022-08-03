@@ -7,16 +7,12 @@
   display: flex;
   flex-direction: column;
 
-  @include breakpoint(SM) {
+  @include breakpoint(MD) {
     max-width: $BP_SM;
   }
 
-  @include breakpoint(MD) {
-    max-width: $BP_MD;
-  }
-
   @include breakpoint(LG) {
-    max-width: $MAX_WIDTH_NARROW;
+    max-width: $BP_MD;
     padding-inline: 0;
   }
 }
