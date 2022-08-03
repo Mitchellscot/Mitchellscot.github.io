@@ -46,6 +46,9 @@
     }
   }
 }
+.navItem:hover {
+  color: $CYAN_2;
+}
 
 .navItemActive {
   &:first-child {

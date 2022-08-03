@@ -42,7 +42,7 @@ export default async function contact(
   }
 
   async function _sendMail(score: number) {
-    const {name, email, phoneNumber, company, message: body} = message;
+    const {name, email, message: body} = message;
     const isPotentiallySpam =
       score < new Number(process.env.RECAPTCHA_MINIMUM_SCORE);
     const subject = isPotentiallySpam
@@ -56,13 +56,13 @@ export default async function contact(
       from: address,
       subject: subject,
       html: `
-      <ol>
+      <ul>
         <li><strong>reCaptcha Score:</strong> ${score}</li>
         <li><strong>Name:</strong> ${name}</li>
         <li><strong>Email:</strong> ${email}</li>
         <li><strong>Message:</strong>  ${body}</li>
-      </ol>
-      <a href="mailto:${email},${address}?subject=RE: Your Response from mitchellscott.me">Click here to reply to this message</a>
+      </ul>
+      <a href="mailto:${email}?subject=RE: Your Response from mitchellscott.me">Click here to reply to this message</a>
     `,
     };
 

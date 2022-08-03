@@ -56,22 +56,22 @@ const PortableText: Partial<PortableTextReactComponents> = {
       const {slug} = value;
       const href = `/blog/${slug}`;
       return (
-        <Link href={href} passHref>
-          <a className={styles.internalLink}>{children}</a>
+        <Link href={href}>
+          <a className={styles.link}>{children}</a>
         </Link>
       );
     },
     externalLink: ({value, children}) => {
       const {blank, href} = value;
       return blank ? (
-        <Link href={href} passHref>
-          <a className={styles.externalLink} target="_blank" rel="noreferrer">
+        <Link href={href}>
+          <a className={styles.link} target="_blank" rel="noreferrer">
             {children}
           </a>
         </Link>
       ) : (
-        <Link href={href} passHref>
-          <a className={styles.externalLink}>{children}</a>
+        <Link href={href}>
+          <a className={styles.link}>{children}</a>
         </Link>
       );
     },

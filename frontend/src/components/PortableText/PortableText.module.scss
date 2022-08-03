@@ -1,6 +1,6 @@
 @import '../../styles/helpers.scss';
 
-.internalLink {
+.link {
   color: $CYAN_2;
   text-decoration: underline;
 }
@@ -45,6 +45,7 @@
   margin-bottom: 20px;
 }
 
-.imageContainer > * {
+.imageContainer > span > img {
   border-radius: 10px;
+  border: 5px solid $CONTRAST_TO_GREY !important;
 }
