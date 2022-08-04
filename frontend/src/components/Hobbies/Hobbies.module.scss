@@ -29,18 +29,17 @@
 }
 .hobbiesContainer {
   display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: repeat(auto, 2);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
   justify-content: center;
   gap: 20px;
   @include breakpoint(SM) {
+    grid-template-columns: auto auto;
     gap: 30px;
   }
   @include breakpoint(SM) {
     gap: 40px;
   }
-}
-.hobby {
 }
 .imageContainer {
   max-width: 150px;
@@ -61,6 +60,5 @@
 
 .hobbyName {
   text-align: center;
-  color: $CYAN;
   text-transform: lowercase;
 }

@@ -7,12 +7,10 @@
 }
 
 .siteHeader {
-  z-index: $Z_INDEX_HEADER;
   top: 0;
 }
 
 .siteNav {
-  z-index: $Z_INDEX_HEADER;
   position: sticky;
   top: 0;
 }
@@ -33,4 +31,5 @@
 .siteNav {
   display: flex;
   justify-content: center;
+  z-index: $Z_INDEX_HEADER;
 }
