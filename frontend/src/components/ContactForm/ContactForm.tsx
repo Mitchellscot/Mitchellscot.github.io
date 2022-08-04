@@ -9,6 +9,7 @@ import Button from '../Button/Button';
 import ContactFormInputError from '../ContactFormInputError/ContactFormInputError';
 import RegEx from '../../constants/RegEx';
 import RecaptchaLinks from '../RecaptchaLinks/RecaptchaLinks';
+import typography from '../../styles/typography/Text.module.scss';
 
 export default function ContactForm() {
   const router = useRouter();
@@ -28,6 +29,7 @@ export default function ContactForm() {
   const messageTextAreaContainer = classNames(styles.textAreaContainer, {
     [styles.inputError]: Boolean(errors.message),
   });
+  const thanksText = classNames(typography.textXl, styles.thanksText);
 
   const {executeRecaptcha} = useGoogleReCaptcha();
   const handleReCaptchaVerify = useCallback(async () => {
@@ -67,14 +69,27 @@ export default function ContactForm() {
       }
       setTimeout(() => {
         router.push('/');
-      }, 1000);
+      }, 3000);
+      if (response.ok) {
+        handleEmailSent();
+      }
     } catch (error) {
       console.error(error);
     }
   }
+  function handleEmailSent() {
+    const modal = document.getElementById('thanks') as HTMLElement;
+    modal!.style!.display = 'block';
+  }
 
   return (
     <div className={styles.container}>
+      <div id="thanks" className={styles.thanksModal}>
+        <div className={styles.modalContainer}>
+          <p className={thanksText}>THANKS I will get back to you soon!</p>
+        </div>
+      </div>
+
       <form
         className={styles.form}
         noValidate
