@@ -9,7 +9,8 @@ export function getMoreBlogs(lastPublishDate: string, lastId: string) {
        preview,
        publishDate,
        title,
-       _id
+       _id,
+       "tags": tags[]->tag
       }
 }`;
 }
@@ -20,6 +21,7 @@ order(_updatedAt desc)[0]{
   "pageTitle": seo.pageTitle,
   "metaDescription": seo.metaDescription,
   title,
+  "tags": tags[]->tag,
   "image": {
   "url": mainImage.asset->url,
   "height": mainImage.asset->metadata.dimensions.height,

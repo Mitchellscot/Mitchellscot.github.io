@@ -36,7 +36,8 @@ export const queries = {
           preview,
           publishDate,
           title,
-          _id
+          _id,
+          "tags": tags[]->tag
      },
      "totalCount": count(*[_type == "blogEntry"])
   }`,
