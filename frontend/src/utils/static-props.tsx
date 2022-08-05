@@ -1,6 +1,9 @@
 import {GetStaticProps} from 'next';
 import queries from '../constants/queries';
-import {generateBlogEntryQuery} from '../constants/queryHelpers';
+import {
+  generateBlogEntryQuery,
+  getBlogPreviewsByTag,
+} from '../constants/queryHelpers';
 import AboutPageData from '../models/AboutPageData';
 import BlogEntryData from '../models/BlogEntryData';
 import ContactPageData from '../models/ContactPageData';
@@ -35,6 +38,35 @@ export const getHomePage: GetStaticProps<HomePageData> = async () => {
     props: data,
     revalidate: revalidateIntervalInSeconds,
   };
+};
+
+export const getDefaultHomePage = async (): Promise<HomePageData> => {
+  const data = await sanityClient.fetch<HomePageData>(queries.HomePage);
+  return data;
+};
+
+export const getTaggedBlogPreviews = async (
+  queryString: string | string[]
+): Promise<HomePageData> => {
+  const queryValue =
+    typeof queryString === 'string' ? queryString : queryString[0];
+  const acceptableTags = await sanityClient.fetch<Array<string>>(
+    queries.GetAllTags
+  );
+  console.log(queryValue);
+  console.log(acceptableTags);
+
+  //if query parameter isn't valid, just return featured case studies
+  if (acceptableTags.indexOf(queryValue) === -1) {
+    return getDefaultHomePage();
+  }
+
+  const data = await sanityClient.fetch<HomePageData>(
+    getBlogPreviewsByTag(queryValue)
+  );
+
+  console.log(data);
+  return data;
 };
 
 export const getStatsPage: GetStaticProps<StatsPageData> = async () => {

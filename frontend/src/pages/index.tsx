@@ -1,12 +1,17 @@
-import {GetStaticProps, InferGetStaticPropsType} from 'next';
+import {
+  GetServerSideProps,
+  GetStaticProps,
+  InferGetServerSidePropsType,
+  InferGetStaticPropsType,
+} from 'next';
 import {NextSeo} from 'next-seo';
 import BlogList from '../components/BlogList/BlogList';
 import HomePageData from '../models/HomePageData';
 import pageTitle from '../utils/pageTitle';
-import {getHomePage} from '../utils/static-props';
+import {getDefaultHomePage, getTaggedBlogPreviews} from '../utils/static-props';
 
 export default function Home(
-  homePageData: InferGetStaticPropsType<typeof getStaticProps>
+  homePageData: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
   return (
     <>
@@ -22,5 +27,14 @@ export default function Home(
   );
 }
 
-export const getStaticProps: GetStaticProps<HomePageData> = async (context) =>
-  getHomePage(context);
+export const getServerSideProps: GetServerSideProps<HomePageData> = async (
+  context
+) => {
+  let data;
+  'tag' in context.query
+    ? (data = await getTaggedBlogPreviews(context.query.tag!))
+    : (data = await getDefaultHomePage());
+  return {
+    props: data,
+  };
+};

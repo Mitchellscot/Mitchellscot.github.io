@@ -14,6 +14,23 @@ export function getMoreBlogs(lastPublishDate: string, lastId: string) {
       }
 }`;
 }
+export function getBlogPreviewsByTag(tag: string): string {
+  return `*[_type == "blogPage"] |
+  order(_updatedAt desc)[0]{
+  "pageTitle": seo.pageTitle,
+  "metaDescription": seo.metaDescription,
+  "blogList": *[_type == "blogEntry" && "${tag}" in tags[]->tag]
+     | order(publishDate desc)[0...5]{
+        "slug": slug.current,
+        preview,
+        publishDate,
+        title,
+        _id,
+        "tags": tags[]->tag
+   },
+   "totalCount": count(*[_type == "blogEntry" && "${tag}" in tags[]->tag])
+}`;
+}
 export function generateBlogEntryQuery(slug: string): string {
   return `*[_type == "blogEntry" && slug.current ==
   "${slug}"] |

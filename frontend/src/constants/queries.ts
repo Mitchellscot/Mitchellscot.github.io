@@ -72,8 +72,7 @@ export const queries = {
     "metaDescription": seo.metaDescription,
     title
   }`,
-  GetAllBlogSlugs: `*[_type == "blogEntry"] | order(slug.current){
-  "slug": slug.current
-}`,
+  GetAllBlogSlugs: `*[_type == "blogEntry"] | order(slug.current)[].slug.current`,
+  GetAllTags: `*[_type == "tag"].tag`,
 };
 export default queries;
