@@ -1,3 +1,7 @@
 export interface TagsPageData {
-  tags: Array<string>;
+  tags: Array<Tag>;
+}
+export interface Tag {
+  tag: string;
+  count: number;
 }

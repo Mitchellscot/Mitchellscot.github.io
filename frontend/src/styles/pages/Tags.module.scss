@@ -2,11 +2,8 @@
 
 .container {
   max-width: 360px;
-  padding-inline: var(--gutter);
-  margin: 20px auto;
-  display: flex;
-  align-items: center;
 
+  margin: 0 auto;
   @include breakpoint(SM) {
     max-width: $BP_SM;
   }
@@ -16,14 +13,41 @@
   }
 
   @include breakpoint(LG) {
-    max-width: $MAX_WIDTH_NARROW;
+    max-width: $BP_LG;
   }
+}
+.instructions {
+  margin: 40px auto 30px;
+  text-align: center;
+}
+.tagList {
+  padding-inline: var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 .tag {
   color: $CYAN;
   font-family: ubuntu mono;
-  &::before {
-    content: '#';
+  white-space: nowrap;
+  border: 2px solid $CYAN_3;
+  border-radius: 8px;
+  padding: 10px;
+  > span {
+    transition: color 0.3s ease-in;
+    -webkit-transition: color 0.3s ease-in;
   }
-  margin-left: 20px;
+}
+.tag:hover {
+  color: $ORANGE;
+  border: 1px solid $ORANGE;
+  > span {
+    color: $ORANGE;
+    transition: color 0.3s ease-in;
+    -webkit-transition: color 0.3s ease-in;
+  }
+}
+.tagCount {
+  color: $CYAN_2;
 }

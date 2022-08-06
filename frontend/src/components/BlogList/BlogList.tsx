@@ -50,7 +50,13 @@ export default function BlogList({list, totalCount}: BlogListProps) {
             onClick={handleClick}
           />
         ) : (
-          <span className={styles.noMoreBlogs}>That is all of them!</span>
+          <div className={styles.buttonContainer}>
+            <Button
+              label="Search Tags"
+              link="/blog/tags"
+              variant="transparent"
+            />
+          </div>
         )}
       </div>
     </div>

@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import {GetStaticPaths, GetStaticProps, InferGetStaticPropsType} from 'next';
 import {NextSeo} from 'next-seo';
 import Image from 'next/image';
+import Link from 'next/link';
+import Button from '../../components/Button/Button';
 import components from '../../components/PortableText/PortableText';
 import BlogEntryModel from '../../models/BlogEntryData';
 import styles from '../../styles/pages/BlogEntry.module.scss';
@@ -19,6 +21,7 @@ const BlogEntry = (
   const text = classNames(styles.text, typography.textMd);
   const dateText = classNames(styles.date, typography.textMd);
   const date = new Date(blogEntryData.publishDate);
+  const tagText = classNames(styles.tag, typography.textMd);
   return (
     <>
       <NextSeo
@@ -26,10 +29,22 @@ const BlogEntry = (
         description={blogEntryData.metaDescription}
       />
       <div className={styles.container}>
-        <div className={titleText}>{blogEntryData.title}</div>
+        <div className={styles.dateTitleContainer}>
+          <div className={titleText}>{blogEntryData.title}</div>
+          <div className={dateText}>
+            {date.toLocaleDateString(`en-us`, {dateStyle: 'medium'})}
+          </div>
+        </div>
         <div className={styles.titleUnderline}></div>
-        <div className={dateText}>
-          {date.toLocaleDateString(`en-us`, {dateStyle: 'medium'})}
+        <div className={styles.tagList}>
+          {blogEntryData.tags &&
+            blogEntryData.tags.map((tag: string, index: number) => {
+              return (
+                <Link href={{pathname: '/blog', query: {tag: tag}}} key={index}>
+                  <a className={tagText}>{tag}</a>
+                </Link>
+              );
+            })}
         </div>
         {blogEntryData.image.url && (
           <div className={styles.imageContainer}>
@@ -47,6 +62,9 @@ const BlogEntry = (
             onMissingComponent={false}
             components={components}
           />
+        </div>
+        <div className={styles.buttonContainer}>
+          <Button label="Search" link="/blog/tags" variant="blue" />
         </div>
       </div>
     </>

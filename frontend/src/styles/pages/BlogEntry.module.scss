@@ -24,18 +24,37 @@
   height: 2px;
   border-radius: 6px;
   background-color: $CYAN_3;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .title {
   margin-bottom: 20px;
 }
-
+.dateTitleContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.tagList {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+.tag {
+  color: $CYAN;
+  font-family: ubuntu mono;
+  &::before {
+    content: '#';
+  }
+  margin-left: 20px;
+}
+.tag:hover {
+  color: $ORANGE;
+}
 .date {
   color: $CYAN_2;
   margin-bottom: 20px;
 }
-
 .imageContainer {
   margin-bottom: 20px;
   display: flex;
@@ -45,4 +64,9 @@
 .imageContainer > span > img {
   border-radius: 10px;
   border: 5px solid $CONTRAST_TO_GREY !important;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
 }

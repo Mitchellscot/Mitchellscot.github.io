@@ -75,7 +75,9 @@ export const queries = {
   GetAllBlogSlugs: `*[_type == "blogEntry"] | order(slug.current)[].slug.current`,
   GetAllTags: `*[_type == "tag"].tag`,
   GetTagsPage: `{
-    "tags": *[_type == "tag"].tag
-  }`,
+    "tags":*[_type == "tag"] | order(tag){
+      tag,
+      "count": count(*[_type == "blogEntry" && references(^._id)])
+  }}`,
 };
 export default queries;

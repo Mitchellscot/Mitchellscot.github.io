@@ -63,7 +63,6 @@ export const getTaggedBlogPreviews = async (
   const data = await sanityClient.fetch<HomePageData>(
     getBlogPreviewsByTag(queryValue)
   );
-  console.log(data);
   return data;
 };
 
@@ -95,7 +94,6 @@ export const getBlogEntry: GetStaticProps<BlogEntryData> = async (context) => {
 
 export const getAllBlogTags: GetStaticProps<TagsPageData> = async () => {
   const data = await sanityClient.fetch<TagsPageData>(queries.GetTagsPage);
-  console.log(data);
   return {
     props: data,
     revalidate: revalidateIntervalInSeconds,

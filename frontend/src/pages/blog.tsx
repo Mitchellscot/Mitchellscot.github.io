@@ -4,11 +4,13 @@ import BlogList from '../components/BlogList/BlogList';
 import HomePageData from '../models/HomePageData';
 import pageTitle from '../utils/pageTitle';
 import {getDefaultHomePage, getTaggedBlogPreviews} from '../utils/static-props';
-import styles from '../styles/pages/Blog.module.scss';
-import Link from 'next/link';
-import Button from '../components/Button/Button';
 
-export default function Home(
+//Next does not allow running query parameters on the home URL
+//SO I had to make a seperate page /blog so that the url parameters work properly
+//it's basically a copy of the home page, but you can run queries on it.
+//Also, I didn't want the homepage to redirect to /blog - I wanted a clean looking URL - mitchellscott.me
+//You can see this one uses getServerSideProps but the home page is statically built
+export default function Blog(
   homePageData: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
   return (
@@ -17,9 +19,6 @@ export default function Home(
         title={pageTitle(homePageData.pageTitle)}
         description={homePageData.metaDescription}
       />
-      <div className={styles.buttonContainer}>
-        <Button label="All Tags" link="/blog/tags" variant="blue" />
-      </div>
       <BlogList
         list={homePageData.blogList}
         totalCount={homePageData.totalCount}
