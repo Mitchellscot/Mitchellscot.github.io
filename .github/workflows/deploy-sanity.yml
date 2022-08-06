@@ -1,4 +1,4 @@
-name: Deploy Sanity
+name: Deploy Backend
 on:
   push:
     branches: [master]
