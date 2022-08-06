@@ -74,5 +74,8 @@ export const queries = {
   }`,
   GetAllBlogSlugs: `*[_type == "blogEntry"] | order(slug.current)[].slug.current`,
   GetAllTags: `*[_type == "tag"].tag`,
+  GetTagsPage: `{
+    "tags": *[_type == "tag"].tag
+  }`,
 };
 export default queries;

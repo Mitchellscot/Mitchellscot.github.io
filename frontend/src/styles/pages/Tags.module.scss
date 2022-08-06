@@ -1,0 +1,29 @@
+@import '../helpers.scss';
+
+.container {
+  max-width: 360px;
+  padding-inline: var(--gutter);
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+
+  @include breakpoint(SM) {
+    max-width: $BP_SM;
+  }
+
+  @include breakpoint(MD) {
+    max-width: $BP_MD;
+  }
+
+  @include breakpoint(LG) {
+    max-width: $MAX_WIDTH_NARROW;
+  }
+}
+.tag {
+  color: $CYAN;
+  font-family: ubuntu mono;
+  &::before {
+    content: '#';
+  }
+  margin-left: 20px;
+}

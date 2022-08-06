@@ -57,7 +57,7 @@
   @include heading;
   @include fontSize(24);
   line-height: (58 / 48);
-  font-family: ubuntu mono;
+  font-family: ubuntu;
   font-weight: $FONT_WEIGHT_BOLD;
 
   @include breakpoint(SM) {

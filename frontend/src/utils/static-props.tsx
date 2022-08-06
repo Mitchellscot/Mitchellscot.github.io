@@ -10,6 +10,7 @@ import ContactPageData from '../models/ContactPageData';
 import HomePageData from '../models/HomePageData';
 import ProjectsPageData from '../models/ProjectsPageData';
 import StatsPageData from '../models/StatsPageData';
+import {TagsPageData} from '../models/TagsPageData';
 import sanityClient from './sanityClient';
 
 const revalidateIntervalInSeconds = Number(
@@ -56,13 +57,13 @@ export const getTaggedBlogPreviews = async (
 
   //if query parameter isn't valid, just return the default page
   if (acceptableTags.indexOf(queryValue) === -1) {
-    //maybe add a property here... displayTagNotFound=true or something then set it on the page to display a message.
     return getDefaultHomePage();
   }
 
   const data = await sanityClient.fetch<HomePageData>(
     getBlogPreviewsByTag(queryValue)
   );
+  console.log(data);
   return data;
 };
 
@@ -86,6 +87,15 @@ export const getBlogEntry: GetStaticProps<BlogEntryData> = async (context) => {
   const data = await sanityClient.fetch(
     generateBlogEntryQuery(context.params!.slug as string)
   );
+  return {
+    props: data,
+    revalidate: revalidateIntervalInSeconds,
+  };
+};
+
+export const getAllBlogTags: GetStaticProps<TagsPageData> = async () => {
+  const data = await sanityClient.fetch<TagsPageData>(queries.GetTagsPage);
+  console.log(data);
   return {
     props: data,
     revalidate: revalidateIntervalInSeconds,
