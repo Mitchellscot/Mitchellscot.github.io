@@ -18,7 +18,7 @@ export default function Tags(
       <NextSeo title={pageTitle('Tags')} description={'Search This Blog.'} />
       <div className={styles.container}>
         <div className={instructionText}>
-          Click on a tag to view all blog posts associated with it.
+          Click on a tag to view all associated posts.
         </div>
         <ul className={styles.tagList}>
           {tagsPageData.tags.map((tag: Tag, index: number) => {

@@ -64,7 +64,7 @@ const BlogEntry = (
           />
         </div>
         <div className={styles.buttonContainer}>
-          <Button label="Search" link="/blog/tags" variant="blue" />
+          <Button label="Search Posts" link="/blog/tags" variant="blue" />
         </div>
       </div>
     </>
