@@ -13,6 +13,7 @@ const hobby = "hobby";
 const imageModel = "imageModel";
 const project = "project";
 const button = "button";
+const tag = "tag";
 
 const objectTypes = {
   seo: seo,
@@ -30,6 +31,7 @@ const objectTypes = {
   date: date,
   slug: slug,
   button: button,
+  tag: tag,
 };
 
 export default objectTypes;

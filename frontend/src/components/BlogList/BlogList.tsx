@@ -23,7 +23,7 @@ export default function BlogList({list, totalCount}: BlogListProps) {
   const [blogs, setBlogs] = useState(list);
   const [lastId, setLastId] = useState(blogs[blogs.length - 1]?._id);
   const [lastPublishDate, setLastPublishDate] = useState(
-    blogs[blogs.length - 1].publishDate
+    blogs[blogs.length - 1]?.publishDate
   );
 
   async function handleClick() {
@@ -50,7 +50,13 @@ export default function BlogList({list, totalCount}: BlogListProps) {
             onClick={handleClick}
           />
         ) : (
-          <span className={styles.noMoreBlogs}>That is all of them!</span>
+          <div className={styles.buttonContainer}>
+            <Button
+              label="Search Tags"
+              link="/blog/tags"
+              variant="transparent"
+            />
+          </div>
         )}
       </div>
     </div>

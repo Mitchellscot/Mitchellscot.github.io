@@ -13,6 +13,7 @@ import hobby from "./Objects/hobby";
 import imageModel from "./Objects/imageModel";
 import projects from "./Objects/project";
 import seo from "./Objects/seo";
+import tag from "./Objects/tag";
 
 export default createSchema({
   name: "default",
@@ -29,5 +30,6 @@ export default createSchema({
     imageModel,
     projects,
     button,
+    tag,
   ]),
 });

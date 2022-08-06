@@ -4,4 +4,5 @@ export default interface BlogPreview {
   publishDate: string;
   title: string;
   _id: string;
+  tags: Array<string>;
 }

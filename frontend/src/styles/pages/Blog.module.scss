@@ -1,0 +1,22 @@
+@import '../helpers.scss';
+
+.buttonContainer {
+  max-width: 360px;
+  padding-inline: var(--gutter);
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-end;
+
+  @include breakpoint(SM) {
+    max-width: $BP_SM;
+  }
+
+  @include breakpoint(MD) {
+    max-width: $BP_MD;
+  }
+
+  @include breakpoint(LG) {
+    max-width: $MAX_WIDTH_NARROW;
+    padding-inline: 0;
+  }
+}

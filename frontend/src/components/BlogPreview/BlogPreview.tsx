@@ -1,3 +1,4 @@
+import {triggerAsyncId} from 'async_hooks';
 import classNames from 'classnames';
 import Link from 'next/link';
 import model from '../../models/BlogPreview';
@@ -11,24 +12,38 @@ export default function BlogPreview({
   preview,
   publishDate,
   title,
+  tags,
 }: model) {
   const titleText = classNames(styles.title, headers.blogPreview);
   const previewText = classNames(styles.preview, text.textMd);
   const dateText = classNames(styles.date, text.textMd);
   const date = new Date(publishDate);
+  const tagText = classNames(styles.tag, text.textMd);
   return (
     <div className={styles.container}>
-      <p className={titleText}>
-        <Link href={`blog/${slug}`}>{title}</Link>
-      </p>
+      <div className={styles.titleContainer}>
+        <p className={titleText}>
+          <Link href={`blog/${slug}`}>{title}</Link>
+        </p>
+        <Button variant={'transparent'} label="Read It" link={`blog/${slug}`} />
+      </div>
+
       <p className={previewText}>{preview}</p>
       <div className={styles.bottomContainer}>
         <p className={dateText}>
           {date.toLocaleDateString(`en-us`, {dateStyle: 'medium'})}
         </p>
-        <Button variant={'transparent'} label="Read It" link={`blog/${slug}`} />
+        <div className={styles.tagList}>
+          {tags &&
+            tags.map((tag: string, index: number) => {
+              return (
+                <Link href={{pathname: '/blog', query: {tag: tag}}} key={index}>
+                  <a className={tagText}>{tag}</a>
+                </Link>
+              );
+            })}
+        </div>
       </div>
-
       <div className={styles.titleUnderline}></div>
     </div>
   );

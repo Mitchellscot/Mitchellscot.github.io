@@ -7,4 +7,5 @@ export default interface BlogEntryData {
   publishDate: string;
   text: [];
   image: ImageModel;
+  tags: Array<string>;
 }

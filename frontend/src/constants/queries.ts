@@ -36,7 +36,8 @@ export const queries = {
           preview,
           publishDate,
           title,
-          _id
+          _id,
+          "tags": tags[]->tag
      },
      "totalCount": count(*[_type == "blogEntry"])
   }`,
@@ -71,8 +72,12 @@ export const queries = {
     "metaDescription": seo.metaDescription,
     title
   }`,
-  GetAllBlogSlugs: `*[_type == "blogEntry"] | order(slug.current){
-  "slug": slug.current
-}`,
+  GetAllBlogSlugs: `*[_type == "blogEntry"] | order(slug.current)[].slug.current`,
+  GetAllTags: `*[_type == "tag"].tag`,
+  GetTagsPage: `{
+    "tags":*[_type == "tag"] | order(tag){
+      tag,
+      "count": count(*[_type == "blogEntry" && references(^._id)])
+  }}`,
 };
 export default queries;

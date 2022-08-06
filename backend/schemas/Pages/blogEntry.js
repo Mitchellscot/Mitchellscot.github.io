@@ -142,6 +142,15 @@ export default {
       name: "mainImage",
       type: objectTypes.image,
     },
+    {
+      title: "Tags",
+      name: "tags",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: objectTypes.tag }] }],
+      options: {
+        disableNew: true,
+      },
+    },
   ],
   preview: {
     select: {

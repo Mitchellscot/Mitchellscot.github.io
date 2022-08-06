@@ -1,12 +1,16 @@
 import {GetStaticProps} from 'next';
 import queries from '../constants/queries';
-import {generateBlogEntryQuery} from '../constants/queryHelpers';
+import {
+  generateBlogEntryQuery,
+  getBlogPreviewsByTag,
+} from '../constants/queryHelpers';
 import AboutPageData from '../models/AboutPageData';
 import BlogEntryData from '../models/BlogEntryData';
 import ContactPageData from '../models/ContactPageData';
 import HomePageData from '../models/HomePageData';
 import ProjectsPageData from '../models/ProjectsPageData';
 import StatsPageData from '../models/StatsPageData';
+import {TagsPageData} from '../models/TagsPageData';
 import sanityClient from './sanityClient';
 
 const revalidateIntervalInSeconds = Number(
@@ -37,6 +41,31 @@ export const getHomePage: GetStaticProps<HomePageData> = async () => {
   };
 };
 
+export const getDefaultHomePage = async (): Promise<HomePageData> => {
+  const data = await sanityClient.fetch<HomePageData>(queries.HomePage);
+  return data;
+};
+
+export const getTaggedBlogPreviews = async (
+  queryString: string | string[]
+): Promise<HomePageData> => {
+  const queryValue =
+    typeof queryString === 'string' ? queryString : queryString[0];
+  const acceptableTags = await sanityClient.fetch<Array<string>>(
+    queries.GetAllTags
+  );
+
+  //if query parameter isn't valid, just return the default page
+  if (acceptableTags.indexOf(queryValue) === -1) {
+    return getDefaultHomePage();
+  }
+
+  const data = await sanityClient.fetch<HomePageData>(
+    getBlogPreviewsByTag(queryValue)
+  );
+  return data;
+};
+
 export const getStatsPage: GetStaticProps<StatsPageData> = async () => {
   const data: StatsPageData = await sanityClient.fetch(queries.StatsPage);
   return {
@@ -57,6 +86,14 @@ export const getBlogEntry: GetStaticProps<BlogEntryData> = async (context) => {
   const data = await sanityClient.fetch(
     generateBlogEntryQuery(context.params!.slug as string)
   );
+  return {
+    props: data,
+    revalidate: revalidateIntervalInSeconds,
+  };
+};
+
+export const getAllBlogTags: GetStaticProps<TagsPageData> = async () => {
+  const data = await sanityClient.fetch<TagsPageData>(queries.GetTagsPage);
   return {
     props: data,
     revalidate: revalidateIntervalInSeconds,
