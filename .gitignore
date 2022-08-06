@@ -437,3 +437,4 @@ $RECYCLE.BIN/
 /ct-data
 /src/Data/Migrations
 appsettings*
+.vercel

@@ -53,19 +53,16 @@ export const getTaggedBlogPreviews = async (
   const acceptableTags = await sanityClient.fetch<Array<string>>(
     queries.GetAllTags
   );
-  console.log(queryValue);
-  console.log(acceptableTags);
 
-  //if query parameter isn't valid, just return featured case studies
+  //if query parameter isn't valid, just return the default page
   if (acceptableTags.indexOf(queryValue) === -1) {
+    //maybe add a property here... displayTagNotFound=true or something then set it on the page to display a message.
     return getDefaultHomePage();
   }
 
   const data = await sanityClient.fetch<HomePageData>(
     getBlogPreviewsByTag(queryValue)
   );
-
-  console.log(data);
   return data;
 };
 
