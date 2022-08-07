@@ -51,6 +51,7 @@ export default {
           type: objectTypes.block,
           styles: [
             { title: "Normal", value: "normal" },
+            { title: "H3", value: "h3" },
             { title: "Quote", value: "blockquote" },
           ],
           lists: [
