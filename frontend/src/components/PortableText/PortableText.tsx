@@ -13,7 +13,7 @@ const PortableText: Partial<PortableTextReactComponents> = {
       <h3 className={`${styles.paragraph} ${headings.heading3}`}>{children}</h3>
     ),
     blockquote: ({children}) => (
-      <blockquote className={styles.paragraph}>{children}</blockquote>
+      <blockquote className={styles.quoteBlock}>{children}</blockquote>
     ),
   },
   types: {
