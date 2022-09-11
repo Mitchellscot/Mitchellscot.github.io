@@ -9,7 +9,6 @@ export default {
       name: 'image',
       type: objectTypes.image,
       title: 'Image Upload',
-      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'altText',

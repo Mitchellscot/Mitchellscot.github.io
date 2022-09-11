@@ -19,15 +19,19 @@ export default function AboutContent({
   return (
     <div className={styles.container}>
       <p className={summaryText}>{summary}</p>
-      <figure className={styles.imageContainer}>
-        <Image
-          src={image.url}
-          height={image.height}
-          width={image.width}
-          alt={image.alt}
-        />
-      </figure>
-      <figcaption className={styles.caption}>{caption}</figcaption>
+      {image.url && (
+        <>
+          <figure className={styles.imageContainer}>
+            <Image
+              src={image.url}
+              height={image.height}
+              width={image.width}
+              alt={image.alt}
+            />
+          </figure>
+          <figcaption className={styles.caption}>{caption}</figcaption>
+        </>
+      )}
     </div>
   );
 }
