@@ -28,8 +28,8 @@ export default function AboutContent({
               width={image.width}
               alt={image.alt}
             />
+            <figcaption className={styles.caption}>{caption}</figcaption>
           </figure>
-          <figcaption className={styles.caption}>{caption}</figcaption>
         </>
       )}
     </div>
