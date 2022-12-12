@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Layout from '../components/Layout/Layout';
 import '../styles/index.scss';
 import {GoogleReCaptchaProvider} from 'react-google-recaptcha-v3';
+import {Analytics} from '@vercel/analytics/react';
 
 export default function App({Component, pageProps}: AppProps) {
   return (
@@ -22,6 +23,7 @@ export default function App({Component, pageProps}: AppProps) {
           <Component {...pageProps} />
         </Layout>
       </GoogleReCaptchaProvider>
+      <Analytics />
     </>
   );
 }
