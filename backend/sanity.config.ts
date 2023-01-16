@@ -1,4 +1,4 @@
-import {createConfig} from 'sanity'
+import {defineConfig} from 'sanity'
 import {dev, prod} from './studios'
 
-export default createConfig([prod, dev])
+export default defineConfig([prod, dev])
