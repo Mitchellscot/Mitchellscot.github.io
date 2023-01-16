@@ -1,4 +1,4 @@
-import {FiExternalLink, FiLink} from 'react-icons/fi/index'
+import {LinkIcon, EarthGlobeIcon} from '@sanity/icons'
 import objectTypes from '../constants/objectTypes'
 import pageTypes from '../constants/pageTypes'
 
@@ -66,9 +66,7 @@ export default {
               {
                 name: 'internalLink',
                 type: 'object',
-                blockEditor: {
-                  icon: FiLink,
-                },
+                icon: LinkIcon,
                 title: 'Internal link',
                 fields: [
                   {
@@ -87,9 +85,7 @@ export default {
                 title: 'External Link',
                 name: 'externalLink',
                 type: 'object',
-                blockEditor: {
-                  icon: FiExternalLink,
-                },
+                icon: EarthGlobeIcon,
                 fields: [
                   {
                     title: 'URL',
@@ -120,9 +116,6 @@ export default {
               type: 'string',
               name: 'alt',
               title: 'Alt Text',
-              options: {
-                isHighlighted: true,
-              },
             },
           ],
         },
