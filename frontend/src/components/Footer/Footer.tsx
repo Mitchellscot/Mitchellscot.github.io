@@ -6,10 +6,11 @@ import styles from './Footer.module.scss';
 
 export default function Footer() {
   const copyrightText = classNames(styles.copyright, text.textXs);
+  const year = new Date().getFullYear;
   return (
     <footer className={styles.container}>
       <p className={copyrightText}>
-        &copy;{' 2022 Mitchell Scott. All rights reserved'}
+        &copy;{` ${year} Mitchell Scott. All rights reserved`}
       </p>
       <div className={styles.socialLinks}>
         <Link href="https://www.strava.com/athletes/mitchellscot">
