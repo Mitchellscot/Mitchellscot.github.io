@@ -40,7 +40,11 @@ const BlogEntry = (
           {blogEntryData.tags &&
             blogEntryData.tags.map((tag: string, index: number) => {
               return (
-                <Link href={{pathname: '/blog', query: {tag: tag}}} key={index}>
+                <Link
+                  href={{pathname: '/blog', query: {tag: tag}}}
+                  key={index}
+                  legacyBehavior
+                >
                   <a className={tagText}>{tag}</a>
                 </Link>
               );
@@ -71,9 +75,7 @@ const BlogEntry = (
   );
 };
 
-export default BlogEntry;
-
 export const getStaticProps: GetStaticProps<BlogEntryModel> = async (context) =>
   getBlogEntry(context);
-
 export const getStaticPaths: GetStaticPaths = async () => blogEntryPaths();
+export default BlogEntry;

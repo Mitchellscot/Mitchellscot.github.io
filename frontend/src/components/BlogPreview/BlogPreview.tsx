@@ -37,7 +37,11 @@ export default function BlogPreview({
           {tags &&
             tags.map((tag: string, index: number) => {
               return (
-                <Link href={{pathname: '/blog', query: {tag: tag}}} key={index}>
+                <Link
+                  href={{pathname: '/blog', query: {tag: tag}}}
+                  key={index}
+                  legacyBehavior
+                >
                   <a className={tagText}>{tag}</a>
                 </Link>
               );

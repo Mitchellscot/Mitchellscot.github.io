@@ -4,7 +4,6 @@ const nextConfig = {
   trailingSlash: false,
   images: {
     domains: ['cdn.sanity.io'],
-    swcMinify: true,
   },
 };
 

@@ -41,7 +41,7 @@ export default async function contact(
     return response.data.data as Captcha;
   }
 
-  async function _sendMail(score: number) {
+  async function _sendMail(score: Number) {
     const {name, email, message: body} = message;
     const isPotentiallySpam =
       score < new Number(process.env.RECAPTCHA_MINIMUM_SCORE);
@@ -90,7 +90,7 @@ export default async function contact(
     const minimumCaptchaScore = new Number(
       process.env.RECAPTCHA_MINIMUM_SCORE ?? 0.4
     );
-    if (!captcha.success || captcha.score < minimumCaptchaScore) {
+    if (!captcha.success || (captcha.score as Number) < minimumCaptchaScore) {
       console.log(`Captcha score too low: ${captcha.score}`);
       await _sendMail(captcha.score);
       return res.status(500).send(captcha);

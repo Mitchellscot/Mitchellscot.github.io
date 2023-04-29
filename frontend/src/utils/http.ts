@@ -69,7 +69,7 @@ const deleteRequest = async <T, E = null>(endpoint: string) => {
     method: RequestMethod.Delete,
   });
 };
-
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   get,
   post,

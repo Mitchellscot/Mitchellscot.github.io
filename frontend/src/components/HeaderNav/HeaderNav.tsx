@@ -16,12 +16,12 @@ export default function HeaderNav() {
     <nav className={styles.container}>
       <ol className={styles.navLinks}>
         <li>
-          <Link href="/" passHref>
+          <Link href="/" passHref legacyBehavior>
             <a className={blogLinkIsActive ? navItemActive : navItem}>Blog</a>
           </Link>
         </li>
         <li>
-          <Link href="/projects" passHref>
+          <Link href="/projects" passHref legacyBehavior>
             <a
               className={
                 router.pathname === '/projects' ? navItemActive : navItem
@@ -32,7 +32,7 @@ export default function HeaderNav() {
           </Link>
         </li>
         <li>
-          <Link href="/stats" passHref>
+          <Link href="/stats" passHref legacyBehavior>
             <a
               className={router.pathname === '/stats' ? navItemActive : navItem}
             >
@@ -41,7 +41,7 @@ export default function HeaderNav() {
           </Link>
         </li>
         <li>
-          <Link href="/about" passHref>
+          <Link href="/about" passHref legacyBehavior>
             <a
               className={router.pathname === '/about' ? navItemActive : navItem}
             >
@@ -50,7 +50,7 @@ export default function HeaderNav() {
           </Link>
         </li>
         <li>
-          <Link href="/contact" passHref>
+          <Link href="/contact" passHref legacyBehavior>
             <a
               className={
                 router.pathname === '/contact' ? navItemActive : navItem

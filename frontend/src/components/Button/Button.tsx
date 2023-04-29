@@ -65,7 +65,7 @@ export default function Button({
 
   if (hasLink) {
     return (
-      <Link href={link!}>
+      <Link href={link!} legacyBehavior>
         <a className={buttonClasses} onClick={onClick} target={target}>
           {renderArrow()}
           {label}

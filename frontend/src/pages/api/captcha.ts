@@ -1,6 +1,6 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import absoluteUrl from 'next-absolute-url';
-import {stringify} from 'query-string';
+import QueryString from 'query-string';
 import {baseEnv} from '../../utils/environment';
 import {APIResponse} from '../../models/API';
 import HttpErrorResponseModel from '../../models/HttpErrorResponseModel';
@@ -25,7 +25,7 @@ export default async function captcha(
   };
   const response: APIResponse<any, null> = await http.post(
     endpoint,
-    stringify(model)
+    QueryString.stringify(model)
   );
 
   if (response instanceof HttpErrorResponseModel) {

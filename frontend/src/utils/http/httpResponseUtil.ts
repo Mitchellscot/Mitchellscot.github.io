@@ -2,7 +2,6 @@ import {fillInErrorWithDefaults} from './fillInErrorWithDefaults';
 
 export const isDefined = <T>(t: T | null | undefined): t is T => t != null;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const createResponseError = (
   error: any,
   restRequest: Partial<Request>

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {BaseModel} from 'sjs-base-model';
 import {v4 as uuid} from 'uuid';
 

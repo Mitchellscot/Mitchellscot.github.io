@@ -16,7 +16,7 @@ export default function FourOhFour() {
         <h1 className={titleText}>That page does not exist.</h1>
         <p className={text}>
           {`Why don\'t you just `}
-          <Link href={'/'}>
+          <Link href={'/'} legacyBehavior>
             <a className={styles.link}>Go Home.</a>
           </Link>
         </p>

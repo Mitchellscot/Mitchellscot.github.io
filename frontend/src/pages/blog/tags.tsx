@@ -24,7 +24,10 @@ export default function Tags(
           {tagsPageData.tags.map((tag: Tag, index: number) => {
             return (
               <li key={index}>
-                <Link href={{pathname: '/blog', query: {tag: tag.tag}}}>
+                <Link
+                  href={{pathname: '/blog', query: {tag: tag.tag}}}
+                  legacyBehavior
+                >
                   <a className={tagText}>
                     {tag.tag}{' '}
                     <span className={styles.tagCount}>({tag.count})</span>

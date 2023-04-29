@@ -1,4 +1,4 @@
-import sanityClient from '@sanity/client';
+import {createClient} from '@sanity/client';
 import {useState} from 'react';
 import {getMoreBlogs} from '../../constants/queryHelpers';
 import BlogPreviewModel from '../../models/BlogPreview';
@@ -7,9 +7,9 @@ import Button from '../Button/Button';
 import styles from './BlogList.module.scss';
 
 //change this to production when ready
-const publicClient = sanityClient({
+const publicClient = createClient({
   projectId: 'zdpjfpgh',
-  dataset: 'development',
+  dataset: process.env.SANITY_DATASET,
   apiVersion: '2022-04-18',
   useCdn: true,
 });
