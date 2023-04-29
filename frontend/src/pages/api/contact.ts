@@ -18,7 +18,7 @@ export default async function contact(
     return res.status(500).end();
   }
 
-  async function _verifyCaptchaToken(): Promise<
+  async function VerifyCaptchaToken(): Promise<
     HttpErrorResponseModel | Captcha
   > {
     const {origin} = absoluteUrl(req);
@@ -41,7 +41,7 @@ export default async function contact(
     return response.data.data as Captcha;
   }
 
-  async function _sendMail(score: Number) {
+  async function SendMail(score: Number) {
     const {name, email, message: body} = message;
     const isPotentiallySpam =
       score < new Number(process.env.RECAPTCHA_MINIMUM_SCORE);
@@ -75,7 +75,7 @@ export default async function contact(
   }
 
   try {
-    const captcha = await _verifyCaptchaToken();
+    const captcha = await VerifyCaptchaToken();
     console.log('verifyCaptchaToken: ', captcha);
 
     if (captcha instanceof HttpErrorResponseModel) {
@@ -92,11 +92,11 @@ export default async function contact(
     );
     if (!captcha.success || (captcha.score as Number) < minimumCaptchaScore) {
       console.log(`Captcha score too low: ${captcha.score}`);
-      await _sendMail(captcha.score);
+      await SendMail(captcha.score);
       return res.status(500).send(captcha);
     }
 
-    await _sendMail(captcha.score);
+    await SendMail(captcha.score);
 
     return res.status(200).end();
   } catch (error) {

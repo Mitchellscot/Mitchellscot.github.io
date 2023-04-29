@@ -8,7 +8,7 @@ import http from '../../utils/http';
 
 const secret = process.env.RECAPTCHA_SECRET_KEY;
 
-export default async function captcha(
+export default async function Captcha(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
