@@ -56,6 +56,8 @@
 .imageContainer > img {
   border-radius: 50%;
   border: 5px solid $CONTRAST_TO_GREY !important;
+  width: 100%;
+  height: auto;
 }
 
 .hobbyName {

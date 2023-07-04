@@ -64,6 +64,8 @@
 .imageContainer > img {
   border-radius: 10px;
   border: 5px solid $CONTRAST_TO_GREY !important;
+  width: 100%;
+  height: auto;
 }
 .buttonContainer {
   display: flex;
