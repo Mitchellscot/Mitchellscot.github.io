@@ -15,8 +15,8 @@ jobs:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
         run: |
           yarn global add @sanity/cli
-          cd backend && sanity install
-          SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN sanity dataset export production backup.tar.gz
+          cd backend && sanity install && SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN
+          sanity dataset export production backup.tar.gz
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v2
         with:
