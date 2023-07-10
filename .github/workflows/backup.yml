@@ -8,6 +8,7 @@ jobs:
   backup-dataset:
     runs-on: ubuntu-latest
     name: Export Production Data
+    working-directory: backend
     steps:
       - uses: actions/checkout@v3
       - name: Export production dataset
@@ -15,7 +16,7 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
         with:
-          args: backend dataset export production backup.tar.gz
+          args: dataset export production backup.tar.gz
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v2
         with:
