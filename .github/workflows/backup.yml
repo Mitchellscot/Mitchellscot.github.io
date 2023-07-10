@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Export production dataset
-        working-directory: backend
         uses: sanity-io/github-action-sanity@v0.4-alpha
+        working-directory: backend
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
         with:
