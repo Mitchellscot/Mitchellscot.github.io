@@ -11,12 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Export production dataset
-        uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
-        with:
-          working-directory: ./backend
-          args: dataset export production backup.tar.gz
+        run: |
+          yarn global add @sanity/cli
+          cd backend && sanity install
+          SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN sanity dataset export production backup.tar.gz
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v2
         with:
