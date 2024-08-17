@@ -15,7 +15,8 @@
   font-weight: $FONT_WEIGHT_REGULAR;
   line-height: 24 / 20;
   text-align: center;
-  transition: color 300ms cubic-bezier(0.32, 0, 0.67, 0),
+  transition:
+    color 300ms cubic-bezier(0.32, 0, 0.67, 0),
     background-color 300ms cubic-bezier(0.32, 0, 0.67, 0);
 
   &:hover {
@@ -28,13 +29,43 @@
 
   &:hover,
   &:active {
-    transition: color 300ms cubic-bezier(0.33, 1, 0.68, 1),
+    transition:
+      color 300ms cubic-bezier(0.33, 1, 0.68, 1),
       background-color 300ms cubic-bezier(0.33, 1, 0.68, 1);
   }
 }
 
 .transparentButton {
   padding: 18px 0;
+}
+.inactiveButton {
+  color: $CYAN;
+  border: 3px solid $CYAN;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  &:hover {
+    background-color: darken($CYAN, 5%);
+    color: $WHITE;
+  }
+
+  &:active {
+    background-color: darken($CYAN, 10%);
+    color: $WHITE;
+  }
+}
+.activeButton {
+  background-color: $CYAN;
+  color: $GREY_1;
+  border: 4px solid $CYAN;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  &:hover {
+    background-color: lighten($CYAN, 10%);
+    color: $WHITE;
+  }
+
+  &:active {
+    background-color: darken($CYAN, 10%);
+    color: $GREY_1;
+  }
 }
 
 .warmButton {
@@ -74,6 +105,11 @@
   width: 14px;
   height: 14px;
 }
+.icon {
+  margin-left: 4px;
+  width: 14px;
+  height: 14px;
+}
 
 .button {
   .arrow {
@@ -89,6 +125,16 @@
       transform: translateX(6px);
     }
   }
+}
+.inactiveIcon {
+  margin-left: 12px;
+  display: inline-block;
+  fill: $CYAN;
+}
+.activeIcon {
+  margin-left: 12px;
+  display: inline-block;
+  fill: $GREY_1;
 }
 
 .whiteArrow {
