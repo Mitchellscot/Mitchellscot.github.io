@@ -22,7 +22,7 @@ const revalidateIntervalInSeconds = Number(
 export const getStatsPage: GetStaticProps<StatsPageData> = async () => {
   const data: StatsPageData = await sanityClient.fetch(queries.StatsPage);
   const exerTrackData = await GetExerTrackData();
-  data.pageData = exerTrackData.data == null ? null : exerTrackData.data;
+  data.pageData = exerTrackData.data ?? null;
   //console.log(data.pageData);
   return {
     props: data,
@@ -36,7 +36,6 @@ export const getStatsPlaceHolderPage: GetStaticProps<
   const data: StatsPagePlaceHolderData = await sanityClient.fetch(
     queries.StatsPage
   );
-  //const data: StatsPageData
   return {
     props: data,
     revalidate: revalidateIntervalInSeconds,
