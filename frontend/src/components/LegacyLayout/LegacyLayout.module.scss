@@ -1,0 +1,35 @@
+@import '../../styles/helpers.scss';
+
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.siteHeader {
+  top: 0;
+}
+
+.siteNav {
+  position: sticky;
+  top: 0;
+}
+
+.siteNav,
+.siteHeader,
+.siteBody,
+.siteFooter {
+  width: 100%;
+}
+
+.siteBody {
+  flex: 1;
+}
+
+.siteFooter,
+.siteHeader,
+.siteNav {
+  display: flex;
+  justify-content: center;
+  z-index: $Z_INDEX_HEADER;
+}

@@ -2,7 +2,7 @@ import {PortableText} from '@portabletext/react';
 import classNames from 'classnames';
 import {GetStaticPaths, GetStaticProps, InferGetStaticPropsType} from 'next';
 import {NextSeo} from 'next-seo';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import Button from '../../components/Button/Button';
 import components from '../../components/PortableText/PortableText';

@@ -1,3 +1,4 @@
+'use client';
 import {createClient} from '@sanity/client';
 import {useState} from 'react';
 import {getMoreBlogs} from '../../constants/queryHelpers';

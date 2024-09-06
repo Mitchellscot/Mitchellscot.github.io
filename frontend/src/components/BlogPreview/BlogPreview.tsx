@@ -23,7 +23,9 @@ export default function BlogPreview({
     <div className={styles.container}>
       <div className={styles.titleContainer}>
         <p className={titleText}>
-          <Link href={`blog/${slug}`}>{title}</Link>
+          <Link href={`blog/${slug}`} legacyBehavior>
+            {title}
+          </Link>
         </p>
         <Button variant={'transparent'} label="Read It" link={`blog/${slug}`} />
       </div>

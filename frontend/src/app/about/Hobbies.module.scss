@@ -1,0 +1,66 @@
+@import '../../styles/helpers.scss';
+
+.container {
+  max-width: 360px;
+  padding-inline: var(--gutter);
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  @include breakpoint(SM) {
+    max-width: $BP_SM;
+  }
+
+  @include breakpoint(MD) {
+    max-width: $BP_MD;
+  }
+
+  @include breakpoint(LG) {
+    max-width: $MAX_WIDTH_NARROW;
+    padding-inline: 0;
+  }
+}
+.title {
+  color: $CYAN;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.hobbiesContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  justify-content: center;
+  gap: 20px;
+  @include breakpoint(SM) {
+    grid-template-columns: auto auto;
+    gap: 30px;
+  }
+  @include breakpoint(SM) {
+    gap: 40px;
+  }
+}
+.imageContainer {
+  max-width: 150px;
+  @include breakpoint(SM) {
+    max-width: 200px;
+  }
+  @include breakpoint(MD) {
+    max-width: 250px;
+  }
+  @include breakpoint(LG) {
+    max-width: 300px;
+  }
+}
+.imageContainer > img {
+  border-radius: 50%;
+  border: 5px solid $CONTRAST_TO_GREY !important;
+  width: 100%;
+  height: auto;
+}
+
+.hobbyName {
+  text-align: center;
+  text-transform: lowercase;
+}

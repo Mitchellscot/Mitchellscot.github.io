@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {useRouter} from 'next/router';
+import {useRouter} from 'next/navigation';
 import {useForm} from 'react-hook-form';
 import {ContactFormFields} from '../../models/ContactFormFields';
 import styles from './ContactForm.module.scss';

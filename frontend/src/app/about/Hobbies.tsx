@@ -1,10 +1,9 @@
 import classNames from 'classnames';
-import ImageModel from '../../models/ImageModel';
 import styles from './Hobbies.module.scss';
 import headings from '../../styles/typography/Heading.module.scss';
 import text from '../../styles/typography/Text.module.scss';
 import Image from 'next/legacy/image';
-import Hobby from '../../models/Hobby';
+import Hobby from './Hobby';
 
 interface HobbiesProps {
   hobbies: Array<Hobby>;

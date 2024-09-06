@@ -1,6 +1,6 @@
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import HeaderNav from '../HeaderNav/HeaderNav';
+import LegacyHeaderNav from '../LegacyHeaderNav/LegacyHeaderNav';
 import styles from './Layout.module.scss';
 
 interface LayoutProps {
@@ -16,7 +16,7 @@ export default function LegacyLayout(props: LayoutProps) {
         <Header />
       </div>
       <div className={styles.siteNav}>
-        <HeaderNav />
+        <LegacyHeaderNav />
       </div>
       <main className={styles.siteBody}>{children}</main>
       <div className={styles.siteFooter}>
