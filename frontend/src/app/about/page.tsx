@@ -1,8 +1,8 @@
 import {Metadata} from 'next';
-import AboutContent from './AboutContent';
-import AboutHeadline from './AboutHeadline';
-import Hobbies from './Hobbies';
-import AboutPageData from './AboutPageData';
+import AboutContent from './AboutContent/AboutContent';
+import AboutHeadline from './AboutHeadline/AboutHeadline';
+import Hobbies from './Hobbies/Hobbies';
+import AboutPageData from '../../models/AboutPageData';
 import sanityClient from '../../utils/sanityClient';
 import queries from '../../constants/queries';
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: 'About Mitchell Scott - Software Engineer in Minnesota',
 };
 
-export default async function About({children}: {children: React.ReactNode}) {
+export default async function About() {
   const data = await getAboutPage();
   return (
     <>

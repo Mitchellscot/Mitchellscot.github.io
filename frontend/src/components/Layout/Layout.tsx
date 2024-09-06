@@ -4,7 +4,7 @@ import HeaderNav from '../HeaderNav/HeaderNav';
 import styles from './Layout.module.scss';
 
 interface LayoutProps {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 }
 
 export default function LegacyLayout(props: LayoutProps) {

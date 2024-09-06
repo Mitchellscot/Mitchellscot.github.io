@@ -1,7 +1,7 @@
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import LegacyHeaderNav from '../LegacyHeaderNav/LegacyHeaderNav';
-import styles from './Layout.module.scss';
+import styles from './LegacyLayout.module.scss';
 
 interface LayoutProps {
   children: JSX.Element | JSX.Element[];

@@ -5,6 +5,16 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+          ></link>
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -24,7 +34,7 @@ class MyDocument extends Document {
           ></link>
           <link rel="manifest" href="/favicon/site.webmanifest"></link>
         </Head>
-        <body>
+        <body style={{fontFamily: 'ubuntu, system-ui, sans-serif'}}>
           <Main />
           <NextScript />
         </body>

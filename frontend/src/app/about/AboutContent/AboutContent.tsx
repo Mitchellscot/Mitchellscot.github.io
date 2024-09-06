@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import ImageModel from './ImageModel';
+import ImageModel from '../../../models/ImageModel';
 import styles from './AboutContent.module.scss';
-import typography from '../../styles/typography/Text.module.scss';
+import typography from '../../../styles/typography/Text.module.scss';
 import Image from 'next/legacy/image';
 
 interface AboutContentProps {

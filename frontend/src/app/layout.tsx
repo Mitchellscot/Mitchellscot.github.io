@@ -1,27 +1,26 @@
 import {Analytics} from '@vercel/analytics/react';
-import {GoogleReCaptchaProvider} from 'react-google-recaptcha-v3';
 import {Ubuntu, Ubuntu_Mono} from 'next/font/google';
 import '../styles/index.scss';
-import Layout from '../components/LegacyLayout/LegacyLayout';
-
-export const ubuntu = Ubuntu({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-ubuntu',
-});
-export const ubuntu_mono = Ubuntu_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-ubuntu-mono',
-});
+import Layout from '../components/Layout/Layout';
 
 export const metadata = {
   title: 'Blog | Mitchell Scott',
   description: "Mitchell Scott's Software Blog",
 };
 
+const ubuntu = Ubuntu({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-ubuntu',
+});
+const ubuntu_mono = Ubuntu_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-ubuntu-mono',
+});
+
 type Props = Readonly<{
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 }>;
 
 export default function RootLayout({children}: Props) {

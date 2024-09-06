@@ -1,4 +1,4 @@
-@import '../../styles/helpers.scss';
+@import '../../../styles/helpers.scss';
 
 .container {
   max-width: 360px;
@@ -53,7 +53,8 @@
     max-width: 300px;
   }
 }
-.imageContainer > img {
+
+.imageContainer img {
   border-radius: 50%;
   border: 5px solid $CONTRAST_TO_GREY !important;
   width: 100%;
