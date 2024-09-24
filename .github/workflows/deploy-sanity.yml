@@ -13,5 +13,5 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
         with:
-          SANITY_STUDIO_CONFIG_PATH: ${{ secrets.SANITY_STUDIO_CONFIG_PATH }}
+          entryPoint: ${{ secrets.SANITY_STUDIO_CONFIG_PATH }}
           args: deploy
