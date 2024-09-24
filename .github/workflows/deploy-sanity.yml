@@ -9,9 +9,11 @@ jobs:
     name: Deploy Sanity
     steps:
       - uses: actions/checkout@v2
-      - uses: sanity-io/github-action-sanity@v0.7-alpha
+      - uses: sanity-io/github-action-sanity@v0.7
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
+          SANITY_STUDIO_CONFIG_PATH: ${{ secrets.SANITY_STUDIO_CONFIG_PATH }}
         with:
-          entryPoint: ${{ secrets.SANITY_STUDIO_CONFIG_PATH }}
           args: deploy
+      - name: Echo current working directory
+        run: echo "Current working directory: $(pwd)"
