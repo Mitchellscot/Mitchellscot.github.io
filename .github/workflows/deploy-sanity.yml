@@ -13,4 +13,4 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
         with:
-          args: backend deploy
+          args: deploy
