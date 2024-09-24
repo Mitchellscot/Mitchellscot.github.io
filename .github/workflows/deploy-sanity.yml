@@ -15,5 +15,3 @@ jobs:
           SANITY_STUDIO_CONFIG_PATH: ${{ secrets.SANITY_STUDIO_CONFIG_PATH }}
         with:
           args: deploy
-      - name: Echo current working directory
-        run: echo "Current working directory: $(pwd)"
