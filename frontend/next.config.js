@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
+  sassOptions: {
+    quietDeps: true,
+  },
   images: {
     remotePatterns: [
       {

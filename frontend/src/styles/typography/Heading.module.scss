@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../helpers.scss';
 
 @mixin heading {
@@ -9,7 +10,7 @@
 .heading1 {
   @include heading;
   @include fontSize(32);
-  line-height: (102 / 84);
+  line-height: math.div(102px, 84px);
   color: $WHITE;
 
   @include breakpoint(SM) {
@@ -28,7 +29,7 @@
 .heading2 {
   @include heading;
   @include fontSize(24);
-  line-height: (58 / 48);
+  line-height: math.div(58px, 48px);
 
   @include breakpoint(MD) {
     @include fontSize(32);
@@ -42,7 +43,7 @@
 .heading3 {
   @include heading;
   @include fontSize(18);
-  line-height: (44 / 36);
+  line-height: math.div(44px, 36px);
 
   @include breakpoint(MD) {
     @include fontSize(22);
@@ -56,7 +57,7 @@
 .blogPreview {
   @include heading;
   @include fontSize(24);
-  line-height: (58 / 48);
+  line-height: math.div(58px, 48px);
   font-family: var(--font-ubuntu-mono);
   font-weight: $FONT_WEIGHT_BOLD;
 

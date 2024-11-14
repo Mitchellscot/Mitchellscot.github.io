@@ -1,11 +1,11 @@
 'use client';
 import classNames from 'classnames';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import { ContactFormFields } from '../../../models/ContactFormFields';
+import {useRouter} from 'next/navigation';
+import {useForm} from 'react-hook-form';
+import {ContactFormFields} from '../../../models/ContactFormFields';
 import styles from './ContactForm.module.scss';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { useCallback, useEffect, useState } from 'react';
+import {useGoogleReCaptcha} from 'react-google-recaptcha-v3';
+import {useCallback, useEffect, useState} from 'react';
 import Button from '../../../components/Button/Button';
 import ContactFormInputError from '../ContactFormInputError/ContactFormInputError';
 import RegEx from '../../../constants/RegEx';
@@ -18,8 +18,8 @@ export default function ContactForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<ContactFormFields>({ mode: 'onBlur' });
+    formState: {errors},
+  } = useForm<ContactFormFields>({mode: 'onBlur'});
   const nameInputContainer = classNames(styles.textInputContainer, {
     [styles.inputError]: Boolean(errors.name),
   });
@@ -32,7 +32,7 @@ export default function ContactForm() {
   });
   const thanksText = classNames(typography.textXl, styles.thanksText);
 
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const {executeRecaptcha} = useGoogleReCaptcha();
   const handleReCaptchaVerify = useCallback(async () => {
     if (!executeRecaptcha) {
       return;
@@ -60,7 +60,7 @@ export default function ContactForm() {
         method: 'POST',
       });
       if (!response.ok) {
-        //TODO: Handle a bad response
+        console.log(response);
         alert(
           'there was a problem sending a message. Just email me at mitchellscott at me dot com.'
         );
