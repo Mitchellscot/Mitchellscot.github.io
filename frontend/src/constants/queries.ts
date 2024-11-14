@@ -80,6 +80,6 @@ export const queries = {
     "tags":*[_type == "tag"] | order(tag){
       tag,
       "count": count(*[_type == "blogEntry" && references(^._id)])
-  }}`),
+  }}`)
 };
 export default queries;

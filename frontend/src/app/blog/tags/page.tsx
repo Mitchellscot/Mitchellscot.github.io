@@ -4,21 +4,24 @@ import { Tag, TagsPageData } from '../../../models/TagsPageData';
 import Link from 'next/link';
 import classNames from 'classnames';
 import typography from '../../../styles/typography/Text.module.scss';
-import sanityClient from '../../../utils/sanityClient';
+
 import queries from '../../../constants/queries';
+import { fetchSanityData } from '../../../utils/sanityClient';
 
 export const metadata: Metadata = {
     title: 'Tags',
     description: "Search This Blog.",
 };
 
-async function getTagsPageData(): Promise<TagsPageData> {
-    const data: TagsPageData = await sanityClient.fetch(queries.GetTagsPage);
+async function getTagsPageData(): Promise<TagsPageData | null> {
+    const data = await fetchSanityData<TagsPageData>(queries.GetTagsPage);
     return data;
 }
 
 export default async function Tags() {
     const tagsPageData = await getTagsPageData();
+    if (!tagsPageData)
+        return null; //TODO: 404 page
     const tagText = classNames(styles.tag, typography.textLg);
     const instructionText = classNames(styles.instructions, typography.textLg);
     return (

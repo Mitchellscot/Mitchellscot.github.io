@@ -3,11 +3,12 @@ import AboutContent from './AboutContent/AboutContent';
 import AboutHeadline from './AboutHeadline/AboutHeadline';
 import Hobbies from './Hobbies/Hobbies';
 import AboutPageData from '../../models/AboutPageData';
-import sanityClient from '../../utils/sanityClient';
-import queries from '../../constants/queries';
 
-async function getAboutPage(): Promise<AboutPageData> {
-  const data: AboutPageData = await sanityClient.fetch(queries.AboutPage);
+import queries from '../../constants/queries';
+import { fetchSanityData } from '../../utils/sanityClient';
+
+async function getAboutPage(): Promise<AboutPageData | null> {
+  const data = await fetchSanityData<AboutPageData>(queries.AboutPage);
   return data;
 }
 
@@ -18,6 +19,9 @@ export const metadata: Metadata = {
 
 export default async function About() {
   const data = await getAboutPage();
+  if (!data)
+    return null; //TODO: 404 page
+
   return (
     <>
       <AboutHeadline title={data.title} profilePicture={data.profilePicture} />

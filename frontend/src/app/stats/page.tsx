@@ -1,4 +1,3 @@
-import {getStatsPage} from '../../utils/static-props';
 import headings from '../../styles/typography/Heading.module.scss';
 import styles from './page.module.scss';
 import classNames from 'classnames';

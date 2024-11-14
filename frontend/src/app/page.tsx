@@ -1,25 +1,31 @@
 import { Metadata } from 'next';
 import BlogList from '../components/BlogList/BlogList';
 import HomePageData from '../models/HomePageData';
-import sanityClient from '../utils/sanityClient';
+import { fetchSanityData } from '../utils/sanityClient';
 import queries from '../constants/queries';
+import Layout from '../components/Layout/Layout';
 
 export const metadata: Metadata = {
     title: 'Mitchell Scott',
     description: "Mitchell Scott's Software Engineering Blog",
 };
 
-async function getHomePageData(): Promise<HomePageData> {
-    const data: HomePageData = await sanityClient.fetch(queries.HomePage);
+async function getHomePageData(): Promise<HomePageData | null> {
+    const data = await fetchSanityData<HomePageData>(queries.HomePage);
     return data;
 }
 
 export default async function Home() {
     const data = await getHomePageData();
+
+    if (!data)
+        return null;
     return (
-        <BlogList
-            list={data.blogList}
-            totalCount={data.totalCount}
-        />
+        <Layout path={'/'}>
+            <BlogList
+                list={data.blogList}
+                totalCount={data.totalCount}
+            />
+        </Layout>
     );
 }
