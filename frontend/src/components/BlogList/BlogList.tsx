@@ -1,7 +1,7 @@
 'use client';
-import {createClient} from '@sanity/client';
-import {useState} from 'react';
-import {getMoreBlogs} from '../../constants/queryHelpers';
+import { createClient } from 'next-sanity';
+import { useState } from 'react';
+import { getMoreBlogs } from '../../constants/queryHelpers';
 import BlogPreviewModel from '../../models/BlogPreview';
 import BlogPreview from '../BlogPreview/BlogPreview';
 import Button from '../Button/Button';
@@ -10,7 +10,7 @@ import styles from './BlogList.module.scss';
 //change this to production when ready
 const publicClient = createClient({
   projectId: 'zdpjfpgh',
-  dataset: process.env.SANITY_DATASET,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   apiVersion: '2022-04-18',
   useCdn: true,
 });
@@ -20,7 +20,7 @@ interface BlogListProps {
   totalCount: number;
 }
 
-export default function BlogList({list, totalCount}: BlogListProps) {
+export default function BlogList({ list, totalCount }: BlogListProps) {
   const [blogs, setBlogs] = useState(list);
   const [lastId, setLastId] = useState(blogs[blogs.length - 1]?._id);
   const [lastPublishDate, setLastPublishDate] = useState(

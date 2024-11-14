@@ -1,4 +1,4 @@
-import {Metadata} from 'next';
+import { Metadata } from 'next';
 import AboutContent from './AboutContent/AboutContent';
 import AboutHeadline from './AboutHeadline/AboutHeadline';
 import Hobbies from './Hobbies/Hobbies';
