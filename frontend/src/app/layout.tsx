@@ -1,5 +1,5 @@
-import { Analytics } from '@vercel/analytics/react';
-import { Ubuntu, Ubuntu_Mono } from 'next/font/google';
+import {Analytics} from '@vercel/analytics/react';
+import {Ubuntu, Ubuntu_Mono} from 'next/font/google';
 import '../styles/index.scss';
 import Layout from '../components/Layout/Layout';
 
@@ -23,7 +23,7 @@ type Props = Readonly<{
   children: React.ReactNode;
 }>;
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({children}: Props) {
   return (
     <html lang="en" className={`${ubuntu.variable} ${ubuntu_mono.variable}`}>
       <head>
@@ -46,9 +46,7 @@ export default function RootLayout({ children }: Props) {
         ></link>
         <link rel="manifest" href="/favicon/site.webmanifest"></link>
       </head>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
       <Analytics />
     </html>
   );

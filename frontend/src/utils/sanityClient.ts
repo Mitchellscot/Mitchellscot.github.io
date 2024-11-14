@@ -1,12 +1,14 @@
-import { type SanityClient } from 'next-sanity';
-import { createClient } from 'next-sanity';
-import { draftMode } from 'next/headers';
-import { cache } from 'react';
+import {type SanityClient} from 'next-sanity';
+import {createClient} from 'next-sanity';
+import {draftMode} from 'next/headers';
+import {cache} from 'react';
 
 type FetchQueryParams = Record<string, string>;
 
-export async function fetchSanityData<T>(query: string, params?: FetchQueryParams): Promise<T | null> {
-
+export async function fetchSanityData<T>(
+  query: string,
+  params?: FetchQueryParams
+): Promise<T | null> {
   try {
     const isPreview = (await draftMode()).isEnabled; //use this another time. Cookie based draft mode.
     const result = await getCachedClient(false)<T>(query, params ? params : {});
@@ -32,7 +34,6 @@ export function getClient(preview: boolean = false): SanityClient {
     token: token,
     ignoreBrowserTokenWarning: true,
     useCdn: false,
-    perspective: preview ? 'previewDrafts' : 'published'
-  })
+    perspective: preview ? 'previewDrafts' : 'published',
+  });
 }
-

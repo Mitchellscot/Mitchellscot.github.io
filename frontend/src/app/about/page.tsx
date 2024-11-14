@@ -1,11 +1,11 @@
-import { Metadata } from 'next';
+import {Metadata} from 'next';
 import AboutContent from './AboutContent/AboutContent';
 import AboutHeadline from './AboutHeadline/AboutHeadline';
 import Hobbies from './Hobbies/Hobbies';
 import AboutPageData from '../../models/AboutPageData';
 
 import queries from '../../constants/queries';
-import { fetchSanityData } from '../../utils/sanityClient';
+import {fetchSanityData} from '../../utils/sanityClient';
 
 async function getAboutPage(): Promise<AboutPageData | null> {
   const data = await fetchSanityData<AboutPageData>(queries.AboutPage);
@@ -19,8 +19,7 @@ export const metadata: Metadata = {
 
 export default async function About() {
   const data = await getAboutPage();
-  if (!data)
-    return null; //TODO: 404 page
+  if (!data) return null; //TODO: 404 page
 
   return (
     <>

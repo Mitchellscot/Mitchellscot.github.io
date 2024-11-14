@@ -5,8 +5,8 @@ import styles from './page.module.scss';
 import headings from '../../styles/typography/Heading.module.scss';
 
 import queries from '../../constants/queries';
-import { Metadata } from 'next';
-import { fetchSanityData } from '../../utils/sanityClient';
+import {Metadata} from 'next';
+import {fetchSanityData} from '../../utils/sanityClient';
 
 export const metadata: Metadata = {
   title: 'Projects | Mitchell Scott',
@@ -20,8 +20,7 @@ async function getProjectsPage(): Promise<ProjectsPageData | null> {
 
 export default async function Projects() {
   const data = await getProjectsPage();
-  if (!data)
-    return null; //TODO: 404 page
+  if (!data) return null; //TODO: 404 page
   const titleText = classNames(headings.heading2, styles.title);
   return (
     <>

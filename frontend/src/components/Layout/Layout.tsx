@@ -9,7 +9,7 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
-  const { children, path } = props;
+  const {children, path} = props;
 
   return (
     <div className={styles.site}>

@@ -1,4 +1,4 @@
-import { defineQuery } from 'next-sanity'
+import {defineQuery} from 'next-sanity';
 
 export const queries = {
   AboutPage: defineQuery(`*[_type == "aboutPage"] | order(_updatedAt desc)[0]{
@@ -69,17 +69,20 @@ export const queries = {
     "metaDescription": seo.metaDescription,
     title
   }`),
-  ContactPage: defineQuery(`*[_type == "contactPage"] | order(_updatedAt desc)[0]{
+  ContactPage:
+    defineQuery(`*[_type == "contactPage"] | order(_updatedAt desc)[0]{
     "pageTitle": seo.pageTitle,
     "metaDescription": seo.metaDescription,
     title
   }`),
-  GetAllBlogSlugs: defineQuery(`*[_type == "blogEntry"] | order(slug.current)[].slug.current`),
+  GetAllBlogSlugs: defineQuery(
+    `*[_type == "blogEntry"] | order(slug.current)[].slug.current`
+  ),
   GetAllTags: defineQuery(`*[_type == "tag"].tag`),
   GetTagsPage: defineQuery(`{
     "tags":*[_type == "tag"] | order(tag){
       tag,
       "count": count(*[_type == "blogEntry" && references(^._id)])
-  }}`)
+  }}`),
 };
 export default queries;

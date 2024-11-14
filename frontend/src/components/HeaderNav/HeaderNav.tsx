@@ -5,7 +5,7 @@ import styles from './HeaderNav.module.scss';
 
 type PathOptions = '/' | 'blog' | 'projects' | 'stats' | 'about' | 'contact';
 
-export default async function HeaderNav({ path = '/' }) {
+export default async function HeaderNav({path = '/'}) {
   const pathName = path;
   const navItem = classNames(styles.navItem, text.textMd);
   const navItemActive = classNames(styles.navItemActive, text.textMd);
