@@ -1,11 +1,12 @@
 $WHITE: #ffffff;
-$CYAN: #00ffee;
+$CYAN: #00ffee; //primary
 $CYAN_2: #00aa9f;
 $CYAN_3: #00554f;
-$ORANGE: #ff8800;
+$ORANGE: #ff8800; //secondary
 $BLUE_CONTRAST_TO_ORANGE: #0077ff;
 $BLUE: #2200ff;
-$RED: #ff0011;
+$RED: #ff0011; //contrast to primary
+
 $PURPLE: #ee00ff;
 $VIOLET: #6e00ff;
 $YELLOW: #ffee00;
@@ -33,3 +34,10 @@ $MAX_WIDTH_NARROW: 900px;
 $BASE_FONT_SIZE: 16;
 $Z_INDEX_HEADER: 2;
 $Z_INDEX_MODAL: 3;
+
+//analogous to cyan, to use when no contrast is needed:
+//blue: #0091FF
+//green: #00FF6E
+//analogous to orange, to use when no contrast is needed:
+//yellow: #F6FF00
+//red: #FF0800

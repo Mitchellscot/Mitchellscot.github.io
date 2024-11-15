@@ -28,6 +28,6 @@
 .noMoreBlogs {
   color: $CYAN;
   text-align: center;
-  font-family: ubuntu mono;
+  font-family: var(--font-ubuntu-mono);
   @include fontSize(24);
 }

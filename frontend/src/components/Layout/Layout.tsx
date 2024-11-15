@@ -4,11 +4,12 @@ import HeaderNav from '../HeaderNav/HeaderNav';
 import styles from './Layout.module.scss';
 
 interface LayoutProps {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
+  path: string;
 }
 
 export default function Layout(props: LayoutProps) {
-  const {children} = props;
+  const {children, path} = props;
 
   return (
     <div className={styles.site}>
@@ -16,7 +17,7 @@ export default function Layout(props: LayoutProps) {
         <Header />
       </div>
       <div className={styles.siteNav}>
-        <HeaderNav />
+        <HeaderNav path={path} />
       </div>
       <main className={styles.siteBody}>{children}</main>
       <div className={styles.siteFooter}>

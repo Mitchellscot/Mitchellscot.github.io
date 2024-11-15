@@ -42,7 +42,7 @@
 }
 .tag {
   color: $CYAN;
-  font-family: ubuntu mono;
+  font-family: var(--font-ubuntu-mono);
   &::before {
     content: '#';
   }

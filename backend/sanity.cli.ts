@@ -5,4 +5,5 @@ export default defineCliConfig({
     projectId: 'zdpjfpgh',
     dataset: 'development',
   },
+  autoUpdates: true,
 })

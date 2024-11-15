@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../helpers.scss';
 
 @mixin text {
@@ -7,7 +8,7 @@
 .textXl {
   @include text;
   @include fontSize(24);
-  line-height: (64 / 48);
+  line-height: math.div(64px, 48px);
 
   @include breakpoint(MD) {
     @include fontSize(30);
@@ -21,7 +22,7 @@
 .textLg {
   @include text;
   @include fontSize(18);
-  line-height: (52 / 36);
+  line-height: math.div(52px, 36px);
 
   @include breakpoint(MD) {
     @include fontSize(22);
@@ -35,7 +36,7 @@
 .textMd {
   @include text;
   @include fontSize(16);
-  line-height: (44 / 24);
+  line-height: math.div(44px, 24px);
 
   @include breakpoint(MD) {
     @include fontSize(18);
@@ -49,7 +50,7 @@
 .textSm {
   @include text;
   @include fontSize(16);
-  line-height: (32 / 20);
+  line-height: math.div(32px, 20px);
 
   @include breakpoint(MD) {
     @include fontSize(18);
@@ -63,7 +64,7 @@
 .textXs {
   @include text;
   @include fontSize(16);
-  line-height: (22 / 18);
+  line-height: math.div(22px, 18px);
 
   @include breakpoint(MD) {
     @include fontSize(16);

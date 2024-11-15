@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import text from '../../styles/typography/Text.module.scss';
 import styles from './Footer.module.scss';

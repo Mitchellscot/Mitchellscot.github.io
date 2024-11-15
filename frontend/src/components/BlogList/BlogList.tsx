@@ -1,18 +1,9 @@
-import {createClient} from '@sanity/client';
+'use client';
 import {useState} from 'react';
-import {getMoreBlogs} from '../../constants/queryHelpers';
 import BlogPreviewModel from '../../models/BlogPreview';
 import BlogPreview from '../BlogPreview/BlogPreview';
 import Button from '../Button/Button';
 import styles from './BlogList.module.scss';
-
-//change this to production when ready
-const publicClient = createClient({
-  projectId: 'zdpjfpgh',
-  dataset: process.env.SANITY_DATASET,
-  apiVersion: '2022-04-18',
-  useCdn: true,
-});
 
 interface BlogListProps {
   list: Array<BlogPreviewModel>;
@@ -25,14 +16,18 @@ export default function BlogList({list, totalCount}: BlogListProps) {
   const [lastPublishDate, setLastPublishDate] = useState(
     blogs[blogs.length - 1]?.publishDate
   );
+  const [disabled, setDisabled] = useState(false);
 
   async function handleClick() {
-    const newBlogs: BlogListProps = await publicClient.fetch<BlogListProps>(
-      getMoreBlogs(lastPublishDate, lastId)
-    );
+    setDisabled(true);
+    const url = `/api/blogs?lastId=${lastId}&lastPublishDate=${lastPublishDate}`;
+    const newBlogs = (await fetch(url, {method: 'GET'}).then((res) =>
+      res.json()
+    )) as BlogListProps;
     setLastId(newBlogs.list[newBlogs.list.length - 1]?._id);
     setLastPublishDate(newBlogs.list[newBlogs.list.length - 1]?.publishDate);
     setBlogs([...blogs, ...newBlogs.list]);
+    setDisabled(false);
   }
 
   return (
@@ -48,6 +43,7 @@ export default function BlogList({list, totalCount}: BlogListProps) {
             variant={'orange'}
             arrowOptions={'none'}
             onClick={handleClick}
+            disabled={disabled}
           />
         ) : (
           <div className={styles.buttonContainer}>

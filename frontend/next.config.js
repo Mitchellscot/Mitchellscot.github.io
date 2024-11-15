@@ -2,8 +2,17 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
+  sassOptions: {
+    quietDeps: true,
+  },
   images: {
-    domains: ['cdn.sanity.io'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '**',
+      },
+    ],
   },
 };
 

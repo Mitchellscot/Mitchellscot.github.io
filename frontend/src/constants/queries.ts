@@ -1,5 +1,7 @@
+import {defineQuery} from 'next-sanity';
+
 export const queries = {
-  AboutPage: `*[_type == "aboutPage"] | order(_updatedAt desc)[0]{
+  AboutPage: defineQuery(`*[_type == "aboutPage"] | order(_updatedAt desc)[0]{
     "pageTitle": seo.pageTitle,
     "metaDescription": seo.metaDescription,
      title,
@@ -25,8 +27,8 @@ export const queries = {
  "width": image.asset->metadata.dimensions.width,
  "alt": altText
 }}
-}`,
-  HomePage: `*[_type == "blogPage"] |
+}`),
+  HomePage: defineQuery(`*[_type == "blogPage"] |
     order(_updatedAt desc)[0]{
     "pageTitle": seo.pageTitle,
     "metaDescription": seo.metaDescription,
@@ -40,8 +42,8 @@ export const queries = {
           "tags": tags[]->tag
      },
      "totalCount": count(*[_type == "blogEntry"])
-  }`,
-  ProjectsPage: `*[_type == "projectsPage"] |
+  }`),
+  ProjectsPage: defineQuery(`*[_type == "projectsPage"] |
   order(_updatedAt desc)[0]{
     "pageTitle": seo.pageTitle,
     "metaDescription": seo.metaDescription,
@@ -61,23 +63,26 @@ export const queries = {
       link
     }
   }
-}`,
-  StatsPage: `*[_type == "statsPage"] | order(_updatedAt desc)[0]{
+}`),
+  StatsPage: defineQuery(`*[_type == "statsPage"] | order(_updatedAt desc)[0]{
     "pageTitle": seo.pageTitle,
     "metaDescription": seo.metaDescription,
     title
-  }`,
-  ContactPage: `*[_type == "contactPage"] | order(_updatedAt desc)[0]{
+  }`),
+  ContactPage:
+    defineQuery(`*[_type == "contactPage"] | order(_updatedAt desc)[0]{
     "pageTitle": seo.pageTitle,
     "metaDescription": seo.metaDescription,
     title
-  }`,
-  GetAllBlogSlugs: `*[_type == "blogEntry"] | order(slug.current)[].slug.current`,
-  GetAllTags: `*[_type == "tag"].tag`,
-  GetTagsPage: `{
+  }`),
+  GetAllBlogSlugs: defineQuery(
+    `*[_type == "blogEntry"] | order(slug.current)[].slug.current`
+  ),
+  GetAllTags: defineQuery(`*[_type == "tag"].tag`),
+  GetTagsPage: defineQuery(`{
     "tags":*[_type == "tag"] | order(tag){
       tag,
       "count": count(*[_type == "blogEntry" && references(^._id)])
-  }}`,
+  }}`),
 };
 export default queries;

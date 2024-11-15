@@ -31,6 +31,10 @@ export function getBlogPreviewsByTag(tag: string): string {
    "totalCount": count(*[_type == "blogEntry" && "${tag}" in tags[]->tag])
 }`;
 }
+export function getBlogMetadata(slug: string): string {
+  return `*[_type == "blogEntry" && slug.current =="${slug}"][0]{'title': seo.pageTitle, 'metaDescription': seo.metaDescription}`;
+}
+
 export function generateBlogEntryQuery(slug: string): string {
   return `*[_type == "blogEntry" && slug.current ==
   "${slug}"] |
