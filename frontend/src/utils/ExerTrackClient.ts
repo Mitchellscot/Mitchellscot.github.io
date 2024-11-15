@@ -6,10 +6,10 @@ import {AxiosRequestConfig} from 'axios';
 const baseUrl = process.env.EXERTRACK_BASE_URL;
 const token = process.env.EXERTRACK_API_TOKEN;
 
-export async function GetExerTrackData<ExerTrackResponse>(): Promise<
-  APIResponse<ExerTrackResponse, HttpErrorResponseModel>
-> {
-  const url = `${baseUrl}${'/activities'}`;
+export async function GetExerTrackData<
+  ExerTrackResponse,
+>(): Promise<ExerTrackResponse | null> {
+  const url = `${baseUrl}${'/api/activities'}`;
 
   const config: AxiosRequestConfig = {
     headers: {
@@ -17,11 +17,18 @@ export async function GetExerTrackData<ExerTrackResponse>(): Promise<
       'Content-Type': 'application/json',
     },
   };
-  const response = await http.get<ExerTrackResponse, HttpErrorResponseModel>(
+  const response = await http.get<ExerTrackResponse, null>(
     url,
     undefined,
     config
   );
-  console.log(JSON.stringify(response.data));
-  return response;
+  let data = response?.data;
+  if (response.error || !data) {
+    //read the contents of /Resources/exerTrackResponse.json
+    const staticData =
+      require('/Resources/exerTrackResponse.json') as ExerTrackResponse;
+    data = staticData;
+  }
+
+  return data;
 }
