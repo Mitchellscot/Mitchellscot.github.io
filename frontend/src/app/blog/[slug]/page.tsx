@@ -1,6 +1,6 @@
 import {PortableText} from '@portabletext/react';
 import classNames from 'classnames';
-import {Metadata} from 'next';
+import {Metadata, ResolvingMetadata} from 'next';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 import Button from '../../../components/Button/Button';
@@ -8,7 +8,6 @@ import components from '../../../components/PortableText/PortableText';
 import styles from '../../../styles/pages/BlogEntry.module.scss';
 import headers from '../../../styles/typography/Heading.module.scss';
 import typography from '../../../styles/typography/Text.module.scss';
-import {PageParams, SlugParam} from '../../../models/NextTypes';
 import {fetchSanityData, getCachedClient} from '../../../utils/sanityClient';
 import {
   generateBlogEntryQuery,
@@ -18,15 +17,19 @@ import BlogEntryData from '../../../models/BlogEntryData';
 import queries from '../../../constants/queries';
 import getMetadata from '../../../utils/getBlogMetaData';
 
-type PageProps = PageParams<SlugParam>;
+type BlogProps = {
+  params: Promise<{slug: string}>;
+  searchParams: Promise<{[key: string]: string | string[] | undefined}>;
+};
 
-export async function generateMetadata({params}: PageProps): Promise<Metadata> {
-  const {slug} = await params;
+export async function generateMetadata(
+  {params, searchParams}: BlogProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = await params.then((p) => p.slug);
   console.log('mitchell slug', slug);
   return getMetadata(slug);
 }
-
-export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const posts = await getCachedClient(false)<string[]>(queries.GetAllBlogSlugs);
@@ -36,8 +39,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogEntry({params}: PageProps) {
-  const {slug} = await params;
+export default async function BlogEntry({params}: BlogProps) {
+  const slug = (await params).slug;
   const data = await fetchSanityData<BlogEntryData>(
     generateBlogEntryQuery(slug)
   );

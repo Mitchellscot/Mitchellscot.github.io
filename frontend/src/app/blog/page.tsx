@@ -4,13 +4,24 @@ import queries from '../../constants/queries';
 import {getBlogPreviewsByTag} from '../../constants/queryHelpers';
 import HomePageData from '../../models/HomePageData';
 import {fetchSanityData} from '../../utils/sanityClient';
-import {PageParams, SlugParam} from '../../models/NextTypes';
 import Layout from '../../components/Layout/Layout';
 
 //Next does not allow running query parameters on the home URL
 //SO I had to make a seperate page /blog so that the url parameters work properly
 //it's basically a copy of the home page, but you can run queries on it.
 //Also, I didn't want the homepage to redirect to /blog - I wanted a clean looking URL - mitchellscott.me
+
+export interface PageParams<
+  P = undefined,
+  S = Record<string, string | string[] | undefined>,
+> {
+  params: P;
+  searchParams: S;
+}
+
+export interface SlugParam {
+  slug: string;
+}
 
 async function getHomePageData(): Promise<HomePageData | null> {
   const data = await fetchSanityData<HomePageData>(queries.HomePage);
@@ -36,9 +47,12 @@ const getTaggedBlogPreviews = async (
   return data;
 };
 
-type PageProps = PageParams<SlugParam, {tag?: string}>;
+type BlogPageProps = {
+  params: Promise<{id: string}>;
+  searchParams: Promise<{[key: string]: string | string[] | undefined}>;
+};
 
-export default async function Blog({searchParams}: PageProps) {
+export default async function Blog({searchParams}: BlogPageProps) {
   const {tag} = await searchParams;
   let data;
   if (tag) data = await getTaggedBlogPreviews(tag);
