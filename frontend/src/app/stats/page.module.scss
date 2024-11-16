@@ -17,12 +17,15 @@
     max-width: $MAX_WIDTH_NARROW;
   }
 }
+
 .title {
   text-align: center;
   text-transform: uppercase;
   color: $WHITE;
 }
+
 .timeButtonContainer {
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 20px;
 }

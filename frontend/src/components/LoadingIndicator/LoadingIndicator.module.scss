@@ -1,0 +1,98 @@
+@import '../../styles/helpers.scss';
+
+.loadingIndicator_fullScreen {
+  position: absolute;
+  inset: -20px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingContainer_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.loadingIndicator_container {
+  display: block;
+}
+
+.wave_container {
+  display: flex;
+  align-items: flex-end;
+  padding-top: 20px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: $WHITE;
+  animation: wave 0.8s ease-in-out infinite;
+}
+
+.circle2 {
+  background-color: $CYAN;
+  animation-delay: 0.1s;
+}
+
+.circle3 {
+  background-color: $CYAN_2;
+  animation-delay: 0.2s;
+}
+
+.circle4 {
+  background-color: $CYAN_3;
+  animation-delay: 0.3s;
+}
+
+.loadingIndicator_secondary .circle2 {
+  background-color: $ORANGE;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Small Version */
+.loadingIndicator_small {
+  .circle {
+    width: 10px;
+    height: 10px;
+    margin: 0 2.5px;
+    animation: wave-small 0.8s ease-in-out infinite;
+  }
+
+  .circle2 {
+    animation-delay: 0.1s;
+  }
+
+  .circle3 {
+    animation-delay: 0.2s;
+  }
+
+  .circle4 {
+    animation-delay: 0.3s;
+  }
+}
+
+@keyframes wave-small {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
