@@ -6,7 +6,6 @@ import Button from '../../components/Button/Button';
 import {baseEnv} from '../../utils/environment';
 import http from '../../utils/http';
 import {useSearchParams} from 'next/navigation';
-import {APIResponse} from '../../models/API';
 import {
   ChartInformation,
   ExerTrackResponse,
@@ -14,270 +13,31 @@ import {
 } from '../../models/ExerTrackResponse';
 import {useEffect, useRef, useState} from 'react';
 import Chart from 'chart.js/auto';
-import {timeEnd} from 'console';
 import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator';
-import {set} from 'react-hook-form';
-//import StatsPagePlaceHolderData from '../../models/StatsPagePlaceHolderData';
-
-type Time = 'month' | 'year' | 'all';
-type Tag = 'run' | 'bike' | 'swim' | 'other' | 'all';
-
-function setSportStatInformation(
-  data: ExerTrackResponse,
-  tag: Tag,
-  time: Time
-): StatsInformation {
-  switch (tag) {
-    case 'run':
-      return time === 'month'
-        ? data.running.stats.thisMonth
-        : time === 'year'
-          ? data.running.stats.pastYear
-          : data.running.stats.allTime;
-    case 'bike':
-      return time === 'month'
-        ? data.cycling.stats.thisMonth
-        : time === 'year'
-          ? data.cycling.stats.pastYear
-          : data.cycling.stats.allTime;
-    case 'swim':
-      return time === 'month'
-        ? data.swimming.stats.thisMonth
-        : time === 'year'
-          ? data.swimming.stats.pastYear
-          : data.swimming.stats.allTime;
-    case 'other':
-      return time === 'month'
-        ? data.other.stats.thisMonth
-        : time === 'year'
-          ? data.other.stats.pastYear
-          : data.other.stats.allTime;
-    default:
-      return time === 'month'
-        ? data.running.stats.thisMonth
-        : time === 'year'
-          ? data.running.stats.pastYear
-          : data.running.stats.allTime;
-  }
-}
-interface AllSportsChartInformation {
-  labels: string[] | undefined;
-  datasets: {
-    label: string;
-    data: number[];
-    backgroundColor: string;
-    borderColor: string;
-    borderWidth: number;
-    stack?: string;
-  }[];
-}
-function getAllTimeSportChartData(data: ExerTrackResponse, tag: Tag): number[] {
-  const longestContinuousYearlyData = data.running.charts.allTime.labels;
-  switch (tag) {
-    case 'run':
-      return data.running.charts.allTime.data;
-    case 'bike':
-      return data.cycling.charts.allTime.data;
-    case 'swim':
-      return data.swimming.charts.allTime.data.map(
-        (distance) => Math.round(distance * 0.000568182),
-        1
-      );
-    case 'other':
-      return data.other.charts.allTime.data;
-    default:
-      return data.running.charts.allTime.data;
-  }
-}
-function setAllSportChartInformation(
-  data: ExerTrackResponse
-): AllSportsChartInformation {
-  const annualChartLabels = data.running.charts.allTime.labels.map((label) =>
-    label.toString()
-  );
-  const runChartInformation = getAllTimeSportChartData(data, 'run');
-  const bikeChartInformation = getAllTimeSportChartData(data, 'bike');
-  const swimChartInformation = getAllTimeSportChartData(data, 'swim');
-  return {
-    labels: annualChartLabels,
-    datasets: [
-      {
-        label: 'Run',
-        data: runChartInformation,
-        backgroundColor: '#ff0011',
-        borderColor: '#ff0011',
-        borderWidth: 1,
-        stack: 'Stack 0',
-      },
-      {
-        label: 'Bike',
-        data: bikeChartInformation,
-        backgroundColor: '#ffee00',
-        borderColor: '#ffee00',
-        borderWidth: 1,
-        stack: 'Stack 0',
-      },
-      {
-        label: 'Swim',
-        data: swimChartInformation,
-        backgroundColor: '#2200ff',
-        borderColor: '#2200ff',
-        borderWidth: 1,
-        stack: 'Stack 0',
-      },
-    ],
-  };
-}
-function setSportSpecificChartInformation(
-  data: ExerTrackResponse,
-  tag: Tag,
-  time: Time
-): ChartInformation {
-  switch (tag) {
-    case 'run':
-      return time === 'month'
-        ? data.running.charts.thisMonth
-        : time === 'year'
-          ? data.running.charts.pastYear
-          : data.running.charts.allTime;
-    case 'bike':
-      return time === 'month'
-        ? data.cycling.charts.thisMonth
-        : time === 'year'
-          ? data.cycling.charts.pastYear
-          : data.cycling.charts.allTime;
-    case 'swim':
-      return time === 'month'
-        ? data.swimming.charts.thisMonth
-        : time === 'year'
-          ? data.swimming.charts.pastYear
-          : data.swimming.charts.allTime;
-    case 'other':
-      return time === 'month'
-        ? data.other.charts.thisMonth
-        : time === 'year'
-          ? data.other.charts.pastYear
-          : data.other.charts.allTime;
-    default:
-      return time === 'month'
-        ? data.running.charts.thisMonth
-        : time === 'year'
-          ? data.running.charts.pastYear
-          : data.running.charts.allTime;
-  }
-}
-function convertMonthNumbersToNames(months: number[]): string[] {
-  return months.map((month) => {
-    switch (month) {
-      case 1:
-        return 'Jan';
-      case 2:
-        return 'Feb';
-      case 3:
-        return 'Mar';
-      case 4:
-        return 'Apr';
-      case 5:
-        return 'May';
-      case 6:
-        return 'Jun';
-      case 7:
-        return 'Jul';
-      case 8:
-        return 'Aug';
-      case 9:
-        return 'Sep';
-      case 10:
-        return 'Oct';
-      case 11:
-        return 'Nov';
-      case 12:
-        return 'Dec';
-      default:
-        return '';
-    }
-  });
-}
-
-// $WHITE: #ffffff;
-// $CYAN: #00ffee; //primary
-// $CYAN_2: #00aa9f;
-// $CYAN_3: #00554f;
-// $ORANGE: #ff8800; //secondary
-// $BLUE_CONTRAST_TO_ORANGE: #0077ff;
-// $BLUE: #2200ff;
-// $RED: #ff0011; //contrast to primary
-//$YELLOW: #ffee00;
-
-function getChartBarColor(tag: Tag): string {
-  switch (tag) {
-    case 'run':
-      return '#ff0011';
-    case 'bike':
-      return '#ffee00';
-    case 'swim':
-      return '#2200ff';
-    case 'other':
-      return '#2200ff';
-    default:
-      return '#00ffee';
-  }
-}
-function displayChartTitleByTagAndTime(tag: Tag, time: Time): string {
-  switch (tag) {
-    case 'run':
-      return time === 'month'
-        ? 'Run Distance This Month (miles)'
-        : time === 'year'
-          ? 'Run Distance Past Year (miles)'
-          : 'Run Distance All Time (miles)';
-    case 'bike':
-      return time === 'month'
-        ? 'Bike Distance This Month (miles)'
-        : time === 'year'
-          ? 'Bike Distance Past Year (miles)'
-          : 'Bike Distance All Time (miles)';
-    case 'swim':
-      return time === 'month'
-        ? 'Swim Distance This Month (yards)'
-        : time === 'year'
-          ? 'Swim Distance Past Year (yards)'
-          : 'Swim Distance All Time (yards)';
-    case 'other':
-      return time === 'month'
-        ? 'Strength Training This Month (hours)'
-        : time === 'year'
-          ? 'Strength Training Past Year (hours)'
-          : 'Strength Training All Time (hours)';
-    default:
-      return 'Distance in Miles';
-  }
-}
-function getMetricByTag(tag: Tag): string {
-  switch (tag) {
-    case 'run':
-      return 'Miles';
-    case 'bike':
-      return 'Miles';
-    case 'swim':
-      return 'Yards';
-    case 'other':
-      return 'Hours';
-    default:
-      return 'Distance';
-  }
-}
+import type Sport from '../../models/Sport';
+import type Time from '../../models/Time';
+import {
+  displayChartTitleByTagAndTime,
+  setSportStatInformation,
+  getAllTimeSportChartData,
+  setAllSportChartInformation,
+  setSportSpecificChartInformation,
+  convertMonthNumbersToNames,
+  getMetricBySport,
+  getChartBarColor,
+} from '../../utils/chartUtils';
 
 export default function Stats() {
-  const [tag, setTag] = useState<Tag>('all');
+  const [sport, setSport] = useState<Sport>('all');
   const [time, setTime] = useState<Time>('all');
   const [data, setData] = useState<ExerTrackResponse | null>(null);
   const [chart, setChart] = useState<Chart | null>(null);
+  const [pieChart, setPieChart] = useState<Chart | null>(null);
   const [pageLoading, setPageLoading] = useState<boolean>(true);
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    setTag((searchParams.get('tag') as Tag) ?? 'all');
+    setSport((searchParams.get('sport') as Sport) ?? 'all');
     setTime((searchParams.get('time') as Time) ?? 'all');
   }, [searchParams]);
 
@@ -298,16 +58,19 @@ export default function Stats() {
 
     if (chart) chart.destroy();
 
-    const ctx = document.getElementById(
-      `${tag}-${time}`
+    const mainChart = document.getElementById(
+      `${sport}-${time}`
+    ) as HTMLCanvasElement | null;
+    const pieChart = document.getElementById(
+      `pie-${sport}-${time}`
     ) as HTMLCanvasElement | null;
 
-    if (ctx) ctx.getContext('2d');
+    if (mainChart) mainChart.getContext('2d');
 
-    if (tag === 'all' && time === 'all') {
+    if (sport === 'all' && time === 'all') {
       const allData = setAllSportChartInformation(data!);
 
-      const newChart = new Chart(ctx!, {
+      const newChart = new Chart(mainChart!, {
         type: 'bar',
         data: allData,
         options: {
@@ -322,7 +85,7 @@ export default function Stats() {
             },
             title: {
               display: true,
-              text: displayChartTitleByTagAndTime(tag, time),
+              text: displayChartTitleByTagAndTime(sport, time),
               color: '#000000',
               font: {
                 size: 18,
@@ -332,24 +95,30 @@ export default function Stats() {
         },
       });
       setChart(newChart);
+      // const newPieChart = new Chart(pieChart!, {
+      //   type: 'doughnut',
+      //   data: {
+      //     labels:
+      //   }
+      // });
     } else {
       const chartStatistics = data
-        ? setSportSpecificChartInformation(data, tag, time)
+        ? setSportSpecificChartInformation(data, sport, time)
         : null;
       const labels =
         time === 'year' && chartStatistics?.labels
           ? convertMonthNumbersToNames(chartStatistics!.labels)
           : chartStatistics?.labels.map((label) => label.toString());
-      const newChart = new Chart(ctx!, {
+      const newChart = new Chart(mainChart!, {
         type: 'bar',
         data: {
           labels: labels,
           datasets: [
             {
-              label: getMetricByTag(tag),
+              label: getMetricBySport(sport),
               data: chartStatistics?.data ?? [],
-              backgroundColor: getChartBarColor(tag),
-              borderColor: getChartBarColor(tag),
+              backgroundColor: getChartBarColor(sport),
+              borderColor: getChartBarColor(sport),
               borderWidth: 1,
             },
           ],
@@ -366,7 +135,7 @@ export default function Stats() {
             },
             title: {
               display: true,
-              text: displayChartTitleByTagAndTime(tag, time),
+              text: displayChartTitleByTagAndTime(sport, time),
               color: '#00ffee',
               font: {
                 size: 18,
@@ -377,10 +146,10 @@ export default function Stats() {
       });
       setChart(newChart);
     }
-  }, [data, pageLoading, tag, time]);
+  }, [data, pageLoading, sport, time]);
 
   const sportStatistics = data
-    ? setSportStatInformation(data, tag, time)
+    ? setSportStatInformation(data, sport, time)
     : null;
   const recentActivities = data?.recentActivities ?? [];
 
@@ -391,44 +160,44 @@ export default function Stats() {
         <Button
           label="Run"
           link={
-            tag === 'run'
-              ? `/stats?tag=all&time=${time}`
-              : `/stats?tag=run&time=${time}`
+            sport === 'run'
+              ? `/stats?sport=all&time=${time}`
+              : `/stats?sport=run&time=${time}`
           }
-          variant={tag === 'run' ? 'active' : 'inactive'}
+          variant={sport === 'run' ? 'active' : 'inactive'}
           arrowOptions="none"
           iconOptions="run"
         />
         <Button
           label="Bike"
           link={
-            tag === 'bike'
-              ? `/stats?tag=all&time=${time}`
-              : `/stats?tag=bike&time=${time}`
+            sport === 'bike'
+              ? `/stats?sport=all&time=${time}`
+              : `/stats?sport=bike&time=${time}`
           }
-          variant={tag == 'bike' ? 'active' : 'inactive'}
+          variant={sport == 'bike' ? 'active' : 'inactive'}
           arrowOptions="none"
           iconOptions="bike"
         />
         <Button
           label="Swim"
           link={
-            tag === 'swim'
-              ? `/stats?tag=all&time=${time}`
-              : `/stats?tag=swim&time=${time}`
+            sport === 'swim'
+              ? `/stats?sport=all&time=${time}`
+              : `/stats?sport=swim&time=${time}`
           }
-          variant={tag == 'swim' ? 'active' : 'inactive'}
+          variant={sport == 'swim' ? 'active' : 'inactive'}
           arrowOptions="none"
           iconOptions="swim"
         />
         <Button
           label="Other"
           link={
-            tag === 'other'
-              ? `/stats?tag=all&time=${time}`
-              : `/stats?tag=other&time=${time}`
+            sport === 'other'
+              ? `/stats?sport=all&time=${time}`
+              : `/stats?sport=other&time=${time}`
           }
-          variant={tag == 'other' ? 'active' : 'inactive'}
+          variant={sport == 'other' ? 'active' : 'inactive'}
           arrowOptions="none"
           iconOptions="weights"
         />
@@ -451,26 +220,26 @@ export default function Stats() {
             </div>
           ) : (
             <div>
-              <canvas id={`${tag}-${time}`}></canvas>
+              <canvas id={`${sport}-${time}`}></canvas>
             </div>
           )}
 
           <div className={styles.timeButtonContainer}>
             <Button
               label="This Month"
-              link={`/stats?tag=${tag}&time=month`}
+              link={`/stats?sport=${sport}&time=month`}
               variant="transparent"
               arrowOptions="right"
             />
             <Button
               label="This Year"
-              link={`/stats?tag=${tag}&time=year`}
+              link={`/stats?sport=${sport}&time=year`}
               variant="transparent"
               arrowOptions="right"
             />
             <Button
               label="All Time"
-              link={`/stats?tag=${tag}&time=all`}
+              link={`/stats?sport=${sport}&time=all`}
               variant="transparent"
               arrowOptions="right"
             />
@@ -478,18 +247,18 @@ export default function Stats() {
           {sportStatistics?.totalDistance && (
             <div>
               Total Distance: {sportStatistics?.totalDistance}{' '}
-              {getMetricByTag(tag)}
+              {getMetricBySport(sport)}
             </div>
           )}
           {sportStatistics?.totalDuration && (
             <div>Total Duration: {sportStatistics?.totalDuration}</div>
           )}
-          {sportStatistics?.maxDistance && tag !== 'other' && (
+          {sportStatistics?.maxDistance && sport !== 'other' && (
             <div>Max Distance: {sportStatistics?.maxDistance} Miles</div>
           )}
           {sportStatistics?.totalActivities && (
             <div>
-              Total {tag}: {sportStatistics?.totalActivities}
+              Total {sport}: {sportStatistics?.totalActivities}
             </div>
           )}
           <hr />
