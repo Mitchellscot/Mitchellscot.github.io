@@ -3,7 +3,7 @@ export default interface AllSportsChartInformation {
   datasets: {
     label: string;
     data: number[];
-    backgroundColor: string;
+    backgroundColor: string | string[];
     borderColor: string;
     borderWidth: number;
     stack?: string;

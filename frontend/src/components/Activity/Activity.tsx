@@ -13,6 +13,7 @@ interface ActivityProps {
 export default function Activitiy({ activity }: ActivityProps) {
     const titleClasses = classNames(styles.activityTitle, text.textMd);
     const statClasses = classNames(styles.stat, text.textXs);
+    const dateClasses = classNames(styles.date, text.textXs);
     const effortMissing = !activity.effort || activity.effort == 'Unknown';
     const iconColStyles = classNames(styles.iconCol, {
         [styles.effortMissing]: effortMissing
@@ -22,8 +23,13 @@ export default function Activitiy({ activity }: ActivityProps) {
             <div className={styles.statsCol}>
                 <div className={titleClasses}>
                     {getReadableActivityTitle(activity.activityType)}
+                    <div className={dateClasses}>
+                        {activity.readableDate}
+                    </div>
                 </div>
+
                 <div>
+
                     <div className={statClasses}>{activity.duration}</div>
                     {activity.readableDistance &&
                         <div className={statClasses}>
@@ -35,9 +41,7 @@ export default function Activitiy({ activity }: ActivityProps) {
                             {activity.pace}
                         </div>
                     }
-                    <div className={statClasses}>
-                        {activity.readableDate}
-                    </div>
+
                 </div>
             </div>
             <div className={iconColStyles}>

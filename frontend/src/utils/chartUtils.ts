@@ -3,10 +3,11 @@ import {
   ChartInformation,
   ExerTrackResponse,
   StatsInformation,
+  ActivityCounts
 } from '../models/ExerTrackResponse';
 import Sport from '../models/Sport';
 import Time from '../models/Time';
-import { ActivityToReadableNameMap } from './sportMap'
+import { ActivityToReadableNameMap, ActivityPieChartOrder, ActivityColorMap } from './sportMap'
 
 function displayChartTitleByTagAndTime(tag: Sport, time: Time): string {
   switch (tag) {
@@ -84,6 +85,21 @@ function setSportStatInformation(
   }
 }
 
+function orderPieChartLabels(stats: ActivityCounts) {
+  const orderedLabels = ActivityPieChartOrder.filter((activity) => {
+    return activity in stats;
+  });
+  return orderedLabels;
+}
+function orderPieChartValues(stats: ActivityCounts) {
+  const orderedLabels = orderPieChartLabels(stats);
+  return orderedLabels.map((activity) => stats[activity]);
+}
+function orderPiChartColors(stats: ActivityCounts) {
+  const orderedLabels = orderPieChartLabels(stats);
+  return orderedLabels.map((activity) => ActivityColorMap[activity]);
+}
+
 function setAllSportChartInformation(
   data: ExerTrackResponse,
   time: Time
@@ -106,8 +122,8 @@ function setAllSportChartInformation(
       {
         label: 'Bike',
         data: bikeChartInformation,
-        backgroundColor: '#ff8800',
-        borderColor: '#ff8800',
+        backgroundColor: '#ffee00',
+        borderColor: '#ffee00',
         borderWidth: 1,
         stack: 'Stack 0',
       },
@@ -127,15 +143,15 @@ function setAllSportPieChartInformation(
   time: Time
 ): AllSportsChartInformation {
   const activityTypeCounts = time === 'month' ? data.all.stats.thisMonth.activityTypeCounts : time === 'year' ? data.all.stats.pastYear.activityTypeCounts : data.all.stats.allTime.activityTypeCounts;
-  const labels = Object.keys(activityTypeCounts);
-  const chartInformation = Object.values(activityTypeCounts).sort();
+  const orderedLabels = orderPieChartLabels(activityTypeCounts);
+  const chartInformation = orderPieChartValues(activityTypeCounts);
   return {
-    labels: labels,
+    labels: orderedLabels,
     datasets: [
       {
         label: 'Count of Activities by Sport',
         data: chartInformation,
-        backgroundColor: '#ff0011',
+        backgroundColor: orderPiChartColors(activityTypeCounts),
         borderColor: '#ffffff',
         borderWidth: 1,
       }

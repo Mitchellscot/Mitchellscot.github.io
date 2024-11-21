@@ -114,6 +114,14 @@ export default function Stats() {
           plugins: {
             legend: {
               display: false
+            },
+            title: {
+              display: true,
+              text: 'Activity Breakdown',
+              color: '#00ffee',
+              font: {
+                size: 18,
+              },
             }
           }
         }

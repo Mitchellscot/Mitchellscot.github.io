@@ -76,7 +76,10 @@ export interface StatsInformation {
   totalDuration: string;
   maxDistance: number;
   totalActivities: number;
-  activityTypeCounts: { [key: string]: number };
+  activityTypeCounts: ActivityCounts;
+}
+export interface ActivityCounts {
+  [key: string]: number
 }
 export interface Activities {
   name: string;

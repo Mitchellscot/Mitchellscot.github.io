@@ -47,7 +47,7 @@ export const ActivityToReadableNameMap =
     [ActivityTypes.indoor_cycling]: 'Indoor Cycling',
     [ActivityTypes.mountain_biking]: 'Mountain Biking',
     [ActivityTypes.gravel_cycling]: 'Gravel Cycling',
-    [ActivityTypes.cycling]: 'Cycling',
+    [ActivityTypes.cycling]: 'Road Cycling',
     [ActivityTypes.lap_swimming]: 'Lap Swimming',
     [ActivityTypes.open_water_swimming]: 'Open Water Swimming',
     [ActivityTypes.walking]: 'Walking',
@@ -74,7 +74,7 @@ export const ActivityPieChartOrder = [
     ActivityTypes.snow_shoe_ws,
     ActivityTypes.other
 ]
-export const ActivityToColorMap =
+export const ActivityColorMap =
 {
     [ActivityTypes.track_running]: '#ffcccf',
     [ActivityTypes.running]: '#ff0011',
