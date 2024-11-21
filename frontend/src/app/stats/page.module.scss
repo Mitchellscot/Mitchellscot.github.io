@@ -27,5 +27,52 @@
 .timeButtonContainer {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 20px;
+  margin: 10px;
+}
+
+.totalsAndPieChartContainer {
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+
+  @include breakpoint(MD) {
+    grid-row: 1;
+    grid-column: 2;
+  }
+}
+
+.totalsContainer {}
+
+.totalsAndPieChartContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @include breakpoint(MD) {
+    grid-row: 1;
+    grid-column: 2;
+  }
+}
+
+.totalsTitle {}
+
+.totalsLabel {
+  color: $CYAN;
+}
+
+.activitiesTitle {
+  text-align: center;
+  margin: 20px;
+}
+
+.activityColumns {
+  margin-top: 30px;
+  display: grid;
+  gap: 20px;
+  grid-row: 1;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.stat {
+  font-family: var(--font-ubuntu-mono);
+  // font-weight: $FONT_WEIGHT_BOLD;
 }

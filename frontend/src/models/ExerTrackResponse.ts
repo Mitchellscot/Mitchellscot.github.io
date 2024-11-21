@@ -47,18 +47,36 @@ export interface ExerTrackResponse {
       thisMonth: StatsInformation;
     };
   };
+  all: {
+    charts: {
+      allTime: AllSportChartInformation;
+      pastYear: AllSportChartInformation;
+      thisMonth: AllSportChartInformation;
+    },
+    stats: {
+      allTime: StatsInformation;
+      pastYear: StatsInformation;
+      thisMonth: StatsInformation;
+    },
+  }
   recentActivities: Activities[];
 }
 export interface ChartInformation {
-  labels: number[];
+  labels: string[];
   data: number[];
+}
+export interface AllSportChartInformation {
+  labels: string[];
+  runData: number[];
+  cycleData: number[];
+  swimData: number[];
 }
 export interface StatsInformation {
   totalDistance: number;
   totalDuration: string;
   maxDistance: number;
   totalActivities: number;
-  activityTypeCounts: {[key: string]: number};
+  activityTypeCounts: { [key: string]: number };
 }
 export interface Activities {
   name: string;
@@ -68,7 +86,7 @@ export interface Activities {
   distance: number;
   readableDistance: string;
   pace: string;
-  actityType: string;
+  activityType: string;
   sportType: string;
   effort: string;
 }

@@ -6,6 +6,7 @@ import {
 } from '../models/ExerTrackResponse';
 import Sport from '../models/Sport';
 import Time from '../models/Time';
+import { ActivityToReadableNameMap } from './sportMap'
 
 function displayChartTitleByTagAndTime(tag: Sport, time: Time): string {
   switch (tag) {
@@ -34,10 +35,16 @@ function displayChartTitleByTagAndTime(tag: Sport, time: Time): string {
           ? 'Strength Training Past Year (hours)'
           : 'Strength Training All Time (hours)';
     default:
-      return 'Distance in Miles';
+      return 'Distance in Miles (All Sports)';
   }
 }
-
+function setAllSportStatInformation(data: ExerTrackResponse, time: Time): StatsInformation {
+  return time === 'month'
+    ? data.all.stats.thisMonth
+    : time === 'year'
+      ? data.all.stats.pastYear
+      : data.all.stats.allTime;
+}
 function setSportStatInformation(
   data: ExerTrackResponse,
   sport: Sport,
@@ -77,46 +84,16 @@ function setSportStatInformation(
   }
 }
 
-function getAllTimeSportChartData(
-  data: ExerTrackResponse,
-  sport: Sport
-): number[] {
-  const longestContinuousYearlyData = data.running.charts.allTime.labels;
-  const runningData = data.running.charts.allTime.data;
-
-  const matchedData = longestContinuousYearlyData.map((year, index) => {
-    const dataIndex = runningData.findIndex((dataYear) => dataYear === year);
-    return dataIndex !== -1 ? runningData[dataIndex] : 0;
-  });
-
-  switch (sport) {
-    case 'run':
-      return data.running.charts.allTime.data;
-    case 'bike':
-      return data.cycling.charts.allTime.data;
-    case 'swim':
-      return data.swimming.charts.allTime.data.map(
-        (distance) => Math.round(distance * 0.000568182),
-        1
-      );
-    case 'other':
-      return data.other.charts.allTime.data;
-    default:
-      return data.running.charts.allTime.data;
-  }
-}
-
 function setAllSportChartInformation(
-  data: ExerTrackResponse
+  data: ExerTrackResponse,
+  time: Time
 ): AllSportsChartInformation {
-  const annualChartLabels = data.running.charts.allTime.labels.map((label) =>
-    label.toString()
-  );
-  const runChartInformation = getAllTimeSportChartData(data, 'run');
-  const bikeChartInformation = getAllTimeSportChartData(data, 'bike');
-  const swimChartInformation = getAllTimeSportChartData(data, 'swim');
+  const chartLabels = time === 'month' ? data.all.charts.thisMonth.labels : time === 'year' ? data.all.charts.pastYear.labels : data.all.charts.allTime.labels;
+  const runChartInformation = time === 'month' ? data.all.charts.thisMonth.runData : time === 'year' ? data.all.charts.pastYear.runData : data.all.charts.allTime.runData;
+  const bikeChartInformation = time === 'month' ? data.all.charts.thisMonth.cycleData : time === 'year' ? data.all.charts.pastYear.cycleData : data.all.charts.allTime.cycleData;
+  const swimChartInformation = time === 'month' ? data.all.charts.thisMonth.swimData : time === 'year' ? data.all.charts.pastYear.swimData : data.all.charts.allTime.swimData;
   return {
-    labels: annualChartLabels,
+    labels: chartLabels,
     datasets: [
       {
         label: 'Run',
@@ -129,8 +106,8 @@ function setAllSportChartInformation(
       {
         label: 'Bike',
         data: bikeChartInformation,
-        backgroundColor: '#ffee00',
-        borderColor: '#ffee00',
+        backgroundColor: '#ff8800',
+        borderColor: '#ff8800',
         borderWidth: 1,
         stack: 'Stack 0',
       },
@@ -142,6 +119,26 @@ function setAllSportChartInformation(
         borderWidth: 1,
         stack: 'Stack 0',
       },
+    ],
+  };
+}
+function setAllSportPieChartInformation(
+  data: ExerTrackResponse,
+  time: Time
+): AllSportsChartInformation {
+  const activityTypeCounts = time === 'month' ? data.all.stats.thisMonth.activityTypeCounts : time === 'year' ? data.all.stats.pastYear.activityTypeCounts : data.all.stats.allTime.activityTypeCounts;
+  const labels = Object.keys(activityTypeCounts);
+  const chartInformation = Object.values(activityTypeCounts).sort();
+  return {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Count of Activities by Sport',
+        data: chartInformation,
+        backgroundColor: '#ff0011',
+        borderColor: '#ffffff',
+        borderWidth: 1,
+      }
     ],
   };
 }
@@ -223,7 +220,7 @@ function getChartBarColor(sport: Sport): string {
     case 'run':
       return '#ff0011';
     case 'bike':
-      return '#ffee00';
+      return '#ff8800';
     case 'swim':
       return '#2200ff';
     case 'other':
@@ -244,17 +241,28 @@ function getMetricBySport(sport: Sport): string {
     case 'other':
       return 'Hours';
     default:
-      return 'Distance';
+      return 'Miles';
   }
+}
+
+function getReadableActivityTitle(activity: string): string {
+  const activityName = activity as keyof typeof ActivityToReadableNameMap;
+  if (activityName === undefined) {
+    return activity;
+  }
+  return ActivityToReadableNameMap[activityName];
 }
 
 export {
   displayChartTitleByTagAndTime,
   setSportStatInformation,
-  getAllTimeSportChartData,
   setAllSportChartInformation,
   setSportSpecificChartInformation,
   convertMonthNumbersToNames,
   getChartBarColor,
   getMetricBySport,
+  getReadableActivityTitle,
+  setAllSportStatInformation,
+  setAllSportPieChartInformation
 };
+
