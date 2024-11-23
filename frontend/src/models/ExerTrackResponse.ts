@@ -52,13 +52,13 @@ export interface ExerTrackResponse {
       allTime: AllSportChartInformation;
       pastYear: AllSportChartInformation;
       thisMonth: AllSportChartInformation;
-    },
+    };
     stats: {
       allTime: StatsInformation;
       pastYear: StatsInformation;
       thisMonth: StatsInformation;
-    },
-  }
+    };
+  };
   recentActivities: Activities[];
 }
 export interface ChartInformation {
@@ -79,7 +79,7 @@ export interface StatsInformation {
   activityTypeCounts: ActivityCounts;
 }
 export interface ActivityCounts {
-  [key: string]: number
+  [key: string]: number;
 }
 export interface Activities {
   name: string;
