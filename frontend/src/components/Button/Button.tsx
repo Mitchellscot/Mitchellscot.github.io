@@ -39,7 +39,7 @@ export default function Button({
     [style.inactiveButton]: variant === 'inactive',
     [style.activeButton]: variant === 'active',
   });
-  const iconClasses = classNames(style.icons, {
+  const iconClasses = classNames(style.icon, {
     [style.inactiveIcon]: variant == 'inactive',
     [style.activeIcon]: variant == 'active',
   });
@@ -153,6 +153,11 @@ export default function Button({
       {disabled ? (
         <>
           {label} {renderSpinner()}
+        </>
+      ) : iconOptions !== 'none' ? (
+        <>
+          {label}
+          {renderIcon()}
         </>
       ) : arrowOptions === 'right' ? (
         <>

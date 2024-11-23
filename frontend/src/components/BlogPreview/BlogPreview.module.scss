@@ -3,14 +3,17 @@
 .container {
   margin-bottom: 40px;
 }
+
 .titleContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .title {
   margin: 0 0 20px 0;
 }
+
 .title:hover {
   color: $CYAN_2;
 }
@@ -38,19 +41,26 @@
   border-radius: 6px;
   background-color: $CYAN_3;
 }
+
 .tagList {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
+
 .tag {
   color: $CYAN;
   font-family: var(--font-ubuntu-mono);
+
   &::before {
     content: '#';
   }
+
   margin-left: 20px;
 }
+
 .tag:hover {
   color: $ORANGE;
 }
+
+//TODO: add svg hover orange

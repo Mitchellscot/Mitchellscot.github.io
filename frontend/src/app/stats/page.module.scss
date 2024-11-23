@@ -17,12 +17,169 @@
     max-width: $MAX_WIDTH_NARROW;
   }
 }
+
 .title {
   text-align: center;
-  text-transform: uppercase;
   color: $WHITE;
 }
+
+.subTitle {
+  text-align: center;
+  color: $WHITE;
+}
+
 .timeButtonContainer {
   display: flex;
   justify-content: space-evenly;
+  margin: 10px;
+}
+
+.sportButtonContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-row-gap: 10px;
+
+  @include breakpoint(MD) {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+  }
+}
+
+.totalsAndPieChartContainer {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint(MD) {
+    grid-template-columns: 1fr;
+    grid-row: 1fr;
+    column-gap: 75px;
+  }
+
+  @include breakpoint(XL) {
+    column-gap: 125px;
+  }
+
+  @include breakpoint(XL) {
+    column-gap: 150px;
+  }
+}
+
+.totalsContainer {
+  text-align: center;
+  grid-row: 1;
+
+  @include breakpoint(MD) {
+    text-align: start;
+  }
+}
+
+.pieChartContainer {
+  grid-row: 2;
+  max-width: 250px;
+  margin: 0 auto;
+
+  @include breakpoint(MD) {
+    grid-row: 1;
+    max-width: 100%;
+  }
+}
+
+.totalsLabel {
+  color: $CYAN;
+}
+
+.activitiesTitle {
+  text-align: center;
+  margin: 20px;
+}
+
+.activityColumns {
+  margin-top: 30px;
+  display: grid;
+  gap: 20px;
+  grid-row: 1;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.stat {
+  font-family: var(--font-ubuntu-mono);
+  font-weight: $FONT_WEIGHT_BOLD;
+  word-wrap: break-word;
+}
+
+.sportButton {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 8px;
+  padding: 10px;
+  margin-right: 15px;
+  margin-left: 15px;
+  justify-content: center;
+
+  @include breakpoint(MD) {
+    margin: 0px;
+  }
+
+  > span {
+    transition: color 0.3s ease-in;
+    -webkit-transition: color 0.3s ease-in;
+    margin-right: 5px;
+
+    @include breakpoint(MD) {
+      margin-right: 20px;
+    }
+  }
+
+  &:active {
+    color: $ORANGE;
+  }
+
+  &:hover,
+  &:active {
+    color: $ORANGE;
+    border: 1px solid $ORANGE;
+
+    > span {
+      color: $ORANGE;
+      transition: color 0.3s ease-in;
+      -webkit-transition: color 0.3s ease-in;
+    }
+  }
+
+  svg:hover {
+    fill: $ORANGE;
+  }
+}
+
+.sportButton_active {
+  color: $ORANGE;
+  border: 1px solid $ORANGE;
+
+  > span {
+    color: $ORANGE;
+  }
+
+  > svg {
+    fill: $ORANGE;
+  }
+}
+
+.sportButton_inactive {
+  color: $CYAN;
+  border: 2px solid $CYAN_3;
+
+  > span {
+    color: $CYAN;
+  }
+
+  > svg {
+    fill: $CYAN;
+  }
 }

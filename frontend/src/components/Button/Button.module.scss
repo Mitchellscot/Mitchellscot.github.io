@@ -5,7 +5,7 @@
   @include fontSize(18);
   padding: 8px 15px;
 
-  @include breakpoint(SM) {
+  @include breakpoint(MD) {
     padding: 15px 22px;
     @include fontSize(20);
   }
@@ -34,6 +34,10 @@
       color 300ms cubic-bezier(0.33, 1, 0.68, 1),
       background-color 300ms cubic-bezier(0.33, 1, 0.68, 1);
   }
+
+  svg:hover {
+    fill: $ORANGE;
+  }
 }
 
 .transparentButton {
@@ -42,7 +46,7 @@
 
 .inactiveButton {
   color: $CYAN;
-  border: 3px solid $CYAN;
+  border: 2px solid $CYAN;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 
   &:hover {
@@ -111,12 +115,6 @@
   height: 14px;
 }
 
-.icon {
-  margin-left: 4px;
-  width: 14px;
-  height: 14px;
-}
-
 .button {
   .arrow {
     display: inline-block;
@@ -133,16 +131,32 @@
   }
 }
 
+.icon {
+  margin-left: 1px;
+  width: 14px;
+  height: 14px;
+
+  svg {
+    overflow: visible;
+  }
+}
+
 .inactiveIcon {
-  margin-left: 12px;
+  margin-left: 4px;
+  margin-right: 4px;
   display: inline-block;
   fill: $CYAN;
 }
 
 .activeIcon {
-  margin-left: 12px;
+  margin-left: 4px;
+  margin-right: 4px;
   display: inline-block;
   fill: $GREY_1;
+
+  svg {
+    fill: $GREY_1;
+  }
 }
 
 .whiteArrow {
