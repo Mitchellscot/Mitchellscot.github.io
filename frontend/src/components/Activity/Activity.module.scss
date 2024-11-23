@@ -1,54 +1,50 @@
 @import '../../styles/helpers.scss';
 
 .activityTitle {
-    margin-bottom: 5px;
-    color: $CYAN;
-    font-weight: $FONT_WEIGHT_BOLD;
+  margin-bottom: 5px;
+  color: $CYAN;
+  font-weight: $FONT_WEIGHT_BOLD;
 }
 
 .statsCol {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .iconCol {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
 
-    svg {
-        width: 40%;
-        height: 40%;
-    }
-
-
+  svg {
+    width: 40%;
+    height: 40%;
+  }
 }
 
 .effortMissing {
-    margin-top: 10px;
-    justify-content: flex-start;
+  margin-top: 10px;
+  justify-content: flex-start;
 }
 
-
 .pill {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $GREY_2;
-    border-radius: 25px;
-    color: $WHITE;
-    padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $GREY_2;
+  border-radius: 25px;
+  color: $WHITE;
+  padding: 5px 10px;
 }
 
 .stat {
-    font-family: var(--font-ubuntu-mono);
-    // font-weight: $FONT_WEIGHT_BOLD;
-
+  font-family: var(--font-ubuntu-mono);
+  // font-weight: $FONT_WEIGHT_BOLD;
 }
 
 .date {
-    font-style: italic;
-    color: $ORANGE;
+  font-style: italic;
+  color: $ORANGE;
 }

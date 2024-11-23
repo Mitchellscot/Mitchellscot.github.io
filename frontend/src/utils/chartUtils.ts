@@ -1,13 +1,18 @@
+import Chart from 'chart.js/auto';
 import AllSportsChartInformation from '../models/AllSportsChartInformation';
 import {
   ChartInformation,
   ExerTrackResponse,
   StatsInformation,
-  ActivityCounts
+  ActivityCounts,
 } from '../models/ExerTrackResponse';
 import Sport from '../models/Sport';
 import Time from '../models/Time';
-import { ActivityToReadableNameMap, ActivityPieChartOrder, ActivityColorMap } from './sportMap'
+import {
+  ActivityToReadableNameMap,
+  ActivityPieChartOrder,
+  ActivityColorMap,
+} from './sportMap';
 
 function displayChartTitleByTagAndTime(tag: Sport, time: Time): string {
   switch (tag) {
@@ -39,7 +44,10 @@ function displayChartTitleByTagAndTime(tag: Sport, time: Time): string {
       return 'Distance in Miles (All Sports)';
   }
 }
-function setAllSportStatInformation(data: ExerTrackResponse, time: Time): StatsInformation {
+function setAllSportStatInformation(
+  data: ExerTrackResponse,
+  time: Time
+): StatsInformation {
   return time === 'month'
     ? data.all.stats.thisMonth
     : time === 'year'
@@ -104,10 +112,30 @@ function setAllSportChartInformation(
   data: ExerTrackResponse,
   time: Time
 ): AllSportsChartInformation {
-  const chartLabels = time === 'month' ? data.all.charts.thisMonth.labels : time === 'year' ? data.all.charts.pastYear.labels : data.all.charts.allTime.labels;
-  const runChartInformation = time === 'month' ? data.all.charts.thisMonth.runData : time === 'year' ? data.all.charts.pastYear.runData : data.all.charts.allTime.runData;
-  const bikeChartInformation = time === 'month' ? data.all.charts.thisMonth.cycleData : time === 'year' ? data.all.charts.pastYear.cycleData : data.all.charts.allTime.cycleData;
-  const swimChartInformation = time === 'month' ? data.all.charts.thisMonth.swimData : time === 'year' ? data.all.charts.pastYear.swimData : data.all.charts.allTime.swimData;
+  const chartLabels =
+    time === 'month'
+      ? data.all.charts.thisMonth.labels
+      : time === 'year'
+        ? data.all.charts.pastYear.labels
+        : data.all.charts.allTime.labels;
+  const runChartInformation =
+    time === 'month'
+      ? data.all.charts.thisMonth.runData
+      : time === 'year'
+        ? data.all.charts.pastYear.runData
+        : data.all.charts.allTime.runData;
+  const bikeChartInformation =
+    time === 'month'
+      ? data.all.charts.thisMonth.cycleData
+      : time === 'year'
+        ? data.all.charts.pastYear.cycleData
+        : data.all.charts.allTime.cycleData;
+  const swimChartInformation =
+    time === 'month'
+      ? data.all.charts.thisMonth.swimData
+      : time === 'year'
+        ? data.all.charts.pastYear.swimData
+        : data.all.charts.allTime.swimData;
   return {
     labels: chartLabels,
     datasets: [
@@ -142,19 +170,89 @@ function setAllSportPieChartInformation(
   data: ExerTrackResponse,
   time: Time
 ): AllSportsChartInformation {
-  const activityTypeCounts = time === 'month' ? data.all.stats.thisMonth.activityTypeCounts : time === 'year' ? data.all.stats.pastYear.activityTypeCounts : data.all.stats.allTime.activityTypeCounts;
+  const activityTypeCounts =
+    time === 'month'
+      ? data.all.stats.thisMonth.activityTypeCounts
+      : time === 'year'
+        ? data.all.stats.pastYear.activityTypeCounts
+        : data.all.stats.allTime.activityTypeCounts;
   const orderedLabels = orderPieChartLabels(activityTypeCounts);
   const chartInformation = orderPieChartValues(activityTypeCounts);
   return {
-    labels: orderedLabels,
+    labels: orderedLabels.map((label) => ActivityToReadableNameMap[label]),
     datasets: [
       {
-        label: 'Count of Activities by Sport',
+        label: 'Count',
         data: chartInformation,
         backgroundColor: orderPiChartColors(activityTypeCounts),
         borderColor: '#ffffff',
         borderWidth: 1,
-      }
+      },
+    ],
+  };
+}
+function setSportSpecificPieChartInformation(
+  data: ExerTrackResponse,
+  sport: Sport,
+  time: Time
+): AllSportsChartInformation {
+  let activityTypeCounts;
+  console.log('sport, time', sport, time);
+  switch (sport) {
+    case 'run':
+      activityTypeCounts =
+        time === 'month'
+          ? data.running.stats.thisMonth.activityTypeCounts
+          : time === 'year'
+            ? data.running.stats.pastYear.activityTypeCounts
+            : data.running.stats.allTime.activityTypeCounts;
+      break;
+    case 'bike':
+      activityTypeCounts =
+        time === 'month'
+          ? data.cycling.stats.thisMonth.activityTypeCounts
+          : time === 'year'
+            ? data.cycling.stats.pastYear.activityTypeCounts
+            : data.cycling.stats.allTime.activityTypeCounts;
+      break;
+    case 'swim':
+      activityTypeCounts =
+        time === 'month'
+          ? data.swimming.stats.thisMonth.activityTypeCounts
+          : time === 'year'
+            ? data.swimming.stats.pastYear.activityTypeCounts
+            : data.swimming.stats.allTime.activityTypeCounts;
+      break;
+    case 'other':
+      activityTypeCounts =
+        time === 'month'
+          ? data.other.stats.thisMonth.activityTypeCounts
+          : time === 'year'
+            ? data.other.stats.pastYear.activityTypeCounts
+            : data.other.stats.allTime.activityTypeCounts;
+      break;
+    default:
+      activityTypeCounts =
+        time === 'month'
+          ? data.all.stats.thisMonth.activityTypeCounts
+          : time === 'year'
+            ? data.all.stats.pastYear.activityTypeCounts
+            : data.all.stats.allTime.activityTypeCounts;
+      break;
+  }
+  console.log('Mitchell, activity type counts', activityTypeCounts);
+  const orderedLabels = orderPieChartLabels(activityTypeCounts);
+  const chartInformation = orderPieChartValues(activityTypeCounts);
+  return {
+    labels: orderedLabels.map((label) => ActivityToReadableNameMap[label]),
+    datasets: [
+      {
+        label: 'Count',
+        data: chartInformation,
+        backgroundColor: orderPiChartColors(activityTypeCounts),
+        borderColor: '#ffffff',
+        borderWidth: 1,
+      },
     ],
   };
 }
@@ -236,11 +334,11 @@ function getChartBarColor(sport: Sport): string {
     case 'run':
       return '#ff0011';
     case 'bike':
-      return '#ff8800';
+      return '#ffee00';
     case 'swim':
       return '#2200ff';
     case 'other':
-      return '#00554f';
+      return '#6e00ff';
     default:
       return '#00ffee';
   }
@@ -269,6 +367,148 @@ function getReadableActivityTitle(activity: string): string {
   return ActivityToReadableNameMap[activityName];
 }
 
+function getBarChart(
+  sport: Sport,
+  time: Time,
+  data: ExerTrackResponse | null,
+  chartContext: HTMLCanvasElement
+) {
+  if (data === null) {
+    return;
+  }
+  if (sport === 'all') {
+    const allData = setAllSportChartInformation(data!, time);
+    return new Chart(chartContext, {
+      type: 'bar',
+      data: allData,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: true,
+            text: displayChartTitleByTagAndTime(sport, time),
+            color: '#ffffff',
+            font: {
+              size: 18,
+            },
+          },
+        },
+      },
+    });
+  } else {
+    const chartInformation = setSportSpecificChartInformation(
+      data,
+      sport,
+      time
+    );
+    const labels = chartInformation.labels;
+    return new Chart(chartContext, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: getMetricBySport(sport),
+            data: chartInformation?.data ?? [],
+            backgroundColor: getChartBarColor(sport),
+            borderColor: getChartBarColor(sport),
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: true,
+            text: displayChartTitleByTagAndTime(sport, time),
+            color: '#ffffff',
+            font: {
+              size: 18,
+            },
+          },
+        },
+      },
+    });
+  }
+}
+function getPieChart(
+  sport: Sport,
+  time: Time,
+  data: ExerTrackResponse | null,
+  chartContext: HTMLCanvasElement
+) {
+  if (data === null) {
+    return;
+  }
+
+  if (sport === 'all') {
+    const pieChartData = setAllSportPieChartInformation(data!, time);
+    return new Chart(chartContext!, {
+      type: 'pie',
+      data: pieChartData,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: true,
+            text: 'Activity Breakdown',
+            color: '#00ffee',
+            font: {
+              size: 18,
+            },
+          },
+        },
+      },
+    });
+  } else {
+    const chartInformation = setSportSpecificPieChartInformation(
+      data,
+      sport,
+      time
+    );
+    console.log('Mitchell, sport', sport, 'time', time);
+    console.log('Mitchell, chart information', chartInformation);
+    return new Chart(chartContext!, {
+      type: 'pie',
+      data: chartInformation,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            display: true,
+            text: 'Activity Breakdown',
+            color: '#00ffee',
+            font: {
+              size: 18,
+            },
+          },
+        },
+      },
+    });
+  }
+}
+
 export {
   displayChartTitleByTagAndTime,
   setSportStatInformation,
@@ -279,6 +519,7 @@ export {
   getMetricBySport,
   getReadableActivityTitle,
   setAllSportStatInformation,
-  setAllSportPieChartInformation
+  setAllSportPieChartInformation,
+  getBarChart,
+  getPieChart,
 };
-

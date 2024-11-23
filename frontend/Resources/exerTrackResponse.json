@@ -3,6 +3,7 @@
     "charts": {
       "allTime": {
         "labels": [
+          "2014",
           "2015",
           "2016",
           "2017",
@@ -15,16 +16,8 @@
           "2024"
         ],
         "data": [
-          364.98,
-          98.96,
-          387.71,
-          1010.43,
-          1146,
-          976.04,
-          763.19,
-          711.31,
-          727.5,
-          894.98
+          573.95, 456.04, 98.96, 387.71, 1010.43, 1146, 976.04, 763.19, 711.31,
+          727.5, 894.98
         ]
       },
       "pastYear": {
@@ -43,18 +36,8 @@
           "Nov"
         ],
         "data": [
-          74.67,
-          77.44,
-          73.26,
-          65.55,
-          63.39,
-          112.42,
-          66.67,
-          97.26,
-          90.06,
-          114.94,
-          100.2,
-          33.8
+          74.67, 77.44, 73.26, 65.55, 63.39, 112.42, 66.67, 97.26, 90.06,
+          114.94, 100.2, 33.8
         ]
       },
       "thisMonth": {
@@ -91,64 +74,36 @@
           "30"
         ],
         "data": [
-          0,
-          0,
-          5,
-          0,
-          0,
-          4.18,
-          0,
-          1.36,
-          0,
-          12.66,
-          0,
-          0,
-          5.39,
-          0,
-          0,
-          0,
-          5.21,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
+          0, 0, 5, 0, 0, 4.18, 0, 1.36, 0, 12.66, 0, 0, 5.39, 0, 0, 0, 5.21, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
         ]
       }
     },
     "stats": {
       "allTime": {
-        "totalDistance": 7081,
-        "totalDuration": "48 days, 02 hours, 13 minutes, 10 seconds",
+        "totalDistance": 7746,
+        "totalDuration": "51 days, 02 hours, 53 minutes, 21 seconds",
         "maxDistance": 50.34,
-        "totalActivities": 1393,
+        "totalActivities": 1537,
         "activityTypeCounts": {
-          "running": 1005,
+          "running": 1147,
           "trail_running": 135,
-          "treadmill_running": 234,
-          "track_running": 17,
-          "ultra_run": 2
+          "treadmill_running": 235,
+          "ultra_run": 2,
+          "track_running": 18
         }
       },
       "pastYear": {
-        "totalDistance": 989,
-        "totalDuration": "6 days, 17 hours, 00 minutes, 29 seconds",
+        "totalDistance": 977,
+        "totalDuration": "6 days, 15 hours, 01 minutes, 41 seconds",
         "maxDistance": 50.34,
-        "totalActivities": 180,
+        "totalActivities": 177,
         "activityTypeCounts": {
-          "running": 124,
-          "treadmill_running": 24,
           "trail_running": 20,
-          "track_running": 11,
-          "ultra_run": 1
+          "running": 121,
+          "treadmill_running": 24,
+          "ultra_run": 1,
+          "track_running": 11
         }
       },
       "thisMonth": {
@@ -158,8 +113,8 @@
         "totalActivities": 6,
         "activityTypeCounts": {
           "trail_running": 2,
-          "treadmill_running": 2,
-          "running": 2
+          "running": 2,
+          "treadmill_running": 2
         }
       }
     }
@@ -167,24 +122,8 @@
   "cycling": {
     "charts": {
       "allTime": {
-        "labels": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "2023",
-          "2024"
-        ],
-        "data": [
-          344.8,
-          677.66,
-          993.63,
-          669.27,
-          1259.61,
-          1865.33,
-          2657.74
-        ]
+        "labels": ["2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+        "data": [344.8, 677.66, 993.63, 669.27, 1259.61, 1865.33, 2657.74]
       },
       "pastYear": {
         "labels": [
@@ -202,18 +141,8 @@
           "Nov"
         ],
         "data": [
-          113.16,
-          114.07,
-          110.2,
-          177.1,
-          230.3,
-          291.16,
-          296.52,
-          394.84,
-          367.87,
-          367.96,
-          253.01,
-          54.72
+          113.16, 114.07, 110.2, 177.1, 230.3, 291.16, 296.52, 394.84, 367.87,
+          367.96, 253.01, 54.72
         ]
       },
       "thisMonth": {
@@ -250,36 +179,8 @@
           "30"
         ],
         "data": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          7.85,
-          0,
-          0,
-          0,
-          0,
-          12.33,
-          0,
-          19.97,
-          14.56,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
+          0, 0, 0, 0, 0, 0, 0, 0, 7.85, 0, 0, 0, 0, 12.33, 0, 19.97, 14.56, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
         ]
       }
     },
@@ -302,8 +203,8 @@
         "maxDistance": 102.63,
         "totalActivities": 285,
         "activityTypeCounts": {
-          "indoor_cycling": 47,
           "cycling": 214,
+          "indoor_cycling": 47,
           "mountain_biking": 10,
           "gravel_cycling": 14
         }
@@ -323,23 +224,9 @@
   "swimming": {
     "charts": {
       "allTime": {
-        "labels": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "2023",
-          "2024"
-        ],
+        "labels": ["2018", "2019", "2020", "2021", "2022", "2023", "2024"],
         "data": [
-          7874.78,
-          16577.96,
-          16918.67,
-          33527.79,
-          314.05,
-          37336.13,
-          124310.89
+          7874.78, 16577.96, 16918.67, 33527.79, 314.05, 37336.13, 124310.89
         ]
       },
       "pastYear": {
@@ -358,18 +245,8 @@
           "Nov"
         ],
         "data": [
-          11650,
-          20950,
-          13049.89,
-          17279.09,
-          19607.92,
-          24450,
-          3681.78,
-          0,
-          7990,
-          4977.21,
-          9025,
-          3300
+          11650, 20950, 13049.89, 17279.09, 19607.92, 24450, 3681.78, 0, 7990,
+          4977.21, 9025, 3300
         ]
       },
       "thisMonth": {
@@ -406,44 +283,16 @@
           "30"
         ],
         "data": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1800,
-          0,
-          0,
-          0,
-          1500,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
+          0, 0, 0, 0, 0, 0, 0, 1800, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0
         ]
       }
     },
     "stats": {
       "allTime": {
-        "totalDistance": 135,
+        "totalDistance": 236860,
         "totalDuration": "4 days, 08 hours, 02 minutes, 22 seconds",
-        "maxDistance": 1.42,
+        "maxDistance": 2500,
         "totalActivities": 236,
         "activityTypeCounts": {
           "lap_swimming": 188,
@@ -451,9 +300,9 @@
         }
       },
       "pastYear": {
-        "totalDistance": 78,
+        "totalDistance": 137286,
         "totalDuration": "2 days, 07 hours, 36 minutes, 14 seconds",
-        "maxDistance": 1.42,
+        "maxDistance": 2500,
         "totalActivities": 97,
         "activityTypeCounts": {
           "lap_swimming": 90,
@@ -461,9 +310,9 @@
         }
       },
       "thisMonth": {
-        "totalDistance": 2,
+        "totalDistance": 3300,
         "totalDuration": "1 hours, 16 minutes, 06 seconds",
-        "maxDistance": 1.02,
+        "maxDistance": 1800,
         "totalActivities": 2,
         "activityTypeCounts": {
           "lap_swimming": 2
@@ -474,24 +323,8 @@
   "other": {
     "charts": {
       "allTime": {
-        "labels": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "2023",
-          "2024"
-        ],
-        "data": [
-          16,
-          23,
-          9,
-          21,
-          2,
-          14,
-          8
-        ]
+        "labels": ["2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+        "data": [16, 23, 9, 21, 2, 14, 8]
       },
       "pastYear": {
         "labels": [
@@ -508,20 +341,7 @@
           "Oct",
           "Nov"
         ],
-        "data": [
-          7,
-          10,
-          9,
-          7,
-          4,
-          2,
-          3,
-          1,
-          6,
-          3,
-          5,
-          2
-        ]
+        "data": [7, 10, 9, 7, 4, 2, 3, 1, 6, 3, 5, 2]
       },
       "thisMonth": {
         "labels": [
@@ -557,36 +377,8 @@
           "30"
         ],
         "data": [
-          0,
-          0,
-          0,
-          41,
-          14,
-          0,
-          0,
-          13,
-          0,
-          13,
-          42,
-          0,
-          15,
-          0,
-          0,
-          0,
-          0,
-          37,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
+          0, 0, 0, 41, 14, 0, 0, 13, 0, 13, 42, 0, 15, 0, 0, 0, 0, 37, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0
         ]
       }
     },
@@ -598,19 +390,19 @@
         "totalActivities": 1308,
         "activityTypeCounts": {
           "strength_training": 646,
+          "yoga": 194,
           "walking": 444,
-          "snow_shoe_ws": 24,
-          "yoga": 194
+          "snow_shoe_ws": 24
         }
       },
       "pastYear": {
         "totalDistance": 119,
-        "totalDuration": "2 days, 18 hours, 52 minutes, 12 seconds",
+        "totalDuration": "2 days, 18 hours, 22 minutes, 52 seconds",
         "maxDistance": 4.25,
-        "totalActivities": 154,
+        "totalActivities": 152,
         "activityTypeCounts": {
-          "strength_training": 72,
           "walking": 54,
+          "strength_training": 70,
           "yoga": 28
         }
       },
@@ -620,9 +412,9 @@
         "maxDistance": 2.02,
         "totalActivities": 8,
         "activityTypeCounts": {
-          "yoga": 1,
           "walking": 3,
-          "strength_training": 4
+          "strength_training": 4,
+          "yoga": 1
         }
       }
     }
@@ -631,6 +423,7 @@
     "charts": {
       "allTime": {
         "labels": [
+          "2014",
           "2015",
           "2016",
           "2017",
@@ -643,41 +436,13 @@
           "2024"
         ],
         "runData": [
-          364.98,
-          98.96,
-          387.71,
-          1010.43,
-          1146,
-          976.04,
-          763.19,
-          711.31,
-          727.5,
-          894.98
+          573.95, 456.04, 98.96, 387.71, 1010.43, 1146, 976.04, 763.19, 711.31,
+          727.5, 894.98
         ],
         "cycleData": [
-          0,
-          0,
-          0,
-          344.8,
-          677.66,
-          993.63,
-          669.27,
-          1259.61,
-          1865.33,
-          2657.74
+          0, 0, 0, 0, 344.8, 677.66, 993.63, 669.27, 1259.61, 1865.33, 2657.74
         ],
-        "swimData": [
-          0,
-          0,
-          0,
-          4.47,
-          9.42,
-          9.61,
-          19.05,
-          0.18,
-          21.21,
-          70.63
-        ]
+        "swimData": [0, 0, 0, 0, 4.47, 9.42, 9.61, 19.05, 0.18, 21.21, 70.63]
       },
       "pastYear": {
         "labels": [
@@ -695,46 +460,15 @@
           "Nov"
         ],
         "runData": [
-          74.67,
-          77.44,
-          73.26,
-          65.55,
-          63.39,
-          112.42,
-          66.67,
-          97.26,
-          90.06,
-          114.94,
-          100.2,
-          33.8
+          74.67, 77.44, 73.26, 65.55, 63.39, 112.42, 66.67, 97.26, 90.06,
+          114.94, 100.2, 33.8
         ],
         "cycleData": [
-          113.16,
-          114.07,
-          110.2,
-          177.1,
-          230.3,
-          291.16,
-          296.52,
-          394.84,
-          367.87,
-          367.96,
-          253.01,
-          54.72
+          113.16, 114.07, 110.2, 177.1, 230.3, 291.16, 296.52, 394.84, 367.87,
+          367.96, 253.01, 54.72
         ],
         "swimData": [
-          6.62,
-          11.9,
-          7.41,
-          9.82,
-          11.14,
-          13.89,
-          2.09,
-          0,
-          4.54,
-          2.83,
-          5.13,
-          1.88
+          6.62, 11.9, 7.41, 9.82, 11.14, 13.89, 2.09, 0, 4.54, 2.83, 5.13, 1.88
         ]
       },
       "thisMonth": {
@@ -771,147 +505,63 @@
           "30"
         ],
         "runData": [
-          0,
-          0,
-          5,
-          0,
-          0,
-          4.18,
-          0,
-          1.36,
-          0,
-          12.66,
-          0,
-          0,
-          5.39,
-          0,
-          0,
-          0,
-          5.21,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
+          0, 0, 5, 0, 0, 4.18, 0, 1.36, 0, 12.66, 0, 0, 5.39, 0, 0, 0, 5.21, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
         ],
         "cycleData": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          7.85,
-          0,
-          0,
-          0,
-          0,
-          12.33,
-          0,
-          19.97,
-          14.56,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
+          0, 0, 0, 0, 0, 0, 0, 0, 7.85, 0, 0, 0, 0, 12.33, 0, 19.97, 14.56, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
         ],
         "swimData": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1.02,
-          0,
-          0,
-          0,
-          0.85,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
+          0, 0, 0, 0, 0, 0, 0, 1.02, 0, 0, 0, 0.85, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0
         ]
       }
     },
     "stats": {
       "allTime": {
-        "totalDistance": 16605,
-        "totalDuration": "100 days, 19 hours, 21 minutes, 54 seconds",
+        "totalDistance": 17270,
+        "totalDuration": "103 days, 20 hours, 02 minutes, 06 seconds",
         "maxDistance": 102.63,
-        "totalActivities": 3875,
+        "totalActivities": 4019,
         "activityTypeCounts": {
-          "running": 1005,
-          "trail_running": 135,
-          "treadmill_running": 234,
-          "strength_training": 646,
-          "walking": 444,
           "cycling": 760,
-          "track_running": 17,
-          "lap_swimming": 188,
+          "strength_training": 646,
+          "running": 1147,
           "indoor_cycling": 96,
+          "lap_swimming": 188,
+          "yoga": 194,
+          "trail_running": 135,
+          "walking": 444,
           "mountain_biking": 67,
           "open_water_swimming": 48,
-          "ultra_run": 2,
+          "treadmill_running": 235,
           "snow_shoe_ws": 24,
-          "yoga": 194,
-          "gravel_cycling": 15
+          "gravel_cycling": 15,
+          "ultra_run": 2,
+          "track_running": 18
         }
       },
       "pastYear": {
-        "totalDistance": 3988,
-        "totalDuration": "20 days, 01 hours, 38 minutes, 59 seconds",
+        "totalDistance": 3977,
+        "totalDuration": "19 days, 23 hours, 10 minutes, 51 seconds",
         "maxDistance": 102.63,
-        "totalActivities": 716,
+        "totalActivities": 711,
         "activityTypeCounts": {
-          "running": 124,
-          "strength_training": 72,
           "walking": 54,
-          "indoor_cycling": 47,
-          "treadmill_running": 24,
-          "lap_swimming": 90,
           "cycling": 214,
           "trail_running": 20,
+          "indoor_cycling": 47,
+          "running": 121,
+          "strength_training": 70,
+          "lap_swimming": 90,
+          "treadmill_running": 24,
           "yoga": 28,
+          "ultra_run": 1,
           "mountain_biking": 10,
           "gravel_cycling": 14,
-          "track_running": 11,
           "open_water_swimming": 7,
-          "ultra_run": 1
+          "track_running": 11
         }
       },
       "thisMonth": {
@@ -920,15 +570,15 @@
         "maxDistance": 19.97,
         "totalActivities": 21,
         "activityTypeCounts": {
-          "trail_running": 2,
-          "yoga": 1,
           "walking": 3,
-          "strength_training": 4,
-          "treadmill_running": 2,
-          "lap_swimming": 2,
           "cycling": 2,
+          "trail_running": 2,
+          "indoor_cycling": 3,
           "running": 2,
-          "indoor_cycling": 3
+          "strength_training": 4,
+          "lap_swimming": 2,
+          "treadmill_running": 2,
+          "yoga": 1
         }
       }
     }

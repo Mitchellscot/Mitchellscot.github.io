@@ -6,12 +6,13 @@ import {ExerTrackResponse} from '../models/ExerTrackResponse';
 
 const getData = cache(GetExerTrackData);
 
-const getStats = async (req: NextRequest) => {
+const cacheStats = async (req: NextRequest) => {
+  console.log('Hello Mitchell');
   const result = await getData<ExerTrackResponse>();
   if (!result) {
     return NextResponse.json(result, {status: 500});
   }
 
-  return NextResponse.json(result, {status: 200});
+  return NextResponse.json({status: 200});
 };
-export default getStats;
+export default cacheStats;

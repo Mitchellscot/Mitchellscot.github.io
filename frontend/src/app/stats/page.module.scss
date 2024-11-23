@@ -20,7 +20,6 @@
 
 .title {
   text-align: center;
-  text-transform: uppercase;
   color: $WHITE;
 }
 
@@ -30,30 +29,43 @@
   margin: 10px;
 }
 
+.sportButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 25px;
+}
+
 .totalsAndPieChartContainer {
   display: grid;
-  grid-column: 1;
+  grid-template-columns: 1fr;
+  grid-row: 1fr 1fr;
+
+  @include breakpoint(MD) {
+    grid-template-columns: 1fr;
+    grid-row: 1fr;
+  }
+}
+
+.totalsContainer {
+  text-align: center;
   grid-row: 1;
 
   @include breakpoint(MD) {
-    grid-row: 1;
-    grid-column: 2;
+    text-align: start;
   }
 }
 
-.totalsContainer {}
-
-.totalsAndPieChartContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.pieChartContainer {
+  grid-row: 2;
 
   @include breakpoint(MD) {
     grid-row: 1;
-    grid-column: 2;
   }
 }
 
-.totalsTitle {}
+.totalsTitle {
+}
 
 .totalsLabel {
   color: $CYAN;
@@ -75,4 +87,68 @@
 .stat {
   font-family: var(--font-ubuntu-mono);
   // font-weight: $FONT_WEIGHT_BOLD;
+}
+
+.sportButton {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 8px;
+  padding: 10px;
+
+  > span {
+    transition: color 0.3s ease-in;
+    -webkit-transition: color 0.3s ease-in;
+    margin-right: 5px;
+
+    @include breakpoint(MD) {
+      margin-right: 20px;
+    }
+  }
+
+  &:active {
+    color: $ORANGE;
+  }
+
+  &:hover,
+  &:active {
+    color: $ORANGE;
+    border: 1px solid $ORANGE;
+
+    > span {
+      color: $ORANGE;
+      transition: color 0.3s ease-in;
+      -webkit-transition: color 0.3s ease-in;
+    }
+  }
+
+  svg:hover {
+    fill: $ORANGE;
+  }
+}
+
+.sportButton_active {
+  color: $ORANGE;
+  border: 1px solid $ORANGE;
+
+  > span {
+    color: $ORANGE;
+  }
+
+  > svg {
+    fill: $ORANGE;
+  }
+}
+
+.sportButton_inactive {
+  color: $CYAN;
+  border: 2px solid $CYAN_3;
+
+  > span {
+    color: $CYAN;
+  }
+
+  > svg {
+    fill: $CYAN;
+  }
 }
