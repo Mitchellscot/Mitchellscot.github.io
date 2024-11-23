@@ -177,6 +177,7 @@ function setAllSportPieChartInformation(
         ? data.all.stats.pastYear.activityTypeCounts
         : data.all.stats.allTime.activityTypeCounts;
   const orderedLabels = orderPieChartLabels(activityTypeCounts);
+
   const chartInformation = orderPieChartValues(activityTypeCounts);
   return {
     labels: orderedLabels.map((label) => ActivityToReadableNameMap[label]),
@@ -353,7 +354,7 @@ function getMetricBySport(sport: Sport): string {
     case 'swim':
       return 'Yards';
     case 'other':
-      return 'Hours';
+      return 'Miles (walking)';
     default:
       return 'Miles';
   }
@@ -382,6 +383,7 @@ function getBarChart(
       type: 'bar',
       data: allData,
       options: {
+        aspectRatio: 1.75,
         scales: {
           y: {
             beginAtZero: true,

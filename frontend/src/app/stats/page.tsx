@@ -4,14 +4,14 @@ import text from '../../styles/typography/Text.module.scss';
 import styles from './page.module.scss';
 import classNames from 'classnames';
 import Button from '../../components/Button/Button';
-import { baseEnv } from '../../utils/environment';
+import {baseEnv} from '../../utils/environment';
 import http from '../../utils/http';
-import { useSearchParams } from 'next/navigation';
+import {useSearchParams} from 'next/navigation';
 import {
   ExerTrackResponse,
   StatsInformation,
 } from '../../models/ExerTrackResponse';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator';
 import type Sport from '../../models/Sport';
 import type Time from '../../models/Time';
@@ -24,19 +24,17 @@ import {
 } from '../../utils/chartUtils';
 import Activities from '../../components/Activities/Activities';
 import Link from 'next/link';
-import { FaPersonRunning, FaPersonSwimming } from 'react-icons/fa6';
-import { LuBike } from 'react-icons/lu';
-import { FaDumbbell } from 'react-icons/fa6';
+import {FaPersonRunning, FaPersonSwimming} from 'react-icons/fa6';
+import {LuBike} from 'react-icons/lu';
+import {FaDumbbell} from 'react-icons/fa6';
 import Chart from 'chart.js/auto';
-import { useRouter } from 'next/navigation';
-
-
+import {useRouter} from 'next/navigation';
 
 export default function Stats() {
   const router = useRouter();
   const activitiesTitle = classNames(styles.activitiesTitle, headings.heading2);
   const totalsTitleClasses = classNames(styles.totalsTitle, text.textLg);
-  const statClasses = classNames(styles.stat, text.textMd);
+  const statClasses = classNames(styles.stat, text.textLg);
   const titleClasses = classNames(styles.title, headings.heading2);
   const subTitleClasses = classNames(styles.subTitle, text.textMd);
   const [sport, setSport] = useState<Sport>('all');
@@ -135,7 +133,9 @@ export default function Stats() {
       {pageLoading ? (
         <>
           <div className={titleClasses}>Check out my workout stats!</div>
-          <div className={subTitleClasses}>(might take a bit to load... hold tight)</div>
+          <div className={subTitleClasses}>
+            (might take a bit to load... hold tight)
+          </div>
           <LoadingIndicator
             isCentered={true}
             isFullScreen={true}
@@ -144,7 +144,6 @@ export default function Stats() {
         </>
       ) : (
         <>
-
           {pageLoading ? (
             <div>
               <LoadingIndicator
@@ -163,53 +162,86 @@ export default function Stats() {
               label="This Month"
               variant="transparent"
               arrowOptions="right"
-              onClick={() => router.push(`/stats?sport=${sport}&time=month`, { scroll: false })}
+              onClick={() =>
+                router.push(`/stats?sport=${sport}&time=month`, {scroll: false})
+              }
             />
             <Button
               label="This Year"
               variant="transparent"
               arrowOptions="right"
-              onClick={() => router.push(`/stats?sport=${sport}&time=year`, { scroll: false })}
+              onClick={() =>
+                router.push(`/stats?sport=${sport}&time=year`, {scroll: false})
+              }
             />
             <Button
               label="All Time"
               variant="transparent"
               arrowOptions="right"
-              onClick={() => router.push(`/stats?sport=${sport}&time=all`, { scroll: false })}
+              onClick={() =>
+                router.push(`/stats?sport=${sport}&time=all`, {scroll: false})
+              }
             />
           </div>
 
           <div className={styles.sportButtonContainer}>
-            <button onClick={() => router.push(sport === 'run' ? `/stats?sport=all&time=${time}` : `/stats?sport=run&time=${time}`, { scroll: false })}
-              className={runBtn}>
+            <button
+              onClick={() =>
+                router.push(
+                  sport === 'run'
+                    ? `/stats?sport=all&time=${time}`
+                    : `/stats?sport=run&time=${time}`,
+                  {scroll: false}
+                )
+              }
+              className={runBtn}
+            >
               <span>Run</span> <FaPersonRunning />
             </button>
-            <button onClick={() => router.push(sport === 'bike' ? `/stats?sport=all&time=${time}` : `/stats?sport=bike&time=${time}`, { scroll: false })}
-              className={bikeBtn}>
+            <button
+              onClick={() =>
+                router.push(
+                  sport === 'bike'
+                    ? `/stats?sport=all&time=${time}`
+                    : `/stats?sport=bike&time=${time}`,
+                  {scroll: false}
+                )
+              }
+              className={bikeBtn}
+            >
               <span>Bike</span> <LuBike />
             </button>
-            <button onClick={() => router.push(sport === 'swim' ? `/stats?sport=all&time=${time}` : `/stats?sport=swim&time=${time}`, { scroll: false })}
-              className={swimBtn}>
+
+            <button
+              onClick={() =>
+                router.push(
+                  sport === 'swim'
+                    ? `/stats?sport=all&time=${time}`
+                    : `/stats?sport=swim&time=${time}`,
+                  {scroll: false}
+                )
+              }
+              className={swimBtn}
+            >
               <span>Swim</span> <FaPersonSwimming />
             </button>
-            <button onClick={() => router.push(sport === 'other' ? `/stats?sport=all&time=${time}` : `/stats?sport=other&time=${time}`, { scroll: false })}
-              className={otherBtn}>
+            <button
+              onClick={() =>
+                router.push(
+                  sport === 'other'
+                    ? `/stats?sport=all&time=${time}`
+                    : `/stats?sport=other&time=${time}`,
+                  {scroll: false}
+                )
+              }
+              className={otherBtn}
+            >
               <span>Workout</span> <FaDumbbell />
             </button>
           </div>
           <hr />
           <div className={styles.totalsAndPieChartContainer}>
             <div className={styles.totalsContainer}>
-              {quickStatistics?.totalDistance && (
-                <div className={totalsTitleClasses}>
-                  <span className={styles.totalsLabel}>Total Distance: </span>
-                  <br />
-                  <span className={statClasses}>
-                    {formatNumberWithCommas(quickStatistics?.totalDistance)}{' '}
-                    {getMetricBySport(sport)}
-                  </span>
-                </div>
-              )}
               {quickStatistics?.totalDuration && (
                 <div className={totalsTitleClasses}>
                   <span className={styles.totalsLabel}>
@@ -217,6 +249,16 @@ export default function Stats() {
                   </span>
                   <span className={statClasses}>
                     {quickStatistics?.totalDuration}
+                  </span>
+                </div>
+              )}
+              {quickStatistics?.totalDistance && (
+                <div className={totalsTitleClasses}>
+                  <span className={styles.totalsLabel}>Total Distance: </span>
+                  <br />
+                  <span className={statClasses}>
+                    {formatNumberWithCommas(quickStatistics?.totalDistance)}{' '}
+                    {getMetricBySport(sport)}
                   </span>
                 </div>
               )}
@@ -236,7 +278,11 @@ export default function Stats() {
                     Total{' '}
                     {sport === 'all' || sport === 'other'
                       ? 'Activities'
-                      : `${sport}`}
+                      : sport === 'run'
+                        ? 'Runs'
+                        : sport === 'bike'
+                          ? 'Bike Rides'
+                          : 'Swims'}
                     : <br />
                   </span>
                   <span className={statClasses}>
@@ -256,8 +302,7 @@ export default function Stats() {
             <Activities activitiesList={recentActivities} />
           </div>
         </>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 }
