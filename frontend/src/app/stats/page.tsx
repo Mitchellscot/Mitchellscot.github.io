@@ -4,14 +4,14 @@ import text from '../../styles/typography/Text.module.scss';
 import styles from './page.module.scss';
 import classNames from 'classnames';
 import Button from '../../components/Button/Button';
-import {baseEnv} from '../../utils/environment';
+import { baseEnv } from '../../utils/environment';
 import http from '../../utils/http';
-import {useSearchParams} from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import {
   ExerTrackResponse,
   StatsInformation,
 } from '../../models/ExerTrackResponse';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator';
 import type Sport from '../../models/Sport';
 import type Time from '../../models/Time';
@@ -24,9 +24,9 @@ import {
 } from '../../utils/chartUtils';
 import Activities from '../../components/Activities/Activities';
 import Link from 'next/link';
-import {FaPersonRunning, FaPersonSwimming} from 'react-icons/fa6';
-import {LuBike} from 'react-icons/lu';
-import {FaDumbbell} from 'react-icons/fa6';
+import { FaPersonRunning, FaPersonSwimming } from 'react-icons/fa6';
+import { LuBike } from 'react-icons/lu';
+import { FaDumbbell } from 'react-icons/fa6';
 import Chart from 'chart.js/auto';
 
 function formatNumberWithCommas(number: number): string {
@@ -127,13 +127,16 @@ export default function Stats() {
   const recentActivities = data?.recentActivities ?? [];
   return (
     <div className={styles.container}>
-      <div className={titleClasses}>Check out my workout stats!</div>
       {pageLoading ? (
-        <LoadingIndicator
-          isCentered={true}
-          isFullScreen={true}
-          size={'large'}
-        />
+        <>
+          <div className={titleClasses}>Check out my workout stats!</div>
+          <div className={text.textMd}>(might take a bit to load... hold tight)</div>
+          <LoadingIndicator
+            isCentered={true}
+            isFullScreen={true}
+            size={'large'}
+          />
+        </>
       ) : (
         <>
           <div className={styles.timeButtonContainer}>
