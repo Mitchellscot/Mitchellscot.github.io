@@ -28,16 +28,17 @@ import { FaPersonRunning, FaPersonSwimming } from 'react-icons/fa6';
 import { LuBike } from 'react-icons/lu';
 import { FaDumbbell } from 'react-icons/fa6';
 import Chart from 'chart.js/auto';
+import { useRouter } from 'next/navigation';
 
-function formatNumberWithCommas(number: number): string {
-  return new Intl.NumberFormat('en-US').format(number);
-}
+
 
 export default function Stats() {
+  const router = useRouter();
   const activitiesTitle = classNames(styles.activitiesTitle, headings.heading2);
   const totalsTitleClasses = classNames(styles.totalsTitle, text.textLg);
   const statClasses = classNames(styles.stat, text.textMd);
   const titleClasses = classNames(styles.title, headings.heading2);
+  const subTitleClasses = classNames(styles.subTitle, text.textMd);
   const [sport, setSport] = useState<Sport>('all');
   const runBtn = classNames(
     text.textLg,
@@ -125,12 +126,16 @@ export default function Stats() {
   }, [data, pageLoading, sport, time]);
 
   const recentActivities = data?.recentActivities ?? [];
+  function formatNumberWithCommas(number: number): string {
+    return new Intl.NumberFormat('en-US').format(number);
+  }
+
   return (
     <div className={styles.container}>
       {pageLoading ? (
         <>
           <div className={titleClasses}>Check out my workout stats!</div>
-          <div className={text.textMd}>(might take a bit to load... hold tight)</div>
+          <div className={subTitleClasses}>(might take a bit to load... hold tight)</div>
           <LoadingIndicator
             isCentered={true}
             isFullScreen={true}
@@ -139,26 +144,7 @@ export default function Stats() {
         </>
       ) : (
         <>
-          <div className={styles.timeButtonContainer}>
-            <Button
-              label="This Month"
-              link={`/stats?sport=${sport}&time=month`}
-              variant="transparent"
-              arrowOptions="right"
-            />
-            <Button
-              label="This Year"
-              link={`/stats?sport=${sport}&time=year`}
-              variant="transparent"
-              arrowOptions="right"
-            />
-            <Button
-              label="All Time"
-              link={`/stats?sport=${sport}&time=all`}
-              variant="transparent"
-              arrowOptions="right"
-            />
-          </div>
+
           {pageLoading ? (
             <div>
               <LoadingIndicator
@@ -172,49 +158,44 @@ export default function Stats() {
               <canvas id={`${sport}-${time}`}></canvas>
             </div>
           )}
+          <div className={styles.timeButtonContainer}>
+            <Button
+              label="This Month"
+              variant="transparent"
+              arrowOptions="right"
+              onClick={() => router.push(`/stats?sport=${sport}&time=month`, { scroll: false })}
+            />
+            <Button
+              label="This Year"
+              variant="transparent"
+              arrowOptions="right"
+              onClick={() => router.push(`/stats?sport=${sport}&time=year`, { scroll: false })}
+            />
+            <Button
+              label="All Time"
+              variant="transparent"
+              arrowOptions="right"
+              onClick={() => router.push(`/stats?sport=${sport}&time=all`, { scroll: false })}
+            />
+          </div>
 
           <div className={styles.sportButtonContainer}>
-            <Link
-              className={runBtn}
-              href={
-                sport === 'run'
-                  ? `/stats?sport=all&time=${time}`
-                  : `/stats?sport=run&time=${time}`
-              }
-            >
+            <button onClick={() => router.push(sport === 'run' ? `/stats?sport=all&time=${time}` : `/stats?sport=run&time=${time}`, { scroll: false })}
+              className={runBtn}>
               <span>Run</span> <FaPersonRunning />
-            </Link>
-            <Link
-              className={bikeBtn}
-              href={
-                sport === 'bike'
-                  ? `/stats?sport=all&time=${time}`
-                  : `/stats?sport=bike&time=${time}`
-              }
-            >
+            </button>
+            <button onClick={() => router.push(sport === 'bike' ? `/stats?sport=all&time=${time}` : `/stats?sport=bike&time=${time}`, { scroll: false })}
+              className={bikeBtn}>
               <span>Bike</span> <LuBike />
-            </Link>
-
-            <Link
-              className={swimBtn}
-              href={
-                sport === 'swim'
-                  ? `/stats?sport=all&time=${time}`
-                  : `/stats?sport=swim&time=${time}`
-              }
-            >
+            </button>
+            <button onClick={() => router.push(sport === 'swim' ? `/stats?sport=all&time=${time}` : `/stats?sport=swim&time=${time}`, { scroll: false })}
+              className={swimBtn}>
               <span>Swim</span> <FaPersonSwimming />
-            </Link>
-            <Link
-              className={otherBtn}
-              href={
-                sport === 'other'
-                  ? `/stats?sport=all&time=${time}`
-                  : `/stats?sport=other&time=${time}`
-              }
-            >
+            </button>
+            <button onClick={() => router.push(sport === 'other' ? `/stats?sport=all&time=${time}` : `/stats?sport=other&time=${time}`, { scroll: false })}
+              className={otherBtn}>
               <span>Workout</span> <FaDumbbell />
-            </Link>
+            </button>
           </div>
           <hr />
           <div className={styles.totalsAndPieChartContainer}>
@@ -275,7 +256,8 @@ export default function Stats() {
             <Activities activitiesList={recentActivities} />
           </div>
         </>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }

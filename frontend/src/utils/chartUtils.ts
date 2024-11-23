@@ -470,7 +470,8 @@ function getPieChart(
           title: {
             display: true,
             text: 'Activity Breakdown',
-            color: '#00ffee',
+            color: '#ffffff',
+            position: 'bottom',
             font: {
               size: 18,
             },
