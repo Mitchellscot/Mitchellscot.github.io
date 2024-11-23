@@ -48,7 +48,7 @@ export const ActivityToReadableNameMap = {
   [ActivityTypes.mountain_biking]: 'Mountain Biking',
   [ActivityTypes.gravel_cycling]: 'Gravel Cycling',
   [ActivityTypes.cycling]: 'Road Cycling',
-  [ActivityTypes.lap_swimming]: 'Lap Swimming',
+  [ActivityTypes.lap_swimming]: 'Pool Swimming',
   [ActivityTypes.open_water_swimming]: 'Open Water Swimming',
   [ActivityTypes.walking]: 'Walking',
   [ActivityTypes.yoga]: 'Yoga',
