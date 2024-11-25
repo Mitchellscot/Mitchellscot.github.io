@@ -14,6 +14,9 @@ export async function GetExerTrackData<
       Authorization: `Bearer ${token}`,
     },
     cache: 'force-cache',
+    next: {
+      tags: ['extertrack'],
+    },
   });
   let data = await response?.json();
 
