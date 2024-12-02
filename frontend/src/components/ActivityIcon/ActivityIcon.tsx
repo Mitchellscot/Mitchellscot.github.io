@@ -16,6 +16,7 @@ import {FaDumbbell} from 'react-icons/fa6';
 import {GiTrail} from 'react-icons/gi';
 import {FaHeartbeat} from 'react-icons/fa';
 import {RiBikeFill} from 'react-icons/ri';
+import {MdOutlineSnowshoeing} from 'react-icons/md';
 
 interface ActivityProps {
   activity: string;
@@ -52,6 +53,8 @@ export default function ActivityIcon({activity}: ActivityProps) {
       return <TbStretching />;
     case ActivityTypes.strength_training:
       return <FaDumbbell />;
+    case ActivityTypes.snow_shoe_ws:
+      return <MdOutlineSnowshoeing />;
     case ActivityTypes.other:
       return <FaHeartbeat />;
     default:
