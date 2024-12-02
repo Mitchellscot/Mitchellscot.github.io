@@ -417,7 +417,7 @@ function getBarChart(
         labels: labels,
         datasets: [
           {
-            label: getMetricBySport(sport),
+            label: sport === 'other' ? 'Hours' : getMetricBySport(sport),
             data: chartInformation?.data ?? [],
             backgroundColor: getChartBarColor(sport),
             borderColor: getChartBarColor(sport),
