@@ -284,13 +284,7 @@ export default function Stats() {
                   </span>
                 </div>
               </div>
-              <div
-                className={
-                  quickStatistics?.totalActivities
-                    ? styles.pieChartContainer
-                    : styles.hidden
-                }
-              >
+              <div className={styles.pieChartContainer}>
                 <canvas id={`pie-${sport}-${time}`}></canvas>
               </div>
             </div>
