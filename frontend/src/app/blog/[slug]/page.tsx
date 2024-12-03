@@ -27,7 +27,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = await params.then((p) => p.slug);
-  console.log('mitchell slug', slug);
+
   return getMetadata(slug);
 }
 

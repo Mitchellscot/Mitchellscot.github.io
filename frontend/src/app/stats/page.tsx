@@ -29,6 +29,7 @@ import {LuBike} from 'react-icons/lu';
 import {FaDumbbell} from 'react-icons/fa6';
 import Chart from 'chart.js/auto';
 import {useRouter} from 'next/navigation';
+import {set} from 'react-hook-form';
 
 export default function Stats() {
   const router = useRouter();
@@ -64,6 +65,7 @@ export default function Stats() {
   const [pieChart, setPieChart] = useState<Chart | null>(null);
   const [quickStatistics, setquickStatistics] =
     useState<StatsInformation | null>(null);
+  const [showStats, setShowStats] = useState<boolean>(false);
   const [pageLoading, setPageLoading] = useState<boolean>(true);
   const searchParams = useSearchParams();
 
@@ -132,7 +134,6 @@ export default function Stats() {
     <div className={styles.container}>
       {pageLoading ? (
         <>
-          <div className={titleClasses}>Check out my workout stats!</div>
           <div className={subTitleClasses}>
             (might take a bit to load... hold tight)
           </div>
@@ -144,19 +145,9 @@ export default function Stats() {
         </>
       ) : (
         <>
-          {pageLoading ? (
-            <div>
-              <LoadingIndicator
-                isCentered={true}
-                isFullScreen={false}
-                size={'large'}
-              />
-            </div>
-          ) : (
-            <div>
-              <canvas id={`${sport}-${time}`}></canvas>
-            </div>
-          )}
+          <div>
+            <canvas id={`${sport}-${time}`}></canvas>
+          </div>
           <div className={styles.timeButtonContainer}>
             <Button
               label="This Month"
@@ -183,7 +174,6 @@ export default function Stats() {
               }
             />
           </div>
-
           <div className={styles.sportButtonContainer}>
             <button
               onClick={() =>
@@ -239,40 +229,42 @@ export default function Stats() {
               <span>Workout</span> <FaDumbbell />
             </button>
           </div>
-          <hr />
-          <div className={styles.totalsAndPieChartContainer}>
-            <div className={styles.totalsContainer}>
-              {quickStatistics?.totalDuration && (
+
+          <>
+            <hr />
+            <div className={styles.totalsAndPieChartContainer}>
+              <div className={styles.totalsContainer}>
                 <div className={totalsTitleClasses}>
                   <span className={styles.totalsLabel}>
                     Total Duration: <br />
                   </span>
                   <span className={statClasses}>
-                    {quickStatistics?.totalDuration}
+                    {quickStatistics?.totalDuration ||
+                      `No time spent this ${time}`}
                   </span>
                 </div>
-              )}
-              {quickStatistics?.totalDistance && (
+
                 <div className={totalsTitleClasses}>
                   <span className={styles.totalsLabel}>Total Distance: </span>
                   <br />
                   <span className={statClasses}>
-                    {formatNumberWithCommas(quickStatistics?.totalDistance)}{' '}
+                    {formatNumberWithCommas(
+                      quickStatistics?.totalDistance ?? 0
+                    )}{' '}
                     {getMetricBySport(sport)}
                   </span>
                 </div>
-              )}
-              {quickStatistics?.maxDistance && (
+
                 <div className={totalsTitleClasses}>
                   <span className={styles.totalsLabel}>
                     Max Distance: <br />
                   </span>
                   <span className={statClasses}>
-                    {quickStatistics?.maxDistance} {getMetricBySport(sport)}
+                    {quickStatistics?.maxDistance ?? 0}{' '}
+                    {getMetricBySport(sport)}
                   </span>
                 </div>
-              )}
-              {quickStatistics?.totalActivities && (
+
                 <div className={totalsTitleClasses}>
                   <span className={styles.totalsLabel}>
                     Total{' '}
@@ -286,16 +278,23 @@ export default function Stats() {
                     : <br />
                   </span>
                   <span className={statClasses}>
-                    {formatNumberWithCommas(quickStatistics?.totalActivities)}
+                    {formatNumberWithCommas(
+                      quickStatistics?.totalActivities ?? 0
+                    )}
                   </span>
                 </div>
-              )}
+              </div>
+              <div
+                className={
+                  quickStatistics?.totalActivities
+                    ? styles.pieChartContainer
+                    : styles.hidden
+                }
+              >
+                <canvas id={`pie-${sport}-${time}`}></canvas>
+              </div>
             </div>
-            <div className={styles.pieChartContainer}>
-              <canvas id={`pie-${sport}-${time}`}></canvas>
-            </div>
-          </div>
-
+          </>
           <div className={activitiesTitle}>Recent Activities</div>
           <hr />
           <div className={styles.activityColumns}>

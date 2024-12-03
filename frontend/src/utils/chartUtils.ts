@@ -198,7 +198,6 @@ function setSportSpecificPieChartInformation(
   time: Time
 ): AllSportsChartInformation {
   let activityTypeCounts;
-  console.log('sport, time', sport, time);
   switch (sport) {
     case 'run':
       activityTypeCounts =
@@ -241,7 +240,6 @@ function setSportSpecificPieChartInformation(
             : data.all.stats.allTime.activityTypeCounts;
       break;
   }
-  console.log('Mitchell, activity type counts', activityTypeCounts);
   const orderedLabels = orderPieChartLabels(activityTypeCounts);
   const chartInformation = orderPieChartValues(activityTypeCounts);
   return {
@@ -471,7 +469,10 @@ function getPieChart(
           },
           title: {
             display: true,
-            text: 'Activity Breakdown',
+            text:
+              pieChartData.datasets[0].data.length > 0
+                ? 'Activity Breakdown'
+                : '',
             color: '#ffffff',
             position: 'bottom',
             font: {
@@ -487,8 +488,7 @@ function getPieChart(
       sport,
       time
     );
-    console.log('Mitchell, sport', sport, 'time', time);
-    console.log('Mitchell, chart information', chartInformation);
+    console.log(chartInformation);
     return new Chart(chartContext!, {
       type: 'pie',
       data: chartInformation,
@@ -500,8 +500,12 @@ function getPieChart(
           },
           title: {
             display: true,
-            text: 'Activity Breakdown',
-            color: '#00ffee',
+            text:
+              chartInformation.datasets[0].data.length > 0
+                ? 'Activity Breakdown'
+                : '',
+            color: '#ffffff',
+            position: 'bottom',
             font: {
               size: 18,
             },

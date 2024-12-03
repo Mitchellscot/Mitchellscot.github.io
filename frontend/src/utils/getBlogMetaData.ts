@@ -9,7 +9,6 @@ interface BlogMetadata {
 
 export default async function getMetadata(slug: string): Promise<Metadata> {
   const data = await fetchSanityData<BlogMetadata>(getBlogMetadata(slug));
-  console.log('mitchell, data', data);
   return {
     description: data?.metaDescription,
     title: data?.title,
