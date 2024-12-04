@@ -59,7 +59,7 @@ export default function Stats() {
     styles.sportButton,
     sport === 'other' ? styles.sportButton_active : styles.sportButton_inactive
   );
-  const [time, setTime] = useState<Time>('all');
+  const [time, setTime] = useState<Time>('year');
   const [data, setData] = useState<ExerTrackResponse | null>(null);
   const [chart, setChart] = useState<Chart | null>(null);
   const [pieChart, setPieChart] = useState<Chart | null>(null);
@@ -71,7 +71,7 @@ export default function Stats() {
 
   useEffect(() => {
     setSport((searchParams.get('sport') as Sport) ?? 'all');
-    setTime((searchParams.get('time') as Time) ?? 'all');
+    setTime((searchParams.get('time') as Time) ?? 'year');
   }, [searchParams]);
 
   useEffect(() => {
