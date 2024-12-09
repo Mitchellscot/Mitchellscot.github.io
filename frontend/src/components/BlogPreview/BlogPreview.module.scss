@@ -51,12 +51,11 @@
 .tag {
   color: $CYAN;
   font-family: var(--font-ubuntu-mono);
+  margin-left: 20px;
 
   &::before {
     content: '#';
   }
-
-  margin-left: 20px;
 }
 
 .tag:hover {

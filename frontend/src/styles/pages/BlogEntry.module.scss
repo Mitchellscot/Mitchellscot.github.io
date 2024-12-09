@@ -30,31 +30,38 @@
 .title {
   margin-bottom: 20px;
 }
+
 .dateTitleContainer {
   display: flex;
   justify-content: space-between;
 }
+
 .tagList {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   margin-bottom: 20px;
 }
+
 .tag {
   color: $CYAN;
   font-family: var(--font-ubuntu-mono);
+  margin-left: 20px;
+
   &::before {
     content: '#';
   }
-  margin-left: 20px;
 }
+
 .tag:hover {
   color: $ORANGE;
 }
+
 .date {
   color: $CYAN_2;
   margin-bottom: 20px;
 }
+
 .imageContainer {
   margin-bottom: 20px;
   display: flex;
@@ -67,6 +74,7 @@
   width: 100%;
   height: auto;
 }
+
 .buttonContainer {
   display: flex;
   justify-content: center;
