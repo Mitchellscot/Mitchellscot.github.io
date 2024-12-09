@@ -1,4 +1,5 @@
 import fs from 'fs';
+import {revalidateTag} from 'next/cache';
 import path from 'path';
 import 'server-only';
 
@@ -27,6 +28,7 @@ export async function GetExerTrackData<
       console.log(
         'Mitchell, we are getting a null response from the ExerTrack API. Loading the json file instead.'
       );
+      revalidateTag('extertrack');
       const staticData =
         require('/Resources/exerTrackResponse.json') as ExerTrackResponse;
       data = staticData;
