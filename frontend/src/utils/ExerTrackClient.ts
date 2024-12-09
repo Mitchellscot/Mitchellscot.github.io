@@ -33,8 +33,7 @@ export async function GetExerTrackData<
         require('/Resources/exerTrackResponse.json') as ExerTrackResponse;
       data = staticData;
     }
-    const filePath = path.resolve(__dirname, 'exerTrackResponse.json');
-    //const filePath = '../Resources/exerTrackResponse.json';
+    const filePath = path.resolve('/tmp', 'exerTrackResponse.json');
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
     return data;
   } catch (ex) {
@@ -42,8 +41,15 @@ export async function GetExerTrackData<
       'Mitchell, there was an error fetching the data from the API. Loading the json file instead.'
     );
     console.log(ex);
-    const staticData =
-      require('/Resources/exerTrackResponse.json') as ExerTrackResponse;
-    return staticData;
+    if (fs.existsSync('/tmp/exerTrackResponse.json')) {
+      const data = JSON.parse(
+        fs.readFileSync('/tmp/exerTrackResponse.json', 'utf-8')
+      );
+      return data;
+    } else {
+      const staticData =
+        require('/Resources/exerTrackResponse.json') as ExerTrackResponse;
+      return staticData;
+    }
   }
 }
