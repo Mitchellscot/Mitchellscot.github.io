@@ -36,7 +36,7 @@ function displayChartTitleByTagAndTime(tag: Sport, time: Time): string {
           : 'Swim Distance All Time (yards)';
     case 'other':
       return time === 'month'
-        ? 'Strength Training This Month (hours)'
+        ? 'Strength Training This Month (minutes)'
         : time === 'year'
           ? 'Strength Training Past Year (hours)'
           : 'Strength Training All Time (miles)';
@@ -415,7 +415,12 @@ function getBarChart(
         labels: labels,
         datasets: [
           {
-            label: sport === 'other' ? 'Hours' : getMetricBySport(sport),
+            label:
+              sport === 'other' && time == 'month'
+                ? 'Minutes'
+                : sport === 'other'
+                  ? 'Hours'
+                  : getMetricBySport(sport),
             data: chartInformation?.data ?? [],
             backgroundColor: getChartBarColor(sport),
             borderColor: getChartBarColor(sport),
