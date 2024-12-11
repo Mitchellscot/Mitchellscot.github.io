@@ -1,7 +1,7 @@
+'use server';
 import fs from 'fs';
 import {revalidateTag} from 'next/cache';
 import path from 'path';
-import 'server-only';
 
 const baseUrl = process.env.EXERTRACK_BASE_URL;
 const token = process.env.EXERTRACK_API_TOKEN;
@@ -29,12 +29,16 @@ export async function GetExerTrackData<
         'Mitchell, we are getting a null response from the ExerTrack API. Loading the json file instead.'
       );
       revalidateTag('extertrack');
-      const staticData =
-        require('/Resources/exerTrackResponse.json') as ExerTrackResponse;
-      data = staticData;
+      const tmpFilePath = path.resolve('/tmp', 'exerTrackResponse.json');
+      if (fs.existsSync(tmpFilePath)) {
+        const data = JSON.parse(fs.readFileSync(tmpFilePath, 'utf-8'));
+        return data;
+      } else {
+        const staticData =
+          require('/Resources/exerTrackResponse.json') as ExerTrackResponse;
+        return staticData;
+      }
     }
-    const filePath = path.resolve('/tmp', 'exerTrackResponse.json');
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
     return data;
   } catch (ex) {
     console.log(

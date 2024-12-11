@@ -1,9 +1,19 @@
-'user server';
-import {NextRequest} from 'next/server';
+'use server';
+import {NextRequest, NextResponse} from 'next/server';
 import {revalidateTag} from 'next/cache';
-import getStats from './getStats';
+import {GetExerTrackData} from './ExerTrackClient';
+import {ExerTrackResponse} from '../models/ExerTrackResponse';
+import path from 'path';
+import fs from 'fs';
 
-export default function revalidateDataCache(req: NextRequest) {
+export default async function revalidateDataCache(req: NextRequest) {
   revalidateTag('extertrack');
-  return getStats(req);
+  const newStats = await GetExerTrackData<ExerTrackResponse>();
+  const filePath = path.resolve('/tmp', 'exerTrackResponse.json');
+  fs.writeFileSync(filePath, JSON.stringify(newStats, null, 2), 'utf-8');
+  if (!newStats) {
+    return NextResponse.json(newStats, {status: 500});
+  }
+
+  return NextResponse.json(newStats, {status: 200});
 }
