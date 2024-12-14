@@ -418,9 +418,11 @@ function getBarChart(
             label:
               sport === 'other' && time == 'month'
                 ? 'Minutes'
-                : sport === 'other'
-                  ? 'Hours'
-                  : getMetricBySport(sport),
+                : sport === 'other' && time == 'year'
+                  ? 'Miles'
+                  : sport === 'other' && time == 'all'
+                    ? 'miles'
+                    : getMetricBySport(sport),
             data: chartInformation?.data ?? [],
             backgroundColor: getChartBarColor(sport),
             borderColor: getChartBarColor(sport),
