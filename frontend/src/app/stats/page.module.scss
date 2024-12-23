@@ -28,6 +28,16 @@
   color: $WHITE;
 }
 
+.chartContainer {
+  display: flex;
+  justify-content: center;
+
+  @include breakpoint(XL) {
+    max-width: 770px;
+    max-height: 385px;
+  }
+}
+
 .timeButtonContainer {
   display: flex;
   justify-content: space-evenly;

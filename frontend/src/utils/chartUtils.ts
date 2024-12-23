@@ -12,6 +12,7 @@ import {
   ActivityToReadableNameMap,
   ActivityPieChartOrder,
   ActivityColorMap,
+  ActivityTypes,
 } from './sportMap';
 
 function displayChartTitleByTagAndTime(tag: Sport, time: Time): string {
@@ -240,8 +241,26 @@ function setSportSpecificPieChartInformation(
             : data.all.stats.allTime.activityTypeCounts;
       break;
   }
-  const orderedLabels = orderPieChartLabels(activityTypeCounts);
-  const chartInformation = orderPieChartValues(activityTypeCounts);
+  if (isEmptyObject(activityTypeCounts)) {
+    return {
+      labels: ['No Activities'],
+      datasets: [
+        {
+          label: '',
+          data: [1],
+          backgroundColor: ['#1e2022'],
+          borderColor: '#ffffff',
+          borderWidth: 1,
+        },
+      ],
+    };
+  }
+  let orderedLabels = orderPieChartLabels(activityTypeCounts);
+  let chartInformation = orderPieChartValues(activityTypeCounts);
+  if (chartInformation.length === 0 && orderedLabels.length === 0) {
+    chartInformation = [1];
+    orderedLabels = [ActivityTypes.none];
+  }
   return {
     labels: orderedLabels.map((label) => ActivityToReadableNameMap[label]),
     datasets: [
@@ -381,7 +400,7 @@ function getBarChart(
       type: 'bar',
       data: allData,
       options: {
-        aspectRatio: 1.75,
+        animation: false,
         scales: {
           y: {
             beginAtZero: true,
@@ -431,6 +450,7 @@ function getBarChart(
         ],
       },
       options: {
+        animation: false,
         scales: {
           y: {
             beginAtZero: true,
@@ -465,10 +485,12 @@ function getPieChart(
 
   if (sport === 'all') {
     const pieChartData = setAllSportPieChartInformation(data!, time);
+
     return new Chart(chartContext!, {
       type: 'pie',
       data: pieChartData,
       options: {
+        animation: false,
         responsive: true,
         plugins: {
           legend: {
@@ -495,11 +517,11 @@ function getPieChart(
       sport,
       time
     );
-    console.log(chartInformation);
     return new Chart(chartContext!, {
       type: 'pie',
       data: chartInformation,
       options: {
+        animation: false,
         responsive: true,
         plugins: {
           legend: {
@@ -521,6 +543,15 @@ function getPieChart(
       },
     });
   }
+}
+
+function isEmptyObject(obj: any) {
+  return (
+    obj && // Check that obj is not null or undefined
+    typeof obj === 'object' && // Check that obj is an object
+    !Array.isArray(obj) && // Ensure obj is not an array
+    Object.keys(obj).length === 0 // Check if obj has no keys
+  );
 }
 
 export {

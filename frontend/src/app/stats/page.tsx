@@ -23,13 +23,12 @@ import {
   getPieChart,
 } from '../../utils/chartUtils';
 import Activities from '../../components/Activities/Activities';
-import Link from 'next/link';
 import {FaPersonRunning, FaPersonSwimming} from 'react-icons/fa6';
 import {LuBike} from 'react-icons/lu';
 import {FaDumbbell} from 'react-icons/fa6';
 import Chart from 'chart.js/auto';
 import {useRouter} from 'next/navigation';
-import {set} from 'react-hook-form';
+import {Suspense} from 'react';
 
 export default function Stats() {
   const router = useRouter();
@@ -65,7 +64,6 @@ export default function Stats() {
   const [pieChart, setPieChart] = useState<Chart | null>(null);
   const [quickStatistics, setquickStatistics] =
     useState<StatsInformation | null>(null);
-  const [showStats, setShowStats] = useState<boolean>(false);
   const [pageLoading, setPageLoading] = useState<boolean>(true);
   const searchParams = useSearchParams();
 
@@ -131,171 +129,177 @@ export default function Stats() {
   }
 
   return (
-    <div className={styles.container}>
-      {pageLoading ? (
-        <>
-          <div className={subTitleClasses}>
-            (might take a bit to load... hold tight)
-          </div>
-          <LoadingIndicator
-            isCentered={true}
-            isFullScreen={true}
-            size={'large'}
-          />
-        </>
-      ) : (
-        <>
-          <div>
-            <canvas id={`${sport}-${time}`}></canvas>
-          </div>
-          <div className={styles.timeButtonContainer}>
-            <Button
-              label="This Month"
-              variant="transparent"
-              arrowOptions="right"
-              onClick={() =>
-                router.push(`/stats?sport=${sport}&time=month`, {scroll: false})
-              }
-            />
-            <Button
-              label="This Year"
-              variant="transparent"
-              arrowOptions="right"
-              onClick={() =>
-                router.push(`/stats?sport=${sport}&time=year`, {scroll: false})
-              }
-            />
-            <Button
-              label="All Time"
-              variant="transparent"
-              arrowOptions="right"
-              onClick={() =>
-                router.push(`/stats?sport=${sport}&time=all`, {scroll: false})
-              }
-            />
-          </div>
-          <div className={styles.sportButtonContainer}>
-            <button
-              onClick={() =>
-                router.push(
-                  sport === 'run'
-                    ? `/stats?sport=all&time=${time}`
-                    : `/stats?sport=run&time=${time}`,
-                  {scroll: false}
-                )
-              }
-              className={runBtn}
-            >
-              <span>Run</span> <FaPersonRunning />
-            </button>
-            <button
-              onClick={() =>
-                router.push(
-                  sport === 'bike'
-                    ? `/stats?sport=all&time=${time}`
-                    : `/stats?sport=bike&time=${time}`,
-                  {scroll: false}
-                )
-              }
-              className={bikeBtn}
-            >
-              <span>Bike</span> <LuBike />
-            </button>
-
-            <button
-              onClick={() =>
-                router.push(
-                  sport === 'swim'
-                    ? `/stats?sport=all&time=${time}`
-                    : `/stats?sport=swim&time=${time}`,
-                  {scroll: false}
-                )
-              }
-              className={swimBtn}
-            >
-              <span>Swim</span> <FaPersonSwimming />
-            </button>
-            <button
-              onClick={() =>
-                router.push(
-                  sport === 'other'
-                    ? `/stats?sport=all&time=${time}`
-                    : `/stats?sport=other&time=${time}`,
-                  {scroll: false}
-                )
-              }
-              className={otherBtn}
-            >
-              <span>Workout</span> <FaDumbbell />
-            </button>
-          </div>
-
+    <Suspense>
+      <div className={styles.container}>
+        {pageLoading ? (
           <>
+            <div className={subTitleClasses}>
+              (stats loading from a cheap database, please wait)
+            </div>
+            <LoadingIndicator
+              isCentered={true}
+              isFullScreen={true}
+              size={'large'}
+            />
+          </>
+        ) : (
+          <>
+            <div className={styles.chartContainer}>
+              <canvas id={`${sport}-${time}`}></canvas>
+            </div>
+            <div className={styles.timeButtonContainer}>
+              <Button
+                label="This Month"
+                variant="transparent"
+                arrowOptions="right"
+                onClick={() =>
+                  router.push(`/stats?sport=${sport}&time=month`, {
+                    scroll: false,
+                  })
+                }
+              />
+              <Button
+                label="This Year"
+                variant="transparent"
+                arrowOptions="right"
+                onClick={() =>
+                  router.push(`/stats?sport=${sport}&time=year`, {
+                    scroll: false,
+                  })
+                }
+              />
+              <Button
+                label="All Time"
+                variant="transparent"
+                arrowOptions="right"
+                onClick={() =>
+                  router.push(`/stats?sport=${sport}&time=all`, {scroll: false})
+                }
+              />
+            </div>
+            <div className={styles.sportButtonContainer}>
+              <button
+                onClick={() =>
+                  router.push(
+                    sport === 'run'
+                      ? `/stats?sport=all&time=${time}`
+                      : `/stats?sport=run&time=${time}`,
+                    {scroll: false}
+                  )
+                }
+                className={runBtn}
+              >
+                <span>Run</span> <FaPersonRunning />
+              </button>
+              <button
+                onClick={() =>
+                  router.push(
+                    sport === 'bike'
+                      ? `/stats?sport=all&time=${time}`
+                      : `/stats?sport=bike&time=${time}`,
+                    {scroll: false}
+                  )
+                }
+                className={bikeBtn}
+              >
+                <span>Bike</span> <LuBike />
+              </button>
+
+              <button
+                onClick={() =>
+                  router.push(
+                    sport === 'swim'
+                      ? `/stats?sport=all&time=${time}`
+                      : `/stats?sport=swim&time=${time}`,
+                    {scroll: false}
+                  )
+                }
+                className={swimBtn}
+              >
+                <span>Swim</span> <FaPersonSwimming />
+              </button>
+              <button
+                onClick={() =>
+                  router.push(
+                    sport === 'other'
+                      ? `/stats?sport=all&time=${time}`
+                      : `/stats?sport=other&time=${time}`,
+                    {scroll: false}
+                  )
+                }
+                className={otherBtn}
+              >
+                <span>Workout</span> <FaDumbbell />
+              </button>
+            </div>
+
+            <>
+              <hr />
+              <div className={styles.totalsAndPieChartContainer}>
+                <div className={styles.totalsContainer}>
+                  <div className={totalsTitleClasses}>
+                    <span className={styles.totalsLabel}>
+                      Total Duration: <br />
+                    </span>
+                    <span className={statClasses}>
+                      {quickStatistics?.totalDuration ||
+                        `No time spent this ${time}`}
+                    </span>
+                  </div>
+
+                  <div className={totalsTitleClasses}>
+                    <span className={styles.totalsLabel}>Total Distance: </span>
+                    <br />
+                    <span className={statClasses}>
+                      {formatNumberWithCommas(
+                        quickStatistics?.totalDistance ?? 0
+                      )}{' '}
+                      {getMetricBySport(sport)}
+                    </span>
+                  </div>
+
+                  <div className={totalsTitleClasses}>
+                    <span className={styles.totalsLabel}>
+                      Max Distance: <br />
+                    </span>
+                    <span className={statClasses}>
+                      {quickStatistics?.maxDistance ?? 0}{' '}
+                      {getMetricBySport(sport)}
+                    </span>
+                  </div>
+
+                  <div className={totalsTitleClasses}>
+                    <span className={styles.totalsLabel}>
+                      Total{' '}
+                      {sport === 'all' || sport === 'other'
+                        ? 'Activities'
+                        : sport === 'run'
+                          ? 'Runs'
+                          : sport === 'bike'
+                            ? 'Bike Rides'
+                            : 'Swims'}
+                      : <br />
+                    </span>
+                    <span className={statClasses}>
+                      {formatNumberWithCommas(
+                        quickStatistics?.totalActivities ?? 0
+                      )}
+                    </span>
+                  </div>
+                </div>
+                <div className={styles.pieChartContainer}>
+                  <canvas id={`pie-${sport}-${time}`}></canvas>
+                </div>
+              </div>
+            </>
+            <div className={activitiesTitle}>Recent Activities</div>
             <hr />
-            <div className={styles.totalsAndPieChartContainer}>
-              <div className={styles.totalsContainer}>
-                <div className={totalsTitleClasses}>
-                  <span className={styles.totalsLabel}>
-                    Total Duration: <br />
-                  </span>
-                  <span className={statClasses}>
-                    {quickStatistics?.totalDuration ||
-                      `No time spent this ${time}`}
-                  </span>
-                </div>
-
-                <div className={totalsTitleClasses}>
-                  <span className={styles.totalsLabel}>Total Distance: </span>
-                  <br />
-                  <span className={statClasses}>
-                    {formatNumberWithCommas(
-                      quickStatistics?.totalDistance ?? 0
-                    )}{' '}
-                    {getMetricBySport(sport)}
-                  </span>
-                </div>
-
-                <div className={totalsTitleClasses}>
-                  <span className={styles.totalsLabel}>
-                    Max Distance: <br />
-                  </span>
-                  <span className={statClasses}>
-                    {quickStatistics?.maxDistance ?? 0}{' '}
-                    {getMetricBySport(sport)}
-                  </span>
-                </div>
-
-                <div className={totalsTitleClasses}>
-                  <span className={styles.totalsLabel}>
-                    Total{' '}
-                    {sport === 'all' || sport === 'other'
-                      ? 'Activities'
-                      : sport === 'run'
-                        ? 'Runs'
-                        : sport === 'bike'
-                          ? 'Bike Rides'
-                          : 'Swims'}
-                    : <br />
-                  </span>
-                  <span className={statClasses}>
-                    {formatNumberWithCommas(
-                      quickStatistics?.totalActivities ?? 0
-                    )}
-                  </span>
-                </div>
-              </div>
-              <div className={styles.pieChartContainer}>
-                <canvas id={`pie-${sport}-${time}`}></canvas>
-              </div>
+            <div className={styles.activityColumns}>
+              <Activities activitiesList={recentActivities} />
             </div>
           </>
-          <div className={activitiesTitle}>Recent Activities</div>
-          <hr />
-          <div className={styles.activityColumns}>
-            <Activities activitiesList={recentActivities} />
-          </div>
-        </>
-      )}
-    </div>
+        )}
+      </div>
+    </Suspense>
   );
 }

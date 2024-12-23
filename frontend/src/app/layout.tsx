@@ -2,6 +2,7 @@ import {Analytics} from '@vercel/analytics/react';
 import {Ubuntu, Ubuntu_Mono} from 'next/font/google';
 import '../styles/index.scss';
 import {SpeedInsights} from '@vercel/speed-insights/next';
+import {Suspense} from 'react';
 
 export const metadata = {
   title: 'Blog | Mitchell Scott',
@@ -46,7 +47,9 @@ export default function RootLayout({children}: Props) {
         ></link>
         <link rel="manifest" href="/favicon/site.webmanifest"></link>
       </head>
-      <body>{children}</body>
+      <Suspense fallback={null}>
+        <body>{children}</body>
+      </Suspense>
       <SpeedInsights />
       <Analytics />
     </html>
