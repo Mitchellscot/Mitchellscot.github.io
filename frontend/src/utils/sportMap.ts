@@ -35,6 +35,7 @@ export enum ActivityTypes {
   yoga = 'yoga',
   strength_training = 'strength_training',
   snow_shoe_ws = 'snow_shoe_ws',
+  none = 'none',
   other = 'other',
 }
 
@@ -55,6 +56,7 @@ export const ActivityToReadableNameMap = {
   [ActivityTypes.strength_training]: 'Strength Training',
   [ActivityTypes.other]: 'Strength Training',
   [ActivityTypes.snow_shoe_ws]: 'Snow Shoeing',
+  [ActivityTypes.none]: 'No Activities',
 };
 export const ActivityPieChartOrder = [
   ActivityTypes.track_running,
@@ -91,6 +93,7 @@ export const ActivityColorMap = {
   [ActivityTypes.strength_training]: '#6e00ff',
   [ActivityTypes.snow_shoe_ws]: '#ffffff',
   [ActivityTypes.other]: '#ffffff',
+  [ActivityTypes.none]: '#1e2022',
 };
 
 export const ActivityToSportMap = {
