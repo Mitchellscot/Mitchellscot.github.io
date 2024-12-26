@@ -1,4 +1,6 @@
-@import '../../styles/helpers.scss';
+@use '../../styles/helpers.scss';
+@use '../../styles/mixins.scss';
+@use '../../styles/variables.scss';
 
 .header {
   padding: 5px var(--gutter);
@@ -11,12 +13,12 @@
 .myName {
   display: inline-block;
   text-transform: uppercase;
-  color: $WHITE;
+  color: variables.$WHITE;
 }
 
 .titleUnderline {
   width: auto;
   height: 2px;
   border-radius: 6px;
-  background-color: $ORANGE;
+  background-color: variables.$ORANGE;
 }

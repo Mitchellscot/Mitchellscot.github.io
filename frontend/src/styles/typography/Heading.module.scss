@@ -1,79 +1,81 @@
 @use 'sass:math';
-@import '../helpers.scss';
+@use '../helpers.scss';
+@use '../mixins';
+@use '../variables';
 
 @mixin heading {
-  font-weight: $FONT_WEIGHT_BOLD;
-  color: $CYAN;
+  font-weight: variables.$FONT_WEIGHT_BOLD;
+  color: variables.$CYAN;
   letter-spacing: -0.01em;
 }
 
 .heading1 {
   @include heading;
-  @include fontSize(32);
+  @include mixins.fontSize(32);
   line-height: math.div(102px, 84px);
-  color: $WHITE;
+  color: variables.$WHITE;
 
-  @include breakpoint(SM) {
-    @include fontSize(40);
+  @include mixins.breakpoint(SM) {
+    @include mixins.fontSize(40);
   }
 
-  @include breakpoint(MD) {
-    @include fontSize(48);
+  @include mixins.breakpoint(MD) {
+    @include mixins.fontSize(48);
   }
 
-  @include breakpoint(LG) {
-    @include fontSize(64);
+  @include mixins.breakpoint(LG) {
+    @include mixins.fontSize(64);
   }
 }
 
 .heading2 {
   @include heading;
-  @include fontSize(24);
+  @include mixins.fontSize(24);
   line-height: math.div(58px, 48px);
 
-  @include breakpoint(MD) {
-    @include fontSize(32);
+  @include mixins.breakpoint(MD) {
+    @include mixins.fontSize(32);
   }
 
-  @include breakpoint(LG) {
-    @include fontSize(48);
+  @include mixins.breakpoint(LG) {
+    @include mixins.fontSize(48);
   }
 }
 
 .heading3 {
   @include heading;
-  @include fontSize(18);
+  @include mixins.fontSize(18);
   line-height: math.div(44px, 36px);
 
-  @include breakpoint(MD) {
-    @include fontSize(22);
+  @include mixins.breakpoint(MD) {
+    @include mixins.fontSize(22);
   }
 
-  @include breakpoint(LG) {
-    @include fontSize(28);
+  @include mixins.breakpoint(LG) {
+    @include mixins.fontSize(28);
   }
 }
 
 .blogPreview {
   @include heading;
-  @include fontSize(24);
+  @include mixins.fontSize(24);
   line-height: math.div(58px, 48px);
   font-family: var(--font-ubuntu-mono);
-  font-weight: $FONT_WEIGHT_BOLD;
+  font-weight: variables.$FONT_WEIGHT_BOLD;
 
-  @include breakpoint(SM) {
-    @include fontSize(28);
+  @include mixins.breakpoint(SM) {
+    @include mixins.fontSize(28);
   }
 
-  @include breakpoint(MD) {
-    @include fontSize(30);
+  @include mixins.breakpoint(MD) {
+    @include mixins.fontSize(30);
   }
 
-  @include breakpoint(LG) {
-    @include fontSize(32);
+  @include mixins.breakpoint(LG) {
+    @include mixins.fontSize(32);
   }
 
-  @include breakpoint(XL) {
-    @include fontSize(34);
+  @include mixins.breakpoint(XL) {
+    @include mixins.fontSize(34);
   }
 }

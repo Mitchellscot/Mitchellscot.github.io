@@ -1,9 +1,9 @@
-@import '../../styles/helpers.scss';
+@use '../../styles/variables.scss';
 
 .activityTitle {
   margin-bottom: 5px;
-  color: $CYAN;
-  font-weight: $FONT_WEIGHT_BOLD;
+  color: variables.$CYAN;
+  font-weight: variables.$FONT_WEIGHT_BOLD;
 }
 
 .statsCol {
@@ -33,9 +33,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $GREY_2;
+  background-color: variables.$GREY_2;
   border-radius: 25px;
-  color: $WHITE;
+  color: variables.$WHITE;
   padding: 5px 10px;
 }
 
@@ -46,5 +46,5 @@
 
 .date {
   font-style: italic;
-  color: $ORANGE;
+  color: variables.$ORANGE;
 }

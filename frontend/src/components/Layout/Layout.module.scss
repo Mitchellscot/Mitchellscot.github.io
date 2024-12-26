@@ -1,4 +1,6 @@
-@import '../../styles/helpers.scss';
+@use '../../styles/helpers.scss';
+@use '../../styles/mixins.scss';
+@use '../../styles/variables.scss';
 
 .site {
   display: flex;
@@ -31,5 +33,5 @@
 .siteNav {
   display: flex;
   justify-content: center;
-  z-index: $Z_INDEX_HEADER;
+  z-index: variables.$Z_INDEX_HEADER;
 }

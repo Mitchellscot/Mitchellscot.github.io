@@ -1,38 +1,39 @@
-@import '../../styles/helpers.scss';
+@use '../../styles/variables.scss';
+@use '../../styles/mixins.scss';
 
 .container {
   max-width: 360px;
   padding-inline: var(--gutter);
   margin: 40px auto;
 
-  @include breakpoint(SM) {
-    max-width: $BP_SM;
+  @include mixins.breakpoint(SM) {
+    max-width: variables.$BP_SM;
   }
 
-  @include breakpoint(MD) {
-    max-width: $BP_MD;
+  @include mixins.breakpoint(MD) {
+    max-width: variables.$BP_MD;
   }
 
-  @include breakpoint(LG) {
-    max-width: $MAX_WIDTH_NARROW;
+  @include mixins.breakpoint(LG) {
+    max-width: variables.$MAX_WIDTH_NARROW;
   }
 }
 
 .title {
   text-align: center;
-  color: $WHITE;
+  color: variables.$WHITE;
 }
 
 .subTitle {
   text-align: center;
-  color: $WHITE;
+  color: variables.$WHITE;
 }
 
 .chartContainer {
   display: flex;
   justify-content: center;
 
-  @include breakpoint(XL) {
+  @include mixins.breakpoint(XL) {
     max-width: 770px;
     max-height: 385px;
   }
@@ -50,7 +51,7 @@
   grid-template-rows: 1fr;
   grid-row-gap: 10px;
 
-  @include breakpoint(MD) {
+  @include mixins.breakpoint(MD) {
     display: flex;
     justify-content: space-around;
     margin-bottom: 25px;
@@ -65,17 +66,17 @@
   align-items: center;
   justify-content: center;
 
-  @include breakpoint(MD) {
+  @include mixins.breakpoint(MD) {
     grid-template-columns: 1fr;
     grid-row: 1fr;
     column-gap: 75px;
   }
 
-  @include breakpoint(XL) {
+  @include mixins.breakpoint(XL) {
     column-gap: 125px;
   }
 
-  @include breakpoint(XL) {
+  @include mixins.breakpoint(XL) {
     column-gap: 150px;
   }
 }
@@ -84,7 +85,7 @@
   text-align: center;
   grid-row: 1;
 
-  @include breakpoint(MD) {
+  @include mixins.breakpoint(MD) {
     text-align: start;
   }
 }
@@ -94,7 +95,7 @@
   max-width: 250px;
   margin: 0 auto;
 
-  @include breakpoint(MD) {
+  @include mixins.breakpoint(MD) {
     grid-row: 1;
     max-width: 100%;
   }
@@ -105,7 +106,7 @@
 }
 
 .totalsLabel {
-  color: $CYAN;
+  color: variables.$CYAN;
 }
 
 .activitiesTitle {
@@ -123,7 +124,7 @@
 
 .stat {
   font-family: var(--font-ubuntu-mono);
-  font-weight: $FONT_WEIGHT_BOLD;
+  font-weight: variables.$FONT_WEIGHT_BOLD;
   word-wrap: break-word;
 }
 
@@ -137,7 +138,7 @@
   margin-left: 15px;
   justify-content: center;
 
-  @include breakpoint(MD) {
+  @include mixins.breakpoint(MD) {
     margin: 0px;
   }
 
@@ -146,54 +147,54 @@
     -webkit-transition: color 0.3s ease-in;
     margin-right: 5px;
 
-    @include breakpoint(MD) {
+    @include mixins.breakpoint(MD) {
       margin-right: 20px;
     }
   }
 
   &:active {
-    color: $ORANGE;
+    color: variables.$ORANGE;
   }
 
   &:hover,
   &:active {
-    color: $ORANGE;
-    border: 1px solid $ORANGE;
+    color: variables.$ORANGE;
+    border: 1px solid variables.$ORANGE;
 
     > span {
-      color: $ORANGE;
+      color: variables.$ORANGE;
       transition: color 0.3s ease-in;
       -webkit-transition: color 0.3s ease-in;
     }
   }
 
   svg:hover {
-    fill: $ORANGE;
+    fill: variables.$ORANGE;
   }
 }
 
 .sportButton_active {
-  color: $ORANGE;
-  border: 1px solid $ORANGE;
+  color: variables.$ORANGE;
+  border: 1px solid variables.$ORANGE;
 
   > span {
-    color: $ORANGE;
+    color: variables.$ORANGE;
   }
 
   > svg {
-    fill: $ORANGE;
+    fill: variables.$ORANGE;
   }
 }
 
 .sportButton_inactive {
-  color: $CYAN;
-  border: 2px solid $CYAN_3;
+  color: variables.$CYAN;
+  border: 2px solid variables.$CYAN_3;
 
   > span {
-    color: $CYAN;
+    color: variables.$CYAN;
   }
 
   > svg {
-    fill: $CYAN;
+    fill: variables.$CYAN;
   }
 }

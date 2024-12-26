@@ -1,31 +1,34 @@
 @use 'sass:math';
-@import '../../styles/helpers.scss';
+@use '../../styles/helpers.scss';
+@use '../../styles/mixins.scss';
+@use '../../styles/variables.scss';
+@use 'sass:color';
 
 .button {
   border-radius: 25px 25px;
-  color: $CYAN;
+  color: variables.$CYAN;
   display: inline-block;
-  font-weight: $FONT_WEIGHT_REGULAR;
+  font-weight: variables.$FONT_WEIGHT_REGULAR;
   line-height: math.div(24px, 20px);
   text-align: center;
   transition:
     color 300ms cubic-bezier(0.32, 0, 0.67, 0),
     background-color 300ms cubic-bezier(0.32, 0, 0.67, 0);
 
-  @include fontSize(18);
+  @include mixins.fontSize(18);
   padding: 8px 15px;
 
-  @include breakpoint(MD) {
+  @include mixins.breakpoint(MD) {
     padding: 15px 22px;
-    @include fontSize(20);
+    @include mixins.fontSize(20);
   }
 
   &:hover {
-    color: darken($CYAN, 5%);
+    color: color.scale(variables.$CYAN, $lightness: -5%);
   }
 
   &:active {
-    color: darken($CYAN, 10%);
+    color: color.scale(variables.$CYAN, $lightness: -10%);
   }
 
   &:hover,
@@ -36,7 +39,7 @@
   }
 
   svg:hover {
-    fill: $ORANGE;
+    fill: variables.$ORANGE;
   }
 }
 
@@ -45,67 +48,67 @@
 }
 
 .inactiveButton {
-  color: $CYAN;
-  border: 2px solid $CYAN;
+  color: variables.$CYAN;
+  border: 2px solid variables.$CYAN;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: darken($CYAN, 5%);
-    color: $WHITE;
+    background-color: color.scale(variables.$CYAN, $lightness: -5%);
+    color: variables.$WHITE;
   }
 
   &:active {
-    background-color: darken($CYAN, 10%);
-    color: $WHITE;
+    background-color: color.scale(variables.$CYAN, $lightness: -10%);
+    color: variables.$WHITE;
   }
 }
 
 .activeButton {
-  background-color: $CYAN;
-  color: $GREY_1;
-  border: 4px solid $CYAN;
+  background-color: variables.$CYAN;
+  color: variables.$GREY_1;
+  border: 4px solid variables.$CYAN;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: lighten($CYAN, 10%);
-    color: $WHITE;
+    background-color: color.scale(variables.$CYAN, $lightness: 10%);
+    color: variables.$WHITE;
   }
 
   &:active {
-    background-color: darken($CYAN, 10%);
-    color: $GREY_1;
+    background-color: color.scale(variables.$CYAN, $lightness: -10%);
+    color: variables.$GREY_1;
   }
 }
 
 .warmButton {
-  background-color: $ORANGE;
-  color: $WHITE;
+  background-color: variables.$ORANGE;
+  color: variables.$WHITE;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: darken($ORANGE, 5%);
-    color: $WHITE;
+    background-color: color.scale(variables.$ORANGE, $lightness: -5%);
+    color: variables.$WHITE;
   }
 
   &:active {
-    background-color: darken($ORANGE, 10%);
-    color: $WHITE;
+    background-color: color.scale(variables.$ORANGE, $lightness: -10%);
+    color: variables.$WHITE;
   }
 }
 
 .orangeButton {
-  background: $ORANGE;
-  color: $WHITE;
+  background: variables.$ORANGE;
+  color: variables.$WHITE;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: darken($ORANGE, 5%);
-    color: $WHITE;
+    background-color: color.scale(variables.$ORANGE, $lightness: -5%);
+    color: variables.$WHITE;
   }
 
   &:active {
-    background-color: darken($ORANGE, 10%);
-    color: $WHITE;
+    background-color: color.scale(variables.$ORANGE, $lightness: -10%);
+    color: variables.$WHITE;
   }
 }
 
@@ -145,72 +148,72 @@
   margin-left: 4px;
   margin-right: 4px;
   display: inline-block;
-  fill: $CYAN;
+  fill: variables.$CYAN;
 }
 
 .activeIcon {
   margin-left: 4px;
   margin-right: 4px;
   display: inline-block;
-  fill: $GREY_1;
+  fill: variables.$GREY_1;
 
   svg {
-    fill: $GREY_1;
+    fill: variables.$GREY_1;
   }
 }
 
 .whiteArrow {
-  fill: $GREY_1;
+  fill: variables.$GREY_1;
 }
 
 .lightOrangeArrow {
-  fill: $ARROW_ICON_ORANGE_BUTTON;
+  fill: variables.$ARROW_ICON_ORANGE_BUTTON;
 }
 
 .cyanArrow {
-  fill: $CYAN;
+  fill: variables.$CYAN;
 }
 
 .blueArrow {
-  fill: $BLUE;
+  fill: variables.$BLUE;
 }
 
 .orangeArrow {
-  fill: $ORANGE;
+  fill: variables.$ORANGE;
 }
 
 .yellowArrow {
-  fill: $RED;
+  fill: variables.$RED;
 }
 
 .whiteButton {
-  background: $GREY_3;
-  color: $GREY_1;
+  background: variables.$GREY_3;
+  color: variables.$GREY_1;
   text-shadow: none;
 
   &:hover {
-    background-color: darken($GREY_3, 5%);
+    background-color: color.scale(variables.$GREY_3, $lightness: -5%);
     color: black;
   }
 
   &:active {
-    background-color: darken($GREY_3, 10%);
+    background-color: color.scale(variables.$GREY_3, $lightness: -10%);
     color: black;
   }
 }
 
 .blueButton {
-  background-color: $BLUE;
-  color: $WHITE;
+  background-color: variables.$BLUE;
+  color: variables.$WHITE;
 
   &:hover {
-    background-color: darken($BLUE, 5%);
-    color: $WHITE;
+    background-color: color.scale(variables.$BLUE, $lightness: -5%);
+    color: variables.$WHITE;
   }
 
   &:active {
-    background-color: darken($BLUE, 10%);
-    color: $WHITE;
+    background-color: color.scale(variables.$BLUE, $lightness: -10%);
+    color: variables.$WHITE;
   }
 }
 

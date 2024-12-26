@@ -1,4 +1,6 @@
-@import '../../styles/helpers.scss';
+@use '../../styles/helpers.scss';
+@use '../../styles/mixins.scss';
+@use '../../styles/variables.scss';
 
 .container {
   background-color: black;
@@ -18,7 +20,7 @@
     }
   }
 
-  @include breakpoint(SM) {
+  @include mixins.breakpoint(SM) {
     > * + * {
       &::before {
         content: '\a0\b7\a0';
@@ -26,7 +28,7 @@
     }
   }
 
-  @include breakpoint(LG) {
+  @include mixins.breakpoint(LG) {
     > * + * {
       &::before {
         content: '\a0\a0\a0\b7\a0\a0\a0';
@@ -38,26 +40,26 @@
 .navItem {
   &:first-child {
     text-transform: uppercase;
-    color: $WHITE;
-    font-weight: $FONT_WEIGHT_REGULAR;
+    color: variables.$WHITE;
+    font-weight: variables.$FONT_WEIGHT_REGULAR;
 
-    @include breakpoint(MD) {
-      font-weight: $FONT_WEIGHT_BOLD;
+    @include mixins.breakpoint(MD) {
+      font-weight: variables.$FONT_WEIGHT_BOLD;
     }
   }
 }
 .navItem:hover {
-  color: $CYAN_2;
+  color: variables.$CYAN_2;
 }
 
 .navItemActive {
   &:first-child {
     text-transform: uppercase;
-    color: $CYAN_2;
-    font-weight: $FONT_WEIGHT_REGULAR;
+    color: variables.$CYAN_2;
+    font-weight: variables.$FONT_WEIGHT_REGULAR;
 
-    @include breakpoint(MD) {
-      font-weight: $FONT_WEIGHT_BOLD;
+    @include mixins.breakpoint(MD) {
+      font-weight: variables.$FONT_WEIGHT_BOLD;
     }
   }
 }

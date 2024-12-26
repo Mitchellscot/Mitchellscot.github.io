@@ -1,10 +1,11 @@
-@import '../../../styles/helpers.scss';
+@use '../../../styles/variables.scss';
+@use '../../../styles/mixins.scss';
 
 .wrapper {
   margin: 20px 0;
   display: flex;
   justify-content: center;
-  @include breakpoint(SM) {
+  @include mixins.breakpoint(SM) {
     margin: 40px 0;
   }
 }
@@ -13,17 +14,17 @@
   display: inline-grid;
   gap: 20px;
   justify-items: center;
-  @include breakpoint(SM) {
+  @include mixins.breakpoint(SM) {
     grid-template-columns: auto auto;
   }
 }
 
 .title {
-  color: $CYAN;
+  color: variables.$CYAN;
   text-transform: uppercase;
   text-align: center;
   grid-row: 2;
-  @include breakpoint(SM) {
+  @include mixins.breakpoint(SM) {
     grid-row: 1;
     grid-column: 2;
     align-self: center;
@@ -33,14 +34,14 @@
 .imageContainer {
   max-width: 125px;
 
-  @include breakpoint(SM) {
+  @include mixins.breakpoint(SM) {
     max-width: 150px;
   }
 }
 
 .imageContainer img {
   border-radius: 50%;
-  border: 5px solid $CONTRAST_TO_GREY !important;
+  border: 5px solid variables.$CONTRAST_TO_GREY !important;
   width: 100%;
   height: auto;
 }
