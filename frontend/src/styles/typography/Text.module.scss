@@ -1,76 +1,78 @@
 @use 'sass:math';
-@import '../helpers.scss';
+@use '../helpers.scss';
+@use '../mixins';
+@use '../variables';
 
 @mixin text {
-  font-weight: $FONT_WEIGHT_REGULAR;
+  font-weight: variables.$FONT_WEIGHT_REGULAR;
 }
 
 .textXl {
   @include text;
-  @include fontSize(24);
+  @include mixins.fontSize(24);
   line-height: math.div(64px, 48px);
 
-  @include breakpoint(MD) {
-    @include fontSize(30);
+  @include mixins.breakpoint(MD) {
+    @include mixins.fontSize(30);
   }
 
-  @include breakpoint(LG) {
-    @include fontSize(38);
+  @include mixins.breakpoint(LG) {
+    @include mixins.fontSize(38);
   }
 }
 
 .textLg {
   @include text;
-  @include fontSize(18);
+  @include mixins.fontSize(18);
   line-height: math.div(52px, 36px);
 
-  @include breakpoint(MD) {
-    @include fontSize(22);
+  @include mixins.breakpoint(MD) {
+    @include mixins.fontSize(22);
   }
 
-  @include breakpoint(LG) {
-    @include fontSize(28);
+  @include mixins.breakpoint(LG) {
+    @include mixins.fontSize(28);
   }
 }
 
 .textMd {
   @include text;
-  @include fontSize(16);
+  @include mixins.fontSize(16);
   line-height: math.div(44px, 24px);
 
-  @include breakpoint(MD) {
-    @include fontSize(18);
+  @include mixins.breakpoint(MD) {
+    @include mixins.fontSize(18);
   }
 
-  @include breakpoint(LG) {
-    @include fontSize(22);
+  @include mixins.breakpoint(LG) {
+    @include mixins.fontSize(22);
   }
 }
 
 .textSm {
   @include text;
-  @include fontSize(16);
+  @include mixins.fontSize(16);
   line-height: math.div(32px, 20px);
 
-  @include breakpoint(MD) {
-    @include fontSize(18);
+  @include mixins.breakpoint(MD) {
+    @include mixins.fontSize(18);
   }
 
-  @include breakpoint(LG) {
-    @include fontSize(20);
+  @include mixins.breakpoint(LG) {
+    @include mixins.fontSize(20);
   }
 }
 
 .textXs {
   @include text;
-  @include fontSize(16);
+  @include mixins.fontSize(16);
   line-height: math.div(22px, 18px);
 
-  @include breakpoint(MD) {
-    @include fontSize(16);
+  @include mixins.breakpoint(MD) {
+    @include mixins.fontSize(16);
   }
 
-  @include breakpoint(LG) {
-    @include fontSize(18);
+  @include mixins.breakpoint(LG) {
+    @include mixins.fontSize(18);
   }
 }

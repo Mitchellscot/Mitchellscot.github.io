@@ -1,20 +1,19 @@
-@import '~reset-css/sass/reset';
-@import '~system-font-css';
-@import './variables.scss';
-@import './mixins.scss';
-@import './helpers.scss';
-@import './elements.scss';
-@import './typography/Heading.module.scss';
-@import './typography/Text.module.scss';
+@use '~reset-css/sass/reset';
+@use 'variables.scss';
+@use 'mixins.scss';
+@use 'helpers.scss';
+@use 'elements.scss';
+@use 'typography/Heading.module.scss';
+@use 'typography/Text.module.scss';
 
 :root {
   --gutter: 24px;
 
-  @include breakpoint(MD) {
+  @include mixins.breakpoint(MD) {
     --gutter: 32px;
   }
 
-  @include breakpoint(XL) {
+  @include mixins.breakpoint(XL) {
     --gutter: 64px;
   }
 }

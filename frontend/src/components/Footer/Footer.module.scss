@@ -1,4 +1,6 @@
-@import '../../styles/helpers.scss';
+@use '../../styles/helpers.scss';
+@use '../../styles/mixins.scss';
+@use '../../styles/variables.scss';
 
 .container {
   box-shadow: 0 0 8px 0 black;
@@ -11,14 +13,14 @@
   justify-content: center;
   background-color: black;
 
-  @include breakpoint(MD) {
+  @include mixins.breakpoint(MD) {
     flex-direction: row;
     justify-content: space-between;
   }
 }
 
 .copyright {
-  color: $CYAN;
+  color: variables.$CYAN;
   text-transform: uppercase;
   text-align: center;
   font-family: var(--font-ubuntu-mono);
@@ -31,7 +33,7 @@
     margin-right: 10px;
   }
 
-  @include breakpoint(MD) {
+  @include mixins.breakpoint(MD) {
     margin-bottom: 0;
   }
 }

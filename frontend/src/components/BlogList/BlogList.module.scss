@@ -1,4 +1,6 @@
-@import '../../styles/helpers.scss';
+@use '../../styles/helpers.scss';
+@use '../../styles/mixins.scss';
+@use '../../styles/variables.scss';
 
 .container {
   max-width: 360px;
@@ -8,16 +10,16 @@
   flex-direction: column;
   align-items: stretch;
 
-  @include breakpoint(SM) {
-    max-width: $BP_SM;
+  @include mixins.breakpoint(SM) {
+    max-width: variables.$BP_SM;
   }
 
-  @include breakpoint(MD) {
-    max-width: $BP_MD;
+  @include mixins.breakpoint(MD) {
+    max-width: variables.$BP_MD;
   }
 
-  @include breakpoint(LG) {
-    max-width: $MAX_WIDTH_NARROW;
+  @include mixins.breakpoint(LG) {
+    max-width: variables.$MAX_WIDTH_NARROW;
   }
 }
 
@@ -26,8 +28,8 @@
 }
 
 .noMoreBlogs {
-  color: $CYAN;
+  color: variables.$CYAN;
   text-align: center;
   font-family: var(--font-ubuntu-mono);
-  @include fontSize(24);
+  @include mixins.fontSize(24);
 }

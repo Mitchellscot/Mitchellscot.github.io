@@ -1,19 +1,21 @@
-@import '../helpers.scss';
+@use '../helpers.scss';
+@use '../mixins.scss';
+@use '../variables.scss';
 
 .container {
   max-width: 360px;
 
   margin: 0 auto;
-  @include breakpoint(SM) {
-    max-width: $BP_SM;
+  @include mixins.breakpoint(SM) {
+    max-width: variables.$BP_SM;
   }
 
-  @include breakpoint(MD) {
-    max-width: $BP_MD;
+  @include mixins.breakpoint(MD) {
+    max-width: variables.$BP_MD;
   }
 
-  @include breakpoint(LG) {
-    max-width: $BP_LG;
+  @include mixins.breakpoint(LG) {
+    max-width: variables.$BP_LG;
   }
 }
 .instructions {
@@ -29,10 +31,10 @@
   margin-bottom: 30px;
 }
 .tag {
-  color: $CYAN;
+  color: variables.$CYAN;
   font-family: var(--font-ubuntu-mono);
   white-space: nowrap;
-  border: 2px solid $CYAN_3;
+  border: 2px solid variables.$CYAN_3;
   border-radius: 8px;
   padding: 10px;
   > span {
@@ -41,14 +43,14 @@
   }
 }
 .tag:hover {
-  color: $ORANGE;
-  border: 1px solid $ORANGE;
+  color: variables.$ORANGE;
+  border: 1px solid variables.$ORANGE;
   > span {
-    color: $ORANGE;
+    color: variables.$ORANGE;
     transition: color 0.3s ease-in;
     -webkit-transition: color 0.3s ease-in;
   }
 }
 .tagCount {
-  color: $CYAN_2;
+  color: variables.$CYAN_2;
 }

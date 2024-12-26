@@ -1,4 +1,5 @@
-@import '../../styles/helpers.scss';
+@use '../../styles/mixins.scss';
+@use '../../styles/variables.scss';
 
 .title {
   margin: 20px auto 10px;
@@ -13,16 +14,16 @@
   flex-direction: column;
   align-items: center;
 
-  @include breakpoint(SM) {
-    max-width: $BP_SM;
+  @include mixins.breakpoint(SM) {
+    max-width: variables.$BP_SM;
   }
 
-  @include breakpoint(MD) {
-    max-width: $BP_MD;
+  @include mixins.breakpoint(MD) {
+    max-width: variables.$BP_MD;
   }
 
-  @include breakpoint(LG) {
-    max-width: $MAX_WIDTH_NARROW;
+  @include mixins.breakpoint(LG) {
+    max-width: variables.$MAX_WIDTH_NARROW;
     padding-inline: 0;
   }
 }

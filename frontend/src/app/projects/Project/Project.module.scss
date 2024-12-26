@@ -1,9 +1,10 @@
-@import '../../../styles/helpers.scss';
+@use '../../../styles/mixins.scss';
+@use '../../../styles/variables.scss';
 
 .container {
   margin: 0 auto;
   padding-inline: var(--gutter);
-  @include breakpoint(LG) {
+  @include mixins.breakpoint(LG) {
     padding-inline: 0;
   }
 }
@@ -22,7 +23,7 @@
   width: auto;
   height: 3px;
   border-radius: 6px;
-  background-color: $CYAN_3;
+  background-color: variables.$CYAN_3;
   margin-bottom: 20px;
 }
 
@@ -33,7 +34,7 @@
 }
 .imageContainer img {
   border-radius: 10px;
-  border: 5px solid $CONTRAST_TO_GREY !important;
+  border: 5px solid variables.$CONTRAST_TO_GREY !important;
   width: 100%;
   height: auto;
 }

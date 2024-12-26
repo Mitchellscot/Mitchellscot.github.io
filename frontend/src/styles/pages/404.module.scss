@@ -1,27 +1,29 @@
-@import '../helpers.scss';
+@use '../helpers.scss';
+@use '../mixins.scss';
+@use '../variables.scss';
 
 .container {
   max-width: 360px;
   padding-inline: var(--gutter);
   margin: 40px auto;
 
-  @include breakpoint(SM) {
-    max-width: $BP_SM;
+  @include mixins.breakpoint(SM) {
+    max-width: variables.$BP_SM;
   }
 
-  @include breakpoint(MD) {
-    max-width: $BP_MD;
+  @include mixins.breakpoint(MD) {
+    max-width: variables.$BP_MD;
   }
 
-  @include breakpoint(LG) {
-    max-width: $MAX_WIDTH_NARROW;
+  @include mixins.breakpoint(LG) {
+    max-width: variables.$MAX_WIDTH_NARROW;
   }
 }
 
 .title {
   text-align: center;
   text-transform: uppercase;
-  color: $WHITE;
+  color: variables.$WHITE;
   margin-bottom: 20px;
 }
 
@@ -29,6 +31,6 @@
   text-align: center;
 }
 .link {
-  color: $CYAN_2;
+  color: variables.$CYAN_2;
   text-decoration: underline;
 }

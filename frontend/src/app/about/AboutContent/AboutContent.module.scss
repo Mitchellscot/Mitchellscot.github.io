@@ -1,4 +1,5 @@
-@import '../../../styles/helpers.scss';
+@use '../../../styles/variables.scss';
+@use '../../../styles/mixins.scss';
 
 .container {
   max-width: 360px;
@@ -8,16 +9,16 @@
   flex-direction: column;
   align-items: stretch;
 
-  @include breakpoint(SM) {
-    max-width: $BP_SM;
+  @include mixins.breakpoint(SM) {
+    max-width: variables.$BP_SM;
   }
 
-  @include breakpoint(MD) {
-    max-width: $BP_MD;
+  @include mixins.breakpoint(MD) {
+    max-width: variables.$BP_MD;
   }
 
-  @include breakpoint(LG) {
-    max-width: $MAX_WIDTH_NARROW;
+  @include mixins.breakpoint(LG) {
+    max-width: variables.$MAX_WIDTH_NARROW;
     padding-inline: 0;
   }
 }
@@ -29,7 +30,7 @@
 }
 .imageContainer img {
   border-radius: 10px;
-  border: 5px solid $CONTRAST_TO_GREY !important;
+  border: 5px solid variables.$CONTRAST_TO_GREY !important;
   width: 100%;
   height: auto;
 }

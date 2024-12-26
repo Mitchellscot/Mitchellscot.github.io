@@ -1,4 +1,4 @@
-@import '../../styles/helpers.scss';
+@use '../../styles/variables.scss';
 
 .loadingIndicator_fullScreen {
   position: absolute;
@@ -30,27 +30,27 @@
   height: 20px;
   margin: 0 5px;
   border-radius: 50%;
-  background-color: $WHITE;
+  background-color: variables.$WHITE;
   animation: wave 0.8s ease-in-out infinite;
 }
 
 .circle2 {
-  background-color: $CYAN;
+  background-color: variables.$CYAN;
   animation-delay: 0.1s;
 }
 
 .circle3 {
-  background-color: $CYAN_2;
+  background-color: variables.$CYAN_2;
   animation-delay: 0.2s;
 }
 
 .circle4 {
-  background-color: $CYAN_3;
+  background-color: variables.$CYAN_3;
   animation-delay: 0.3s;
 }
 
 .loadingIndicator_secondary .circle2 {
-  background-color: $ORANGE;
+  background-color: variables.$ORANGE;
 }
 
 @keyframes wave {

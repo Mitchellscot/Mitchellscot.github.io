@@ -1,4 +1,6 @@
-@import '../helpers.scss';
+@use '../helpers.scss';
+@use '../mixins.scss';
+@use '../variables.scss';
 
 .buttonContainer {
   max-width: 360px;
@@ -7,16 +9,16 @@
   display: flex;
   justify-content: flex-end;
 
-  @include breakpoint(SM) {
-    max-width: $BP_SM;
+  @include mixins.breakpoint(SM) {
+    max-width: variables.$BP_SM;
   }
 
-  @include breakpoint(MD) {
-    max-width: $BP_MD;
+  @include mixins.breakpoint(MD) {
+    max-width: variables.$BP_MD;
   }
 
-  @include breakpoint(LG) {
-    max-width: $MAX_WIDTH_NARROW;
+  @include mixins.breakpoint(LG) {
+    max-width: variables.$MAX_WIDTH_NARROW;
     padding-inline: 0;
   }
 }

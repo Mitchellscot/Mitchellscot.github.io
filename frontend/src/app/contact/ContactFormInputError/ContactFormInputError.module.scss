@@ -1,8 +1,9 @@
-@import '../../../styles/helpers.scss';
+@use '../../../styles/variables.scss';
+@use '../../../styles/mixins.scss';
 
 .error {
-  @include fontSize(18);
-  color: $RED;
+  @include mixins.fontSize(18);
+  color: variables.$RED;
   opacity: 0;
   margin-top: 5px;
   position: absolute;

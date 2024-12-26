@@ -1,4 +1,6 @@
-@import '../../styles/helpers.scss';
+@use '../../styles/helpers.scss';
+@use '../../styles/mixins.scss';
+@use '../../styles/variables.scss';
 
 .container {
   margin-bottom: 40px;
@@ -15,7 +17,7 @@
 }
 
 .title:hover {
-  color: $CYAN_2;
+  color: variables.$CYAN_2;
 }
 
 .preview {
@@ -32,14 +34,14 @@
 
 .date {
   font-style: italic;
-  color: $CYAN_2;
+  color: variables.$CYAN_2;
 }
 
 .titleUnderline {
   width: auto;
   height: 2px;
   border-radius: 6px;
-  background-color: $CYAN_3;
+  background-color: variables.$CYAN_3;
 }
 
 .tagList {
@@ -49,7 +51,7 @@
 }
 
 .tag {
-  color: $CYAN;
+  color: variables.$CYAN;
   font-family: var(--font-ubuntu-mono);
   margin-left: 20px;
 
@@ -59,7 +61,7 @@
 }
 
 .tag:hover {
-  color: $ORANGE;
+  color: variables.$ORANGE;
 }
 
 //TODO: add svg hover orange
