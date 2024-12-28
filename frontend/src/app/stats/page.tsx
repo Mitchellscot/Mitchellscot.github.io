@@ -29,6 +29,12 @@ import {FaDumbbell} from 'react-icons/fa6';
 import Chart from 'chart.js/auto';
 import {useRouter} from 'next/navigation';
 import {Suspense} from 'react';
+import {Metadata} from 'next';
+
+export const metadata: Metadata = {
+  title: 'Workout Statistics',
+  description: "Mitchell Scott's Workout Statistics",
+};
 
 export default function Stats() {
   const router = useRouter();
