@@ -5,7 +5,13 @@ export const metadata: Metadata = {
   title: 'Workout Statistics',
   description: "Mitchell Scott's Workout Statistics",
 };
+import {Suspense} from 'react';
+import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator';
 
 export default function StatsLayout({children}: {children: React.ReactNode}) {
-  return <Layout path={'stats'}>{children}</Layout>;
+  return (
+    <Suspense fallback={<LoadingIndicator isFullScreen={true} />}>
+      <Layout path={'stats'}>{children}</Layout>
+    </Suspense>
+  );
 }

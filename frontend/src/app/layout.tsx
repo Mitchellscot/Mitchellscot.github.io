@@ -47,9 +47,7 @@ export default function RootLayout({children}: Props) {
         ></link>
         <link rel="manifest" href="/favicon/site.webmanifest"></link>
       </head>
-      <Suspense fallback={null}>
-        <body>{children}</body>
-      </Suspense>
+      <body>{children}</body>
       <SpeedInsights />
       <Analytics />
     </html>

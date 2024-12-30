@@ -1,6 +1,6 @@
 import {fillInErrorWithDefaults} from './fillInErrorWithDefaults';
 
-export const isDefined = <T>(t: T | null | undefined): t is T => t != null;
+export const isDefined = <T>(t: T | null | undefined): t is T => t !== null;
 
 export const createResponseError = (
   error: any,

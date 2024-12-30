@@ -1,6 +1,6 @@
 import HttpErrorResponseModel from '../../models/HttpErrorResponseModel';
 
-export const isDefined = <T>(t: T | null | undefined): t is T => t != null;
+export const isDefined = <T>(t: T | null | undefined): t is T => t !== null;
 
 export const fillInErrorWithDefaults = (
   error: Partial<HttpErrorResponseModel>,

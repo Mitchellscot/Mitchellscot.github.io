@@ -129,7 +129,7 @@ export default function Stats() {
   }
 
   return (
-    <Suspense>
+    <Suspense fallback={<LoadingIndicator />}>
       <div className={styles.container}>
         {pageLoading ? (
           <>

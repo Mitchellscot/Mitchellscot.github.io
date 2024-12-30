@@ -21,11 +21,6 @@ export default function Footer() {
             <Image src="/strava.svg" height="40" width="40" alt="" />
           </a>
         </Link>
-        <Link href="https://twitter.com/_mitchellscot" legacyBehavior>
-          <a target="_blank">
-            <Image src="/twitter.svg" height="40" width="40" alt="" />
-          </a>
-        </Link>
         <Link href="https://www.linkedin.com/in/mitchellscot" legacyBehavior>
           <a target="_blank">
             <Image src="/linkedIn.svg" height="40" width="40" alt="" />
